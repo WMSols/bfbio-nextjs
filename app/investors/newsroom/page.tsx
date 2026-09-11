@@ -1,5 +1,22 @@
-import { PlaceholderPage } from "@/components/shared/PlaceholderPage";
+import { Suspense } from "react";
+import NewsroomListClient from "./NewsroomListClient";
+
+export const metadata = {
+  title: "BF Biosciences Newsroom",
+  description:
+    "Stay updated with the latest news and developments from BF Biosciences.",
+};
 
 export default function NewsroomPage() {
-  return <PlaceholderPage title="Newsroom" />;
+  return (
+    <Suspense
+      fallback={
+        <div className="container py-12 text-center text-muted-foreground">
+          Loading news...
+        </div>
+      }
+    >
+      <NewsroomListClient />
+    </Suspense>
+  );
 }
