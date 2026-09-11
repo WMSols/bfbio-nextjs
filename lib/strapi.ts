@@ -1,11 +1,404 @@
+import {
+  BoardDirector,
+  StrapiFinancialHighlights,
+  TherapeuticArea,
+} from "@/types/strapi";
+
+const STRAPI_BASE_URL =
+  process.env.NEXT_PUBLIC_STRAPI_URL ?? "http://localhost:1337";
+
+export { STRAPI_BASE_URL };
+
+const STRAPI_BEARER_TOKEN =
+  process.env.NEXT_PUBLIC_STRAPI_BEARER_TOKEN ??
+  "fc3f1058b9b95b7948d65882043f4fd12ffe2abf8d92d9694081d90a8816ec39201b47c0ac09ea46108020611d6978925895d6aec330ec8734e9e50fc30535c256bcce7ef58232d1aeba2b71fe834296eabc946b96c13e8e6c55083fa06893a51db2e46d33178fb5de7421dfb28f2a8947d73b459d790942c919edf8df534764";
+
+export async function strapiFetch(input: string, init?: RequestInit) {
+  const headers = new Headers(init?.headers);
+  headers.set("Authorization", `Bearer ${STRAPI_BEARER_TOKEN}`);
+  if (!headers.has("Accept")) headers.set("Accept", "application/json");
+
+  const res = await fetch(input, { ...init, headers });
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    throw new Error(
+      `Strapi request failed (${res.status} ${res.statusText}) ${text}`.trim(),
+    );
+  }
+  return res;
+}
+
+export function getStrapiImageUrl(url: string | undefined): string {
+  if (!url) return "";
+  return url.startsWith("http") ? url : `${STRAPI_BASE_URL}${url}`;
+}
+
+/** Use for any Strapi media URL (images, PDFs, etc.). */
+export function getStrapiMediaUrl(url: string | undefined): string {
+  return getStrapiImageUrl(url);
+}
+
+export interface ApiResult<T> {
+  data: T;
+  loading: boolean;
+  error?: string;
+}
+
+export type ProductsFilterMode = "category" | "prescribed" | "az";
+
+export interface BuildProductsUrlParams {
+  page: number;
+  pageSize?: number;
+  filterMode: ProductsFilterMode;
+  selectedCategory: string;
+  search?: string;
+}
+
+export function buildProductsUrl({
+  page,
+  pageSize = 25,
+  filterMode,
+  selectedCategory,
+  search = "",
+}: BuildProductsUrlParams): string {
+  const params = new URLSearchParams();
+
+  params.set("populate", "*");
+
+  params.set(
+    "pagination[page]",
+    String(page),
+  );
+
+  params.set(
+    "pagination[pageSize]",
+    String(pageSize),
+  );
+
+  // SEARCH FILTERS
+  const trimmedSearch =
+    search.trim();
+
+  if (trimmedSearch) {
+    params.append(
+      "filters[$or][0][name][$containsi]",
+      trimmedSearch,
+    );
+
+    params.append(
+      "filters[$or][1][product_category][name][$containsi]",
+      trimmedSearch,
+    );
+
+    params.append(
+      "filters[$or][2][formulation][$containsi]",
+      trimmedSearch,
+    );
+  }
+
+  // CATEGORY FILTERS
+  if (
+    filterMode === "category" &&
+    selectedCategory
+  ) {
+    const decodedCategory = selectedCategory.replace(/%20/,'-');
+    const firstWord =
+      decodedCategory
+        .trim()
+        .split(/[\s-]+/)[0];
+
+    params.set(
+      "filters[product_category][slug][$eqi]",decodedCategory
+    );
+    console.log(selectedCategory);
+    //  params.append(
+    //   "filters[$or][1][product_category][$containsi]",
+    //   trimmedSearch,
+    // )
+  }
+  
+
+  // A-Z SORTING
+  if (filterMode === "az") {
+    params.set("sort", "name:asc");
+  }
+
+  // PRESCRIBED FILTER
+  if (filterMode === "prescribed") {
+    params.set(
+      "filters[commonlyPrescribed][$eq]",
+      "true",
+    );
+  }
+
+  return `${STRAPI_BASE_URL}/api/products?${params.toString()}`;
+}
+
+export function getCategoriesUrl(): string {
+  return `${STRAPI_BASE_URL}/api/product-categories`;
+}
+
+export function getProductBySlugUrl(slug: string): string {
+  const params = new URLSearchParams();
+  params.set("filters[slug][$eq]", slug);
+  params.set("populate", "*");
+  return `${STRAPI_BASE_URL}/api/products?${params.toString()}`;
+}
+
+export interface BuildNewsroomsUrlParams {
+  page: number;
+  pageSize?: number;
+}
+
+export function buildNewsroomsUrl({
+  page,
+  pageSize = 25,
+}: BuildNewsroomsUrlParams): string {
+  const params = new URLSearchParams();
+  params.set("pagination[page]", String(page));
+  params.set("pagination[pageSize]", String(pageSize));
+  params.set("populate[featured_image][fields]", "url");
+  params.set("populate[og_image][fields]", "url");
+  params.set("sort", "createdAt:desc");
+
+  return `${STRAPI_BASE_URL}/api/newsrooms?${params.toString()}`;
+}
+
+export function getNewsroomBySlugUrl(slug: string): string {
+  const params = new URLSearchParams();
+  params.set("filters[slug][$eq]", slug);
+  params.set("populate", "*");
+  return `${STRAPI_BASE_URL}/api/newsrooms?${params.toString()}`;
+}
+
+export function getReportTypesUrl(): string {
+  return `${STRAPI_BASE_URL}/api/report-types`;
+}
+
+export interface BuildInvestorReportsUrlParams {
+  page: number;
+  pageSize?: number;
+  type?: string;
+}
+
+export function buildInvestorReportsUrl({
+  page,
+  pageSize = 25,
+  type,
+}: BuildInvestorReportsUrlParams): string {
+  const params = new URLSearchParams();
+  params.set("populate", "report_file");
+  params.set("pagination[page]", String(page));
+  params.set("pagination[pageSize]", String(pageSize));
+
+  if (type?.trim()) {
+    params.set("filters[report_type][name][$eq]", type.trim());
+  }
+
+  return `${STRAPI_BASE_URL}/api/investor-reports?${params.toString()}`;
+}
+// For fetching Job Posts
+export interface BuildJobPostsUrlParams {
+  page?: number;
+  pageSize?: number;
+}
+
+export function buildJobPostsUrl({
+  page = 1,
+  pageSize = 25,
+}: BuildJobPostsUrlParams = {}): string {
+  const params = new URLSearchParams();
+  params.set("populate", "*"); // Populates relations (like a company logo, if you add one later)
+  params.set("pagination[page]", String(page));
+  params.set("pagination[pageSize]", String(pageSize));
+  params.set("sort", "createdAt:desc"); // Show the newest jobs first
+
+  return `${STRAPI_BASE_URL}/api/job-posts?${params.toString()}`;
+}
+
+// For sending contact messages
+export interface ContactMessagePayload {
+  firstName: string;
+  lastName: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
+export async function submitContactMessage(data: ContactMessagePayload) {
+  const url = `${STRAPI_BASE_URL}/api/contact-messages`;
+
+  // Strapi expects the fields to be wrapped inside a "data" object
+  const body = JSON.stringify({ data });
+
+  return strapiFetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body,
+  });
+}
+
+// For sending Job applications
+export interface JobApplicationPayload {
+  fullName: string;
+  email: string;
+  coverLetter: string;
+  title: string;
+  resume?: File; // The native browser File object from your input type="file"
+}
+
+async function uploadStrapiFile(file: File): Promise<number> {
+  const formData = new FormData();
+  formData.append("files", file, file.name);
+
+  const headers = new Headers();
+  headers.set("Authorization", `Bearer ${STRAPI_BEARER_TOKEN}`);
+  headers.set("Accept", "application/json");
+
+  const res = await fetch(`${STRAPI_BASE_URL}/api/upload`, {
+    method: "POST",
+    headers,
+    body: formData,
+  });
+
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    throw new Error(
+      `Strapi upload failed (${res.status} ${res.statusText}) ${text}`.trim(),
+    );
+  }
+
+  const uploaded = await res.json();
+  const fileId = Array.isArray(uploaded) ? uploaded[0]?.id : uploaded?.id;
+  if (typeof fileId !== "number") {
+    throw new Error("Strapi upload succeeded but returned no file id");
+  }
+
+  return fileId;
+}
+
+export async function submitJobApplication(payload: JobApplicationPayload) {
+  const { resume, ...entryData } = payload;
+
+  const resumeId = resume ? await uploadStrapiFile(resume) : undefined;
+
+  return strapiFetch(`${STRAPI_BASE_URL}/api/job-applications`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      data: {
+        ...entryData,
+        ...(resumeId != null ? { resume: resumeId } : {}),
+      },
+    }),
+  });
+}
+
+export async function getFinancialHighlights(): Promise<ApiResult<StrapiFinancialHighlights[]>> {
+  let financialHighlights: StrapiFinancialHighlights[] = [];
+  let error: string | undefined;
+  const url = `${STRAPI_BASE_URL}/api/financial-highlights`;
+
+  try {
+    const res = await strapiFetch(url, {
+      cache: "no-store",
+    });
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status}`);
+    }
+    const json = await res.json();
+    financialHighlights = Array.isArray(json?.data) ? json.data : [];
+  } catch (err) {
+    error = err instanceof Error ? err.message : String(err);
+    console.error("Failed to fetch financial highlights:", err);
+  }
+
+  return {
+    data: financialHighlights,
+    loading: false,
+    error,
+  };
+}
+
+export async function getBoardOfDirectors(): Promise<ApiResult<BoardDirector[]>> {
+  let directors: BoardDirector[] = [];
+  let error: string | undefined;
+  const url = `${STRAPI_BASE_URL}/api/board-of-directors?populate=image`;
+
+  try {
+    const res = await strapiFetch(url, {
+      cache: "no-store",
+    });
+
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status}`);
+    }
+
+    const json = await res.json();
+    directors = Array.isArray(json?.data) ? json.data : [];
+  } catch (err) {
+    error = err instanceof Error ? err.message : String(err);
+    console.error("Failed to fetch board of directors:", err);
+  }
+
+  return {
+    data: directors,
+    loading: false,
+    error,
+  };
+}
+
+export async function getTherapeuticAreas(): Promise<TherapeuticArea[]> {
+  let areas: TherapeuticArea[] = [];
+  const url = `${STRAPI_BASE_URL}/api/pharmaceutical-areas?populate=*`;
+
+  try {
+    const res = await strapiFetch(url, {
+      cache: "no-store",
+    });
+
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status}`);
+    }
+
+    const json = await res.json();
+    areas = Array.isArray(json?.data) ? json.data : [];
+  } catch (err) {
+    console.error("Failed to fetch pharmaceutical areas:", err);
+  }
+
+  return areas;
+}
 /**
- * Strapi API client. Wired up when CMS integration starts.
+ * Submit a Safety Report to the Strapi backend.
  */
+export async function submitSafetyReport(data: any) {
+  // Clean up empty strings for date fields to prevent Strapi validation errors
+  const cleanedData = Object.fromEntries(
+    Object.entries(data).map(([key, value]) => [
+      key,
+      value === "" ? null : value,
+    ])
+  );
 
-const STRAPI_URL = process.env.STRAPI_URL;
+  const res = await fetch(`${STRAPI_BASE_URL}/api/safety-reports`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${STRAPI_BEARER_TOKEN}`,
+    },
+    body: JSON.stringify({ data: cleanedData }),
+  });
 
-export async function fetchStrapi<T>(path: string): Promise<T | null> {
-  void path;
-  void STRAPI_URL;
-  return null;
+  if (!res.ok) {
+    const errorData = await res.json().catch(() => null);
+    console.error("Strapi Error:", errorData);
+    throw new Error(errorData?.error?.message || "Failed to submit safety report");
+  }
+
+  return res.json();
 }
