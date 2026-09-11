@@ -11,7 +11,7 @@ export default function HomePage() {
   return (
     <>
       <HeroSection title={<span>We Build <strong>Biopharmaceutical</strong> Solutions</span>}
-      backgroundVideo="/home-hero-video.mov" overlayClassName="bg-black/50" titleSize="small" />
+      backgroundVideo="/hero-video.mov" overlayClassName="bg-black/50" titleSize="small" />
       <TherapeuticsGrid />
       <MissionSection {...missionData} />
       <ProductSearchSection description={<span>Our portfolio of more than 140 products reflects<br className="hidden md:block"/> our unwavering commitment to putting patients<br className="hidden md:block"/> first through quality and innovation.</span>} />
