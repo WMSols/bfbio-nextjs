@@ -1,7 +1,7 @@
-import type { CSRCategory } from "@/data/esgData";
+import type { ESGCategory } from "@/data/esgData";
 
 export const categoryAccent: Record<
-  CSRCategory,
+  ESGCategory,
   { bg: string; text: string; dot: string }
 > = {
   education: {

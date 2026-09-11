@@ -27,13 +27,13 @@ function toExcerpt(content: string): string {
 
 function toArticle(item: StrapiNewsroom): Article {
   return {
-    id: item.documentId || String(item.id),
+    id: item.id,
     title: item.title,
+    slug: item.slug,
     excerpt: item.content,
-    date: item.date || item.publishedAt || item.createdAt,
-    category: "News",
-    type: "news",
-    image: item.featured_image?.url,
+    image: item.featured_image
+      ? { url: item.featured_image.url }
+      : undefined,
   };
 }
 

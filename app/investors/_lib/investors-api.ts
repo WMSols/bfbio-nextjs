@@ -40,7 +40,7 @@ export async function fetchInvestorReports({
 
   // Apply multi-parameter sorting if data exists
   if (json.data && Array.isArray(json.data)) {
-    json.data.sort((a, b) => {
+    json.data.sort((a: StrapiInvestorReport, b: StrapiInvestorReport) => {
 
       
       // --- STEP 3 & 4: Fallback to Date, then CreatedAt ---
