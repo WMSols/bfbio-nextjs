@@ -21,9 +21,9 @@ export default function PurposePage() {
             everything we do.
           </span>
         }
-        backgroundImage="/images/purpose/hero.webp"
+        backgroundImage="/images/about/purpose/hero-bg.webp"
         titleSize="small"
-        overlayClassName="bg-black/15"
+        overlayClassName="bg-black/20"
       />
       <IntroSection />
       <CTABanner

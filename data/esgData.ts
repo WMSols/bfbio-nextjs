@@ -219,43 +219,43 @@ export interface esgSlideshowImage {
 export const esgSlideshowImages: esgSlideshowImage[] = [
   {
     id: 3,
-    url: "/images/ESG/slideshow/art-breathes-life.webp",
+    url: "/images/esg/slideshow/art-breathes-life.webp",
     width: 1024,
     height: 1536
   },
   {
     id: 4,
-    url: "/images/ESG/slideshow/arts-and-culture-the-citizen-foundation.webp",
+    url: "/images/esg/slideshow/arts-and-culture-the-citizen-foundation.webp",
     width: 1536,
     height: 1024
   },
   {
     id: 5,
-    url: "/images/ESG/slideshow/education_khalid-waheed-campus-the-citizens-foundation.webp",
+    url: "/images/esg/slideshow/education_khalid-waheed-campus-the-citizens-foundation.webp",
     width: 1536,
     height: 1024
   },
   {
     id: 7,
-    url: "/images/ESG/slideshow/lahore-literaryfestival.webp",
+    url: "/images/esg/slideshow/lahore-literaryfestival.webp",
     width: 1536,
     height: 1024
   },
   {
     id: 8,
-    url: "/images/ESG/slideshow/lums-writers.webp",
+    url: "/images/esg/slideshow/lums-writers.webp",
     width: 1157,
     height: 1024
   },
   {
     id: 9,
-    url: "/images/ESG/slideshow/nca-.webp",
+    url: "/images/esg/slideshow/nca-.webp",
     width: 834,
     height: 1024
   },
   {
     id: 10,
-    url: "/images/ESG/slideshow/nop-.webp",
+    url: "/images/esg/slideshow/nop-.webp",
     width: 1536,
     height: 1024
   }
@@ -267,7 +267,7 @@ export const ESGImpactCardData = [
     id: 1,
     heading: "Creating Stronger Communities Through Lasting Impact",
     description: "Ferozsons' corporate vision has always centred on creating a better world for the people around us. Our Impact focus spans four pillars: education, healthcare, arts & culture, and community — because we believe that health, knowledge, and creative expression are equally essential to a flourishing society. Many of these initiatives are supported year on year as part of our enduring commitment to Pakistan and beyond.",
-    image: "/images/ESG/initiatives/Community.webp",
+    image: "/images/esg/initiatives/Community.webp",
   }
 ];
 
@@ -281,7 +281,7 @@ export const ESGInvestorsCardsData = [
       "The solar park is expected to generate approximately 1.3–1.7 GWh of renewable electricity annually, avoiding an estimated 750–900 tonnes of CO₂ emissions each year. This investment represents a meaningful step in reducing our operational carbon footprint while contributing to Pakistan's transition towards a cleaner energy future."
     ],
     // Placeholder image for solar park
-    image: "/images/ESG/Solar.webp", 
+    image: "/images/esg/Solar.webp", 
     linkText: "Learn about our Environmental, Social & Governance Policy",
     linkHref: "/investors",
     imagePosition: "left"
@@ -295,7 +295,7 @@ export const ESGInvestorsCardsData = [
       "Through effective wastewater treatment, we help protect local water resources and ecosystems while advancing our broader commitment to environmental sustainability."
     ],
     // Placeholder image for water facility
-    image: "/images/ESG/Water.webp", 
+    image: "/images/esg/Water.webp", 
     linkText: "Learn more about our Environment, Health & Safety Policy",
     linkHref: "/investors",
     imagePosition: "right"

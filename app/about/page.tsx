@@ -21,7 +21,7 @@ export default function AboutPage() {
             <br className="hidden md:block" /> at the center of everything we do
           </span>
         }
-        backgroundImage="/images/about/purpose/hero.webp"
+        backgroundImage="/images/about/hero.webp"
         overlayClassName="bg-black/30"
       />
       <OurStorySection />
