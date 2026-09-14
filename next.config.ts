@@ -12,6 +12,15 @@ function strapiHostname() {
 }
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/shop/products",
+        destination: "/shop",
+        permanent: true,
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {

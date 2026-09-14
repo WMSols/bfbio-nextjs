@@ -11,6 +11,10 @@ interface CTABannerProps {
   showCTA?: boolean;
   titleClassName?: string;
   ctaClassName?: string;
+  ctaVariant?: "gradient" | "solid";
+  cta?: ReactNode;
+  className?: string;
+  align?: "center" | "left";
 }
 
 const CTABanner = ({
@@ -21,23 +25,43 @@ const CTABanner = ({
   showCTA = true,
   titleClassName,
   ctaClassName,
+  ctaVariant = "solid",
+  cta,
+  className,
+  align = "center",
 }: CTABannerProps) => {
+  const isLeft = align === "left";
+
   return (
-    <section className="bg-[#FFE4FF] py-16 md:py-24">
+    <section className={cn("bg-[#FFE4FF] py-16 md:py-24", className)}>
       <div className="container">
-        <div className="flex flex-col items-center justify-center max-w-[20.5rem] mx-auto sm:max-w-4xl">
-          <div className="text-center flex flex-col gap-6 sm:gap-12 items-center">
+        <div
+          className={cn(
+            "flex flex-col",
+            isLeft
+              ? "items-start max-w-3xl"
+              : "items-center justify-center max-w-[20.5rem] mx-auto sm:max-w-4xl",
+          )}
+        >
+          <div
+            className={cn(
+              "flex flex-col gap-6 sm:gap-12",
+              isLeft ? "items-start text-left" : "items-center text-center",
+            )}
+          >
             <h2 className={cn("text-[32px] text-black md:text-[82px] leading-[1.15] md:leading-snug", titleClassName)}>
               {title}
             </h2>
             <p className="text-lg text-black sm:text-[22px] sm:max-w-5xl sm:leading-relaxed">
               {description}
             </p>
-            {showCTA && (
-              <Button href={ctaLink} variant="solid" className={ctaClassName}>
-                {ctaText}
-              </Button>
-            )}
+            {cta
+              ? cta
+              : showCTA && (
+                  <Button href={ctaLink} variant={ctaVariant} className={ctaClassName}>
+                    {ctaText}
+                  </Button>
+                )}
           </div>
         </div>
       </div>

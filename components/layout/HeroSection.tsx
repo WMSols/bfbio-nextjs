@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 interface HeroSectionProps {
   title: string | ReactNode;
-  subtitle?: string;
+  subtitle?: string | ReactNode;
   titleSize?: "large" | "small";
   backgroundImage?: string;
   backgroundVideo?: string;

@@ -18,13 +18,13 @@ export interface NavItem {
 export const mainNavItems: NavItem[] = [
   {
     label: "About Us",
-    href: "/about/company-overview",
+    href: "/about",
     description:
       "For over 70 years, Bf Bio Sciences has been putting patients first",
     megaImage: "/images/navbar/nav-about.jpg",
     megaImageTitle: "",
     megaImageSubtitle: "Discover our Company",
-    megaImageLink: "/about/company-overview",
+    megaImageLink: "/about",
     children: [
       { label: "Our History", href: "/about/history" },
       { label: "Company Overview", href: "/about/company-overview" },
@@ -54,8 +54,7 @@ export const mainNavItems: NavItem[] = [
     megaImageSubtitle: "View our products",
     megaImageLink: "/shop",
     children: [
-      { label: "Shop", href: "/shop" },
-      { label: "Products", href: "/shop/products" },
+      { label: "All products", href: "/shop" },
       { label: "Sibionics CGM", href: "/shop/sibionics-cgm" },
     ],
   },
@@ -152,8 +151,7 @@ export const footerLinks = [
   {
     title: "Shop",
     links: [
-      { label: "Shop", href: "/shop" },
-      { label: "Products", href: "/shop/products" },
+      { label: "All products", href: "/shop" },
       { label: "Sibionics CGM", href: "/shop/sibionics-cgm" },
     ],
   },

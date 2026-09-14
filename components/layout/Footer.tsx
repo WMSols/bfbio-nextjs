@@ -98,7 +98,7 @@ const Footer = ({ dark = false }: { dark?: boolean }) => {
                 )}
                 <ul className="space-y-3">
                   {column.links.map((link) => (
-                    <li key={link.href}>
+                    <li key={link.label}>
                       <Link
                         href={link.href}
                         className="text-sm opacity-70 hover:opacity-100 transition-opacity"

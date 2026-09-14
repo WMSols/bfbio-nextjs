@@ -1,0 +1,246 @@
+"use client"
+import React, { useState } from "react";
+import { X, Briefcase, MapPin, Clock, Paperclip, Dot } from "lucide-react";
+import { submitJobApplication } from "@/lib/strapi";
+import { StrapiJob } from "@/types/strapi";
+
+interface JobApplicationProps {
+  isOpen: boolean;
+  onClose: () => void;
+  job: StrapiJob
+}
+
+const JobApplicationModal = ({ isOpen, onClose, job } : JobApplicationProps) => {
+  // Form states
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [coverLetter, setCoverLetter] = useState("");
+
+  // File states
+  const [fileName, setFileName] = useState("");
+  const [resumeFile, setResumeFile] = useState<File | null>(null);
+
+  // Submission states
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusMessage, setStatusMessage] = useState({ type: "", text: "" });
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const file = e.target.files[0];
+      setFileName(file.name);
+      setResumeFile(file);
+    } else {
+      setFileName("");
+      setResumeFile(null);
+    }
+  };
+
+  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!resumeFile) {
+      setStatusMessage({ type: "error", text: "Please attach your resume." });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setStatusMessage({ type: "", text: "" });
+
+    try {
+      await submitJobApplication({
+        fullName,
+        email,
+        coverLetter,
+        title: job.title, // <-- We now include the job title from the props!
+        resume: resumeFile,
+      });
+
+      setStatusMessage({ type: "success", text: "Application submitted successfully!" });
+
+      setTimeout(() => {
+        onClose();
+        setFullName("");
+        setEmail("");
+        setCoverLetter("");
+        setFileName("");
+        setResumeFile(null);
+        setStatusMessage({ type: "", text: "" });
+      }, 2000);
+
+    } catch (error) {
+      console.error("Submission error:", error);
+      setStatusMessage({ type: "error", text: "Failed to submit. Please try again." });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  if (!isOpen || !job) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/50 p-4 sm:p-12">
+      <div className="relative w-full sm:px-6 py-8 max-h-[90vh] rounded-3xl overflow-y-scroll bg-white shadow-2xl">
+        <button
+          onClick={onClose}
+          className="absolute right-4 top-4 text-gray-500 transition-colors hover:text-gray-700"
+        >
+          <X size={24} />
+        </button>
+
+        <div className="border-b border-gray-100 p-6 sm:p-8">
+          <h2 className="mb-3 text-2xl font-bold text-[#934397]">
+            {job.title}
+          </h2>
+          <div className="flex flex-wrap items-center gap-4 text-sm text-[#565656]">
+            { job.domain &&
+                         <span className="flex items-center gap-1.5">
+                          <Briefcase size={16} className="text-gray-400" /> {job.domain}
+                        </span>
+                       }
+            <span className="flex items-center gap-1.5">
+              <MapPin size={16} /> {job.location}
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Clock size={16} /> {job.type}
+            </span>
+          </div>
+          <div className="flex flex-col gap-2 sm:mt-8 mt-4">
+            <div className="my-4">
+              <h1 className="font-semibold text-2xl text-black mb-4">Overview</h1>
+              <p className="text-[#565656]  my-1 ml-2 ">{job.overview}</p>
+            </div>
+            <div className="my-4">
+              <h1 className="font-semibold text-2xl text-black mb-4">Responsibilites</h1>
+              <p className="text-[#565656]  my-1 ml-2">
+                {job.responsiblities}
+              </p>
+            </div>
+            <div className="my-4">
+              <h1 className="font-semibold text-2xl text-black mb-4">Requirements</h1>
+              <p className="text-[#565656]  my-1 ml-2">
+                {job.requirements}
+              </p>
+            </div>
+            <div className="my-4">
+              <h1 className="font-semibold text-2xl mb-2 text-black ">Skills</h1>
+              <div className="flex text-gray-600 flex-col">
+                {job.skills?.split(",").map((skill: string, idx: number) => (
+                  <span
+                    key={idx}
+                    className="flex"
+                  >
+                    <Dot/> {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="my-4">
+              <h1 className="font-semibold text-black text-2xl mb-2">What You'll Get</h1>
+              <p className="text-[#565656] my-1 ml-2">{job.benefits}</p>
+            </div>
+          </div>
+        </div>
+
+{/* ---------------------------Application Form------------------------------- */}
+        <form className="p-6 sm:p-8" onSubmit={handleSubmit}>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div>
+              <label className="mb-2 block text-sm font-medium text-gray-900">
+                Full Name
+              </label>
+              <input
+               name="fullName"
+                type="text"
+                placeholder="e.g, John Smith"
+                className="w-full rounded-md border border-gray-300 bg-gray-50 p-3 text-sm outline-none focus:border-[#934397] focus:ring-1 focus:ring-[#934397]"
+                required
+                value={fullName}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFullName(e.target.value)}
+              />
+            </div>
+
+            <div>
+              <label className="mb-2 block text-sm font-medium text-gray-900">
+                Email Address
+              </label>
+              <input
+                name="email"
+                type="email"
+                placeholder="example@gmail.com"
+                className="w-full rounded-md border border-gray-300 bg-gray-50 p-3 text-sm outline-none focus:border-[#934397] focus:ring-1 focus:ring-[#934397]"
+                required
+                value={email}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="mt-6">
+            <label className="mb-2 block text-sm font-medium text-gray-900">
+              Cover Letter ( Optional )
+            </label>
+            <textarea
+            name="coverLetter"
+              rows={4}
+              placeholder="Tell us why you're a great fit for this role..."
+              className="w-full rounded-md border border-gray-300 bg-gray-50 p-3 text-sm outline-none focus:border-[#934397] focus:ring-1 focus:ring-[#934397] resize-none"
+              value={coverLetter}
+              onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setCoverLetter(e.target.value)}
+            />
+          </div>
+
+          <div className="mt-6">
+            <label className="mb-2 block text-sm font-medium text-gray-900">
+              Resume / CV
+            </label>
+            <div className="relative flex cursor-pointer flex-col items-center justify-center rounded-md border border-dashed border-gray-400 bg-gray-50 p-6 transition-colors hover:bg-gray-100">
+              <input
+                name="files"
+                type="file"
+                className="absolute inset-0 cursor-pointer opacity-0"
+                accept=".pdf,.doc,.docx"
+                required
+                onChange={handleFileChange}
+              />
+
+              {fileName ? (
+                <div className="flex flex-col items-center text-[#934397]">
+                  <Paperclip size={24} className="mb-2" />
+                  <span className="text-sm font-semibold">{fileName}</span>
+                </div>
+              ) : (
+                <>
+                  <Paperclip size={24} className="mb-2 text-gray-500" />
+                  <span className="text-sm text-gray-600">
+                    Click to upload or drag and drop
+                  </span>
+                  <span className="mt-1 text-xs text-gray-400">
+                    PDF, DOCX (MAX. 5MB)
+                  </span>
+                </>
+              )}
+            </div>
+          </div>
+
+          {statusMessage.text && (
+            <div className={`mt-4 text-sm ${statusMessage.type === 'error' ? 'text-red-600' : 'text-green-600'}`}>
+              {statusMessage.text}
+            </div>
+          )}
+
+          <div className="mt-8">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full h-12 rounded-full bg-[#934397] text-center text-base font-medium text-white transition-colors hover:bg-[#7a3280] disabled:bg-gray-400 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? "Submitting..." : "Submit Application"}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default JobApplicationModal;

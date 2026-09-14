@@ -23,8 +23,7 @@ export const sitemapPage = {
     {
       title: "Shop",
       links: [
-        { label: "Shop", href: "/shop" },
-        { label: "Products", href: "/shop/products" },
+        { label: "All products", href: "/shop" },
         { label: "Sibionics CGM", href: "/shop/sibionics-cgm" },
       ],
     },
