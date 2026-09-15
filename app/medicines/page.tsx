@@ -1,5 +1,15 @@
-import { PlaceholderPage } from "@/components/shared/PlaceholderPage";
+import { Suspense } from "react";
+import ProductListClient from "./ProductListClient";
 
-export default function MedicinesPage() {
-  return <PlaceholderPage title="Medicines" />;
+export const metadata = {
+  title: "Our Products",
+  description: "Explore our comprehensive range of pharmaceutical products.",
+};
+
+export default function ProductsPage() {
+  return (
+    <Suspense fallback={<div className="container py-12 text-center text-muted-foreground">Loading products...</div>}>
+      <ProductListClient />
+    </Suspense>
+  );
 }

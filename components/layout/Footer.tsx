@@ -3,9 +3,11 @@
 // import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 // Brand icons are not exported by the installed lucide-react version yet
 // import { Facebook, Instagram, Linkedin } from "lucide-react";
 import { footerLinks, legalLinks, socialLinks } from "@/data/navigation";
+import { cn } from "@/lib/utils";
 // import {
 //   fetchWebsiteUpdateDate,
 //   WEBSITE_UPDATE_DATE_FALLBACK,
@@ -34,17 +36,36 @@ const socialIcons = {
   linkedin: DummySocialIcon,
 } as const;
 
-const Footer = ({ dark = false }: { dark?: boolean }) => {
+function footerBackgroundForPath(pathname: string) {
+  if (pathname === "/shop/sibionics-cgm/checkout") return "bg-brand";
+  if (
+    pathname === "/shop/sibionics-cgm" ||
+    pathname.startsWith("/shop/sibionics-cgm/product")
+  ) {
+    return "bg-black";
+  }
+  return "bg-brand";
+}
+
+const Footer = ({
+  dark = false,
+  backgroundClassName,
+}: {
+  dark?: boolean;
+  backgroundClassName?: string;
+}) => {
+  const pathname = usePathname();
   const displayDate = WEBSITE_UPDATE_DATE_FALLBACK;
+  const resolvedBackground =
+    backgroundClassName ??
+    (dark ? "bg-black" : footerBackgroundForPath(pathname));
   // const [displayDate, setDisplayDate] = useState(WEBSITE_UPDATE_DATE_FALLBACK);
   // useEffect(() => {
   //   fetchWebsiteUpdateDate().then(setDisplayDate);
   // }, []);
 
   return (
-    <footer
-      className={`reveal-section text-white ${dark ? "bg-black" : "bg-brand"}`}
-    >
+    <footer className={cn("reveal-section text-white", resolvedBackground)}>
       <div className="container pt-16 ">
         <div className="flex flex-col gap-10 lg:grid lg:grid-cols-6 lg:gap-x-12 lg:gap-y-10">
           {/* Logo column */}

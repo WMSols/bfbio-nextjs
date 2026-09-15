@@ -51,7 +51,7 @@ export function useProductFilters() {
   }
 
   router.replace(
-    `/products?${params.toString()}`,
+    `/medicines?${params.toString()}`,
     {
       scroll: false,
     },
@@ -77,7 +77,7 @@ export function useProductFilters() {
       params.delete("category");
 
       router.replace(
-        `/products?${params.toString()}`,
+        `/medicines?${params.toString()}`,
         {
           scroll: false,
         },
@@ -123,7 +123,7 @@ export function useProductFilters() {
       }
 
       router.replace(
-        `/products?${params.toString()}`,
+          `/medicines?${params.toString()}`,
         {
           scroll: false,
         },

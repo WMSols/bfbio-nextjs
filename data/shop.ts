@@ -51,7 +51,7 @@ export const shopProducts: ShopProduct[] = [
     imageAlt: "SIBIONICS GS1 Continuous Glucose Monitoring System",
     price: 12750,
     compareAtPrice: 15000,
-    href: "/shop/sibionics-cgm",
+    href: "/shop/sibionics-cgm/product",
     featured: true,
   },
 ];
