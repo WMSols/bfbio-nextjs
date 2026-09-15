@@ -67,7 +67,7 @@ export default function TherapeuticsGridClient({
   };
 
   return (
-    <section className="bg-background overflow-hidden py-16 text-black md:py-24">
+    <section className="bg-background w-full overflow-hidden py-16 text-black md:py-24">
       {loading ? (
         <div className="text-muted-foreground py-12 text-center">
           Loading therapeutic areas...
@@ -77,8 +77,8 @@ export default function TherapeuticsGridClient({
           No therapeutic areas found.
         </div>
       ) : (
-        <div className="flex flex-col  lg:grid lg:grid-cols-[minmax(0,34rem)_1fr] lg:items-stretch lg:gap-x-8">
-          <div className="order-1 flex flex-col justify-between gap-10 px-6 py-4 sm:px-10 lg:order-2 lg:max-w-lg lg:gap-0 lg:py-1 lg:pr-12 lg:pl-0 xl:max-w-xl xl:pr-16">
+        <div className="flex w-full flex-col lg:grid lg:grid-cols-2 lg:items-stretch">
+          <div className="order-1 flex flex-col justify-between gap-10 px-6 py-4 sm:px-10 lg:order-2 lg:gap-0 lg:px-12 lg:py-2 xl:px-16">
             <div>
               <p className="text-sm font-light tracking-[0.16em] text-muted-foreground uppercase">
                 Therapeutic Areas
@@ -101,11 +101,10 @@ export default function TherapeuticsGridClient({
 
           <div
             className={cn(
-              "relative order-2 overflow-hidden touch-pan-y select-none lg:order-1",
-              "[--gap:0.5rem] [--gutter:12%] [--card:76%]",
-              "sm:[--gutter:14%] sm:[--card:70%]",
-              "lg:[--gutter:12%] lg:[--card:84%]",
-              "xl:[--gutter:12%] xl:[--card:84%]",
+              "relative order-2 w-full overflow-hidden touch-pan-y select-none lg:order-1",
+              "[--gap:0.75rem] [--gutter:10%] [--card:86%]",
+              "sm:[--gutter:12%] sm:[--card:82%]",
+              "lg:[--gutter:8%] lg:[--card:90%]",
             )}
             onPointerDown={(e) => {
               touchStartX.current = e.clientX;
@@ -159,8 +158,8 @@ export default function TherapeuticsGridClient({
                     shouldAnimate && "duration-700 ease-out [transition-property:left,top,width]",
                     !shouldAnimate && "transition-none",
                     isActive && "top-0 left-[var(--gutter)] z-10 w-[var(--card)] pointer-events-auto",
-                    isPrev && "top-[75px] z-5 w-[calc(var(--card)-150px)] left-[calc(var(--gutter)-var(--gap)-(var(--card)-150px))] pointer-events-auto",
-                    offset < -1 && "top-[75px] z-0 w-[calc(var(--card)-150px)] left-[calc(var(--gutter)-var(--gap)-(var(--card)-150px)-var(--card))] pointer-events-none",
+                    isPrev && "top-0 z-5 w-[var(--card)] left-[calc(var(--gutter)-var(--gap)-var(--card))] pointer-events-auto",
+                    offset < -1 && "top-0 z-0 w-[var(--card)] left-[calc(var(--gutter)-var(--gap)-var(--card)-var(--card))] pointer-events-none",
                     offset >= 1 && "top-0 left-full z-0 w-[var(--card)] pointer-events-none",
                   )}
                 >

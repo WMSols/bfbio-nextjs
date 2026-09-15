@@ -39,7 +39,7 @@ export default function TherapeuticCardBig({
         alt={item.name}
         fill
         className="object-cover"
-        sizes="(max-width: 768px) 80vw, (max-width: 1024px) 50vw, 40vw"
+        sizes="(max-width: 768px) 80vw, 50vw"
       />
       
       <div
