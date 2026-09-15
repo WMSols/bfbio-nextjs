@@ -15,25 +15,37 @@ interface TherapeuticsGridProps {
 function SlideNav({
   onPrev,
   onNext,
+  active,
 }: {
   onPrev: () => void;
   onNext: () => void;
+  active: "prev" | "next";
 }) {
   return (
     <div className="flex items-center gap-3">
       <button
         onClick={onPrev}
-        className="flex size-12 items-center justify-center rounded-full bg-[#A8A4AC] text-white transition-opacity hover:opacity-80"
+        className={cn(
+          "flex size-12 items-center justify-center rounded-full p-[2px] text-white transition-opacity hover:opacity-80",
+          active === "prev" ? "bg-brand-gradient" : "bg-transparent",
+        )}
         aria-label="Previous slide"
       >
-        <ChevronLeft className="size-5" />
+        <span className="flex size-full items-center justify-center rounded-full bg-[#A8A4AC]">
+          <ChevronLeft className="size-5" />
+        </span>
       </button>
       <button
         onClick={onNext}
-        className="flex size-12 items-center justify-center rounded-full bg-[#A8A4AC] text-white ring-2 ring-brand transition-opacity hover:opacity-80"
+        className={cn(
+          "flex size-12 items-center justify-center rounded-full p-[2px] text-white transition-opacity hover:opacity-80",
+          active === "next" ? "bg-brand-gradient" : "bg-transparent",
+        )}
         aria-label="Next slide"
       >
-        <ChevronRight className="size-5" />
+        <span className="flex size-full items-center justify-center rounded-full bg-[#A8A4AC]">
+          <ChevronRight className="size-5" />
+        </span>
       </button>
     </div>
   );
@@ -44,6 +56,7 @@ export default function TherapeuticsGridClient({
   loading
 }: TherapeuticsGridProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [activeNav, setActiveNav] = useState<"prev" | "next">("next");
 
   const touchStartX = useRef<number>(0);
   const isDragging = useRef(false);
@@ -58,11 +71,13 @@ export default function TherapeuticsGridClient({
 
   const nextSlide = () => {
     if (!items || items.length === 0) return;
+    setActiveNav("next");
     setActiveIndex((prev) => (prev === items.length - 1 ? 0 : prev + 1));
   };
 
   const prevSlide = () => {
     if (!items || items.length === 0) return;
+    setActiveNav("prev");
     setActiveIndex((prev) => (prev === 0 ? items.length - 1 : prev - 1));
   };
 
@@ -95,7 +110,7 @@ export default function TherapeuticsGridClient({
             </div>
 
             <div className="hidden lg:flex">
-              <SlideNav onPrev={prevSlide} onNext={nextSlide} />
+              <SlideNav active={activeNav} onPrev={prevSlide} onNext={nextSlide} />
             </div>
           </div>
 
@@ -158,8 +173,8 @@ export default function TherapeuticsGridClient({
                     shouldAnimate && "duration-700 ease-out [transition-property:left,top,width]",
                     !shouldAnimate && "transition-none",
                     isActive && "top-0 left-[var(--gutter)] z-10 w-[var(--card)] pointer-events-auto",
-                    isPrev && "top-0 z-5 w-[var(--card)] left-[calc(var(--gutter)-var(--gap)-var(--card))] pointer-events-auto",
-                    offset < -1 && "top-0 z-0 w-[var(--card)] left-[calc(var(--gutter)-var(--gap)-var(--card)-var(--card))] pointer-events-none",
+                    isPrev && "top-[75px] z-5 w-[calc(var(--card)-150px)] left-[calc(var(--gutter)-var(--gap)-(var(--card)-150px))] pointer-events-auto",
+                    offset < -1 && "top-[75px] z-0 w-[calc(var(--card)-150px)] left-[calc(var(--gutter)-var(--gap)-(var(--card)-150px)-var(--card))] pointer-events-none",
                     offset >= 1 && "top-0 left-full z-0 w-[var(--card)] pointer-events-none",
                   )}
                 >
@@ -178,7 +193,7 @@ export default function TherapeuticsGridClient({
           </div>
 
           <div className="order-3 flex px-6 pt-8 sm:px-10 lg:hidden">
-            <SlideNav onPrev={prevSlide} onNext={nextSlide} />
+            <SlideNav active={activeNav} onPrev={prevSlide} onNext={nextSlide} />
           </div>
         </div>
       )}

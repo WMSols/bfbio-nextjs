@@ -100,7 +100,7 @@ const Navbar = () => {
     return (
       <div className="absolute top-full left-0 right-0 z-50 before:absolute before:inset-x-0 before:-top-8 before:h-8 before:bg-transparent">
         {/* Adjusted padding to hug the ceiling (px-10 pb-10 pt-6) */}
-        <div className="bg-black/80 backdrop-blur-xl border-t border-white/20 rounded-b-[25px] shadow-2xl px-10 pb-10 pt-6 origin-top animate-in fade-in slide-in-from-top-3 duration-300 ease-out">
+        <div className="bg-black  border-t border-white/20 rounded-b-[25px] shadow-2xl px-10 pb-10 pt-6 origin-top animate-in fade-in slide-in-from-top-3 duration-300 ease-out">
           {/* Removed top padding (py-8 to pb-4) to bring elements higher */}
           <div className="grid grid-cols-13 gap-4 pb-4">
 
@@ -202,7 +202,8 @@ const Navbar = () => {
       <div
         ref={navContainerRef}
         className={cn(
-          "hidden xl:flex flex-col bg-black/80 backdrop-blur-xl shadow-[0_2px_12px_rgba(0,0,0,0.08)] relative",
+          "hidden xl:flex flex-col  shadow-[0_2px_12px_rgba(0,0,0,0.08)] relative transition-colors",
+          desktopMenuOpen ? "bg-black" : "bg-black/80",
           activePrimaryDropdown ? "rounded-t-[25px]" : "rounded-[25px]"
         )}
         onMouseLeave={scheduleCloseDesktopMenu}
@@ -367,7 +368,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Header (Collapsed State) */}
-      <div className="flex xl:hidden items-center justify-between rounded-[20px] bg-black/80 backdrop-blur-xl shadow-[0_2px_12px_rgba(0,0,0,0.08)] px-4 py-3">
+      <div className="flex xl:hidden items-center justify-between rounded-[20px] bg-black/80  shadow-[0_2px_12px_rgba(0,0,0,0.08)] px-4 py-3">
         {mobileSearchOpen ? (
           <form onSubmit={handleSearchSubmit} className="flex items-center gap-2 w-full">
             <div className="flex-1 flex items-center bg-[#222222] rounded-full px-4 py-2 min-w-0">
