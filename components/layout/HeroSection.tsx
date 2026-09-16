@@ -13,6 +13,7 @@ interface HeroSectionProps {
   backgroundVideo?: string;
   backgroundClassName?: string;
   overlayClassName?: string;
+  titleClassName?: string;
 }
 
 const HeroSection = ({
@@ -23,6 +24,7 @@ const HeroSection = ({
   backgroundVideo,
   backgroundClassName,
   overlayClassName,
+  titleClassName,
 }: HeroSectionProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -98,6 +100,7 @@ const HeroSection = ({
               ? "hero-title-small"
               : "text-[24px] sm:text-[32px] lg:text-8xl",
             hasMedia ? "text-white" : "text-foreground",
+            titleClassName,
           )}
         >
           {title}

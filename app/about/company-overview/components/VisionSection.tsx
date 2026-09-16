@@ -6,7 +6,7 @@ export default function VisionSection() {
           Built on a Shared Vision
         </h2>
 
-        <div className="space-y-8 text-base font-light leading-relaxed text-black md:text-[24px]">
+        <div className="space-y-8 text-base font-light  text-black md:text-[24px]">
           <p>
             Our story began with a shared vision: to bring advanced biotechnology
             to Pakistan and<br className="hidden md:block" /> improve access to life-changing medicines. What

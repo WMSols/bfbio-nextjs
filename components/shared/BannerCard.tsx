@@ -9,9 +9,9 @@ const bannerCardVariants = cva(
   {
     variants: {
       variant: {
-        fullScreen: "sm:min-h-[52rem] min-h-[32rem] w-full px-6 py-16 md:px-16 md:py-24",
+        fullScreen: "sm:min-h-[1206px] min-h-[32rem] w-full px-6 py-16 md:px-16 md:py-24",
         rounded:
-          "mx-4 min-h-[32rem] rounded-[50px] px-6 py-12 sm:min-h-[40rem] sm:px-10 md:mx-8 md:min-h-[44rem] md:px-16 md:py-16 lg:mx-12 lg:min-h-[48rem]",
+          "mx-4 min-h-[32rem] rounded-[50px] px-6 py-12 sm:min-h-[924px] sm:px-10 md:mx-8 md:min-h-[44rem] md:px-16 md:py-16 lg:mx-12 lg:min-h-[48rem]",
       },
       align: {
         left: "items-start text-left",
@@ -112,6 +112,7 @@ interface BannerCardProps extends VariantProps<typeof bannerCardVariants> {
   titleWeight?: "normal" | "medium" | "semibold" | "bold";
   titleClassName?: string;
   titleWidthClassName?: string;
+  descriptionClassName?: string;
 }
 
 const BannerCard = ({
@@ -133,6 +134,7 @@ const BannerCard = ({
   titleWeight = "normal",
   titleClassName,
   titleWidthClassName,
+  descriptionClassName,
 }: BannerCardProps) => {
   const showCta = Boolean(ctaText && ctaLink);
   const isCentered = align === "center";
@@ -181,7 +183,7 @@ const BannerCard = ({
           className={cn(
             titleVariants({
               variant,
-              titleSize: titleClassName ? undefined : titleSize,
+              titleSize: titleClassName ? null : titleSize,
               titleWeight,
             }),
             titleClassName,
@@ -190,10 +192,19 @@ const BannerCard = ({
           {title}
         </h2>
         {description && (
-          <p className={descriptionVariants({ variant })}>{description}</p>
+          <p
+            className={cn(
+              descriptionVariants({
+                variant: descriptionClassName ? null : variant,
+              }),
+              descriptionClassName,
+            )}
+          >
+            {description}
+          </p>
         )}
         {showCta && (
-          <Button href={ctaLink} variant={ctaVariant} className={cn("mt-8", ctaClassName)}>
+          <Button href={ctaLink} variant={ctaVariant} className={cn("mt-8 text-sm sm:text-base", ctaClassName)}>
             {ctaText}
           </Button>
         )}
