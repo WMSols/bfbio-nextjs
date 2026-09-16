@@ -27,11 +27,11 @@ export default function MissionSection({
     <section className=" mt-8   overflow-hidden bg-brand-gradient">
       <div className="relative flex flex-col items-center justify-center px-2 pt-16 pb-16 md:px-12 md:pt-24 md:pb-24 lg:px-16">
         <div className="container relative z-10 flex flex-col items-center text-white font-light text-center">
-          <h2 className="mb-6 md:mb-8  md:text-base uppercase  ">
+          <h2 className="mb-6 md:mb-8 text-xs  md:text-base uppercase  ">
             {label}
           </h2>
 
-          <h3 className="mb-8 md:mb-10  text-[28px] font-medium leading-relaxed  sm:text-3xl md:text-6xl 2xl:text-7xl  lg:leading-snug">
+          <h3 className="mb-8 md:mb-10  text-[32px] font-medium sm:leading-relaxed  sm:text-3xl md:text-6xl 2xl:text-7xl  lg:leading-snug">
             {headline}
           </h3>
 

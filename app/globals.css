@@ -141,6 +141,14 @@
   }
 }
 
+@utility hero-title-small {
+  font-size: 32px;
+
+  @media (min-width: 40rem) {
+    font-size: 52px;
+  }
+}
+
 @utility bg-brand-gradient {
   background-image: var(--brand-gradient);
 }

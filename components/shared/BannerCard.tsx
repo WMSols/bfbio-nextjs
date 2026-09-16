@@ -9,7 +9,7 @@ const bannerCardVariants = cva(
   {
     variants: {
       variant: {
-        fullScreen: "h-svh min-h-svh w-full px-6 py-16 md:px-16 md:py-24",
+        fullScreen: "sm:min-h-[52rem] min-h-[32rem] w-full px-6 py-16 md:px-16 md:py-24",
         rounded:
           "mx-4 min-h-[32rem] rounded-[50px] px-6 py-12 sm:min-h-[40rem] sm:px-10 md:mx-8 md:min-h-[44rem] md:px-16 md:py-16 lg:mx-12 lg:min-h-[48rem]",
       },
@@ -62,7 +62,8 @@ const titleVariants = cva("text-white leading-tight", {
     {
       variant: "rounded",
       titleSize: "default",
-      class: "text-3xl sm:text-4xl md:text-5xl",
+      class: "text-3xl sm:text-4xl md:text-5xl leading-[120%]",
+
     },
     {
       variant: "rounded",
@@ -85,7 +86,7 @@ const titleVariants = cva("text-white leading-tight", {
 const descriptionVariants = cva("text-white/95 leading-relaxed", {
   variants: {
     variant: {
-      fullScreen: "mt-6 text-base md:text-xl",
+      fullScreen: "mt-6 text-base md:text-xl font-medium",
       rounded: "mt-4 text-sm sm:text-base md:text-lg",
     },
   },
@@ -165,7 +166,7 @@ const BannerCard = ({
       )}
       <div
         className={cn(
-          "relative z-10 flex w-full flex-col",
+          "relative z-10 flex w-full flex-col sm:px-12   ",
           isCentered ? "items-center" : "items-start",
           titleWidthClassName ??
             (variant === "fullScreen"
@@ -173,7 +174,7 @@ const BannerCard = ({
               : isCentered
                 ? "max-w-3xl"
                 : "max-w-xl md:max-w-4xl"),
-          isCentered && "mx-auto",
+          
         )}
       >
         <h2

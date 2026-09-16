@@ -45,11 +45,11 @@ const CTABanner = ({
         >
           <div
             className={cn(
-              "flex flex-col gap-6 sm:gap-12",
+              "flex flex-col gap-8 sm:gap-12",
               isLeft ? "items-start text-left" : "items-center text-center",
             )}
           >
-            <h2 className={cn("text-[32px] text-black md:text-[82px] leading-[1.15] md:leading-snug", titleClassName)}>
+            <h2 className={cn("text-[36px] text-black md:text-[82px] leading-[1.15] ", titleClassName)}>
               {title}
             </h2>
             <p className="text-lg text-black sm:text-[22px] sm:max-w-5xl sm:leading-relaxed">

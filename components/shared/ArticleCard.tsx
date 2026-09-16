@@ -47,7 +47,7 @@ export default function ArticleCard({
                 const isExternal = url.startsWith("http");
                 if (isExternal) {
                   return (
-                    <a className="text-[#3B73AC]" href={url} target="_blank" rel="noopener noreferrer">
+                    <a className="text-brand" href={url} target="_blank" rel="noopener noreferrer">
                       {children}
                     </a>
                   );
@@ -61,7 +61,7 @@ export default function ArticleCard({
         {/* Simple text link as per the Figma design */}
         <Link
           href={linkHref}
-          className="mt-auto  text-sm font-semibold text-[#3B73AC] hover:text-[#294e74] underline underline-offset-4 transition-colors"
+          className="mt-auto  text-sm font-semibold text-brand hover:text-[#a34eb4] underline underline-offset-4 transition-colors"
         >
           Read full article
         </Link>

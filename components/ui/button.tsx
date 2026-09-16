@@ -24,7 +24,7 @@ const buttonVariants = cva(
         solid:
           "rounded-full border-transparent bg-brand text-white hover:bg-brand/90",
         transparent:
-          "rounded-full border-white/40 bg-white/30 text-white backdrop-blur-sm hover:bg-white/40",
+          "rounded-full border-white/40 bg-white text-white backdrop-blur-sm hover:bg-white/40",
       },
       size: {
         default:

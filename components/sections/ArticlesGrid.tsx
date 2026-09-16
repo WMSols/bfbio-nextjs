@@ -67,7 +67,7 @@ export default function ArticlesGrid({
         
         {/* Updated Centered Header */}
         {(title || subtitle) && (
-          <div className="flex flex-col items-center text-black justify-center text-center mb-12 gap-16">
+          <div className="flex flex-col items-center text-black justify-center text-center mb-12 gap-16 pb-12">
             {subtitle && (
               <div>
               <p className=" font-light  uppercase">
@@ -77,7 +77,7 @@ export default function ArticlesGrid({
             )}
             {title && (
               <div>
-              <h2 className="text-4xl md:text-5xl lg:text-[82px]  font-bold leading-normal  max-w-6xl">
+              <h2 className="text-4xl md:text-5xl lg:text-[82px]    max-w-6xl">
                 {title}
               </h2>
               </div>
@@ -109,7 +109,7 @@ export default function ArticlesGrid({
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
           onTouchCancel={handleTouchEnd}
-          className="md:hidden flex gap-4 overflow-x-auto overscroll-x-contain snap-x snap-mandatory pl-4 ml-3 sm:ml-0 pr-4 [touch-action:pan-x_pan-y] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="md:hidden flex gap-4 overflow-x-auto  overscroll-x-contain snap-x snap-mandatory pl-4 ml-3 sm:ml-0 pr-4 [touch-action:pan-x_pan-y] [-ms-overflow-style:none] scrollbar-none [&::-webkit-scrollbar]:hidden"
         >
           {articles.map((article) => (
             <div

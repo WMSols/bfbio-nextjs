@@ -93,10 +93,10 @@ const HeroSection = ({
       <div className="container relative z-10 text-center">
         <h1
           className={cn(
-            "",
+            "leading-snug sm:leading-none",
             titleSize === "small"
-              ? "text-[3.25rem] leading-snug sm:leading-none"
-              : "text-[40px] leading-snug sm:leading-none lg:text-8xl",
+              ? "hero-title-small"
+              : "text-[24px] sm:text-[32px] lg:text-8xl",
             hasMedia ? "text-white" : "text-foreground",
           )}
         >

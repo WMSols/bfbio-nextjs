@@ -94,18 +94,18 @@ export default function TherapeuticsGridClient({
       ) : (
         <div className="flex w-full flex-col lg:grid lg:grid-cols-2 lg:items-stretch">
           <div className="order-1 flex flex-col justify-between gap-10 px-6 py-4 sm:px-10 lg:order-2 lg:gap-0 lg:px-12 lg:py-2 xl:px-16">
-            <div>
-              <p className="text-sm font-light tracking-[0.16em] text-muted-foreground uppercase">
+            <div className="flex flex-col gap-8 2xl:gap-12">
+              <p className="text-sm sm:text-xl font-extralight tracking-[0.16em] uppercase">
                 Therapeutic Areas
               </p>
-              <div className="bg-brand-gradient mt-8 h-2 w-24 md:mt-10" />
-              <h2 className="mt-10 text-3xl leading-[1.15] font-normal tracking-tight md:mt-12 md:text-4xl xl:text-[42px]">
+              <div className="bg-brand-gradient mt-8 h-5 w-50 " />
+              <h2 className=" text-3xl leading-[1.15] font-medium tracking-tight  md:text-5xl 2xl:text-[63px]">
                 A broad portfolio of
                 <br />
                 innovative therapies
               </h2>
-              <p className="mt-8 max-w-md text-base font-normal leading-relaxed text-black/80 md:mt-10 md:text-lg">
-                Through continuous development and strategic partnerships, we offer medicines across several therapeutic areas to support modern healthcare.
+              <p className="mt-8  text-base font-normal leading-relaxed text-black/80  md:text-xl">
+                Through continuous development and strategic<br className="hidden sm:block" /> partnerships, we offer medicines across several<br className="hidden sm:block" /> therapeutic areas to support modern healthcare.
               </p>
             </div>
 
@@ -192,7 +192,7 @@ export default function TherapeuticsGridClient({
             })}
           </div>
 
-          <div className="order-3 flex px-6 pt-8 sm:px-10 lg:hidden">
+          <div className="order-3 flex justify-end px-6 pt-8 sm:px-10 lg:hidden">
             <SlideNav active={activeNav} onPrev={prevSlide} onNext={nextSlide} />
           </div>
         </div>

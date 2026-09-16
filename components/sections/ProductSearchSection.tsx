@@ -13,7 +13,7 @@ interface ProductSearchSectionProps {
 }
 
 export default function ProductSearchSection({
-  label = "Medicines",
+  label = "Products",
   description,
   searchPlaceholder = "Searching for a product?",
   ctaText = "Explore Our Complete Portfolio",
@@ -24,7 +24,7 @@ export default function ProductSearchSection({
   return (
     <div className="w-full py-16 md:py-24 bg-product-bg">
       <div className="container mx-auto px-4 md:px-8 flex text-black flex-col text-left">
-        <h2 className="font-sans uppercase text-center  mb-4 md:mb-16">
+        <h2 className="font-sans uppercase text-center text-xs sm:text-base  mb-4 md:mb-16">
           {label}
         </h2>
         <h3 className=" text-2xl md:text-5xl  2xl:text-[56px]  leading-normal  ">
