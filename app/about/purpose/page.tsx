@@ -33,7 +33,7 @@ export default function PurposePage() {
         ctaLink="/about/company-overview"
         ctaVariant="gradient"
         className="bg-transparent"
-        titleClassName="font-medium md:text-[96px]"
+        titleClassName="font-medium md:text-[82px] "
       />
       <MissionVisionSection />
       <CoreValuesSection />

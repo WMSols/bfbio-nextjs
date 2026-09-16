@@ -15,6 +15,7 @@ interface CTABannerProps {
   cta?: ReactNode;
   className?: string;
   align?: "center" | "left";
+  titleWidthClassName?: string;
 }
 
 const CTABanner = ({
@@ -29,18 +30,19 @@ const CTABanner = ({
   cta,
   className,
   align = "center",
+  titleWidthClassName,
 }: CTABannerProps) => {
   const isLeft = align === "left";
 
   return (
     <section className={cn("bg-[#FFE4FF] py-16 md:py-24", className)}>
-      <div className="container">
+      <div className="container mx-0">
         <div
           className={cn(
             "flex flex-col",
             isLeft
               ? "items-start max-w-3xl"
-              : "items-center justify-center max-w-[20.5rem] mx-auto sm:max-w-4xl",
+              : "items-center justify-center max-w-[20rem] mx-auto sm:max-w-7xl",
           )}
         >
           <div
@@ -49,10 +51,10 @@ const CTABanner = ({
               isLeft ? "items-start text-left" : "items-center text-center",
             )}
           >
-            <h2 className={cn("text-[36px] text-black md:text-[82px] leading-[1.15] ", titleClassName)}>
+            <h2 className={cn("text-[36px] text-black md:text-[82px] leading-[1.15] ", titleClassName, titleWidthClassName)}>
               {title}
             </h2>
-            <p className="text-lg text-black sm:text-[22px] sm:max-w-5xl sm:leading-relaxed">
+            <p className="text-lg text-black sm:text-[22px] sm:max-w-5xl ">
               {description}
             </p>
             {cta
