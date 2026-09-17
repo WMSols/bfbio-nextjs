@@ -17,7 +17,7 @@ export default function ESGFilterBar({
   countFor,
 }: ESGFilterBarProps) {
   return (
-    <div className="flex flex-wrap gap-2 mb-8">
+    <div className="flex flex-wrap gap-2 mb-8 sm:px-10">
       <FilterPill
         label="All"
         active={activeCategory === "all"}

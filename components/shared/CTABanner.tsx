@@ -16,6 +16,7 @@ interface CTABannerProps {
   className?: string;
   align?: "center" | "left";
   titleWidthClassName?: string;
+  paddingClassName?: string;
 }
 
 const CTABanner = ({
@@ -31,11 +32,12 @@ const CTABanner = ({
   className,
   align = "center",
   titleWidthClassName,
+  paddingClassName,
 }: CTABannerProps) => {
   const isLeft = align === "left";
 
   return (
-    <section className={cn("bg-[#FFE4FF] py-16 md:py-24", className)}>
+    <section className={cn("bg-[#FFE4FF] py-16 md:py-24", paddingClassName, className)}>
       <div className="container mx-0">
         <div
           className={cn(
@@ -54,7 +56,7 @@ const CTABanner = ({
             <h2 className={cn("text-[36px] text-black md:text-[82px] leading-[1.15] ", titleClassName, titleWidthClassName)}>
               {title}
             </h2>
-            <p className="text-lg text-black sm:text-[22px] sm:max-w-5xl ">
+            <p className="text-lg text-black sm:text-[22px] sm:max-w-5xl leading-normal  ">
               {description}
             </p>
             {cta

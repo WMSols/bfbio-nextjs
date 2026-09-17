@@ -1,30 +1,21 @@
 import { Cormorant } from "next/font/google";
 
-const cormorant = Cormorant({
-  subsets: ["latin"],
-  weight: ["700"],
-  style: ["italic"],
-});
+
 
 export default function IntroSection() {
   return (
     <section>
-      <div className="container max-w-5xl">
-        <h2 className="max-w-3xl text-4xl font-normal leading-[1.2] sm:text-6xl md:text-7xl lg:text-[6rem]">
-          Creating Impact Beyond
-          <span
-            className={`${cormorant.className} mt-1 block text-right text-5xl font-bold italic text-brand sm:text-7xl md:text-8xl lg:text-[6.75rem]`}
-          >
-            Medicine
-          </span>
+      <div className="container max-w-7xl sm:px-20">
+        <h2 className="max-w-3xl text-4xl font-normal leading-[1.2] sm:text-6xl md:text-7xl lg:text-[5rem]">
+          Creating Impact<br /> Beyond <span className="italic text-brand font-serif">Medicine</span>
         </h2>
 
-        <p className="mt-8 max-w-3xl text-xl leading-snug text-black md:mt-12 md:text-4xl">
-          Our commitment to sustainability extends beyond business to create
-          lasting value for people, communities, and the planet.
+        <p className="mt-8 max-w-3xl text-2xl leading-snug text-black md:mt-12 2xl:text-3xl">
+          Our commitment to sustainability extends beyond<br className="hidden md:block" /> business to create
+          lasting value for people,<br className="hidden md:block" /> communities, and the planet.
         </p>
 
-        <p className="mt-6 max-w-3xl text-base leading-relaxed text-black md:mt-10 md:text-xl">
+        <p className="mt-6 max-w-3xl text-base leading-relaxed text-black md:mt-10 2xl:text-xl">
           As a subsidiary of Ferozsons Laboratories Limited, BF Biosciences is
           part of a shared commitment to responsible and sustainable growth. Our
           ESG efforts are carried out in alignment with Ferozsons, reflecting a

@@ -16,12 +16,12 @@ export default function SolarParkSection() {
             />
           </div>
 
-          <div>
+          <div className="flex flex-col gap-6   h-full">
             <h2 className="text-3xl font-medium leading-tight text-black md:text-4xl">
               BF Biosciences Solar Park
             </h2>
 
-            <div className="mt-6 space-y-6 text-base leading-relaxed text-black md:mt-8 md:text-xl">
+            <div className="mt-6 space-y-6 text-black md:mt-8  max-w-xl flex-1">
               <p>
                 Our 1 MW solar park reflects our commitment to environmental
                 stewardship by harnessing clean, renewable energy to power our
@@ -41,7 +41,7 @@ export default function SolarParkSection() {
 
             <Link
               href="#governance"
-              className="mt-8 inline-block text-base text-brand underline decoration-[7%] underline-offset-4 md:text-xl"
+              className="mt-8 text-base text-brand underline decoration-[7%] underline-offset-4 "
             >
               Learn about our Environmental, Social &amp; Governance Policy
             </Link>
