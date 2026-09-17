@@ -1,28 +1,35 @@
-export const partners = [
+export const partners: {
+  name: string;
+  href: string;
+  image: string;
+  background: string;
+  imageClassName?: string;
+}[] = [
   {
     name: "Bagó",
     href: "https://www.bago.com",
-    logo: "bago" as const,
+    image: "/images/partnerships/bago-logo.png",
     background: "bg-white",
+    imageClassName: "h-24 w-auto max-w-[90%] object-contain md:h-32",
   },
   {
     name: "Gilead",
     href: "https://www.gilead.com",
-    logo: "gilead" as const,
+    image: "/images/partnerships/gliead-logo.png",
     background: "bg-[#C8102E]",
+    imageClassName:
+      "absolute inset-0 h-full w-full max-w-none object-cover object-center md:h-full",
   },
   {
     name: "Ferozsons Laboratories Limited",
     href: "https://ferozsons-labs.com",
-    logo: "ferozsons" as const,
+    image: "/images/partnerships/fll-logo.png",
     background: "bg-[#3B6BA5]",
   },
   {
     name: "Sibionics",
-    href: "/shop/sibionics-cgm",
-    logo: "sibionics" as const,
+    href: "https://sibionicscgm.com",
+    image: "/images/partnerships/logo@3x.png",
     background: "bg-[#1DB8B0]",
   },
 ];
-
-export type PartnerLogoId = (typeof partners)[number]["logo"];

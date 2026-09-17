@@ -1,20 +1,7 @@
-import type { JSX } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { partners, type PartnerLogoId } from "@/data/partnerships";
+import { partners } from "@/data/partnerships";
 import { cn } from "@/lib/utils";
-import {
-  BagoLogo,
-  FerozsonsLogo,
-  GileadLogo,
-  SibionicsLogo,
-} from "./PartnerLogos";
-
-const logos: Record<PartnerLogoId, () => JSX.Element> = {
-  bago: BagoLogo,
-  gilead: GileadLogo,
-  ferozsons: FerozsonsLogo,
-  sibionics: SibionicsLogo,
-};
 
 export default function PartnersGridSection() {
   return (
@@ -26,11 +13,23 @@ export default function PartnersGridSection() {
 
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {partners.map((partner) => {
-            const Logo = logos[partner.logo];
             const isExternal = partner.href.startsWith("http");
             const className = cn(
-              "flex aspect-2/1 items-center justify-center rounded-[24px] px-6 shadow-[0_8px_24px_rgba(0,0,0,0.06)] transition-transform hover:scale-[1.02]",
+              "relative flex aspect-2/1 items-center justify-center overflow-hidden rounded-[24px] px-6 shadow-[0_8px_24px_rgba(0,0,0,0.06)] transition-transform hover:scale-[1.02]",
               partner.background,
+            );
+            const logo = (
+              <Image
+                src={partner.image}
+                alt=""
+                width={280}
+                height={80}
+                className={cn(
+                  partner.imageClassName
+                    ? partner.imageClassName
+                    : "h-12 w-auto max-w-[85%] object-contain md:h-16",
+                )}
+              />
             );
 
             if (isExternal) {
@@ -43,7 +42,7 @@ export default function PartnersGridSection() {
                   aria-label={partner.name}
                   className={className}
                 >
-                  <Logo />
+                  {logo}
                 </a>
               );
             }
@@ -55,7 +54,7 @@ export default function PartnersGridSection() {
                 aria-label={partner.name}
                 className={className}
               >
-                <Logo />
+                {logo}
               </Link>
             );
           })}

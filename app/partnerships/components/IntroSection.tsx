@@ -6,9 +6,9 @@ export default function IntroSection() {
           <p className="pt-1 text-xs font-medium tracking-[0.14em] text-black uppercase md:col-span-4 md:pt-3 md:text-[13px]">
             Partnering for better health
           </p>
-          <h2 className="text-[2rem] leading-[1.2] text-black md:col-span-8 md:text-[2.5rem] lg:text-[2.75rem]">
-            We believe meaningful healthcare progress is achieved through
-            trusted partnerships and a shared commitment to patient care.
+          <h2 className="text-[1.5rem] leading-[1.2] text-black md:col-span-8 md:text-[2.5rem] lg:text-[2.75rem]">
+            We believe meaningful<br className="hidden md:block" /> healthcare progress is<br className="hidden md:block" /> achieved through
+            trusted<br className="hidden md:block" /> partnerships and a<br className="hidden md:block" /> shared commitment to<br className="hidden md:block" /> patient care.
           </h2>
         </div>
       </div>

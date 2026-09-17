@@ -13,8 +13,8 @@ export default function PartnershipsPage() {
     <div className="bg-[#F7F7F7]">
       <HeroSection
         title="Our Trusted Partners"
-        backgroundImage="/images/partnerships/hero.jpg"
-        titleSize="small"
+        backgroundImage="/images/partnerships/hero.webp"
+        titleClassName="text-4xl md:text-6xl lg:text-8xl"
         overlayClassName="bg-linear-to-t from-black/50 via-black/25 to-black/15"
       />
       <IntroSection />
