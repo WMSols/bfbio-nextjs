@@ -15,6 +15,7 @@ export default function AboutPage() {
     <div className="bg-[#F7F7F7]">
       <HeroSection
         title="We put patients first"
+        titleClassName="text-[40px] font-normal md:text-[64px] leading-[1.15]"
         subtitle={
           <span>
             We advance health and improve lives by placing patients
@@ -39,7 +40,7 @@ export default function AboutPage() {
         description="Whether you have a question about our medicines, need more information, or are looking for the right resources, our team is here to help."
         ctaText="Contact Us"
         ctaLink="/contact"
-        titleClassName="text-[40px] font-normal md:text-[64px] leading-[1.15]"
+        titleClassName="text-[40px] font-bold md:text-[64px] leading-[1.15]"
       />
     </div>
   );

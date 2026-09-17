@@ -43,7 +43,7 @@ const CTABanner = ({
           className={cn(
             "flex flex-col",
             isLeft
-              ? "items-start max-w-3xl"
+              ? "items-start max-w-5xl sm:px-32"
               : "items-center justify-center max-w-[20rem] mx-auto sm:max-w-7xl",
           )}
         >

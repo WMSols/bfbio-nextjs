@@ -2,7 +2,7 @@ export default function PartnershipIntroSection() {
   return (
     <section className="bg-[#E5F2FF] py-16 md:py-22 sm:px-20">
       <div className="container">
-        <div className="mx-auto max-w-[84.75rem] space-y-8 text-lg leading-[1.2] text-black md:text-[28px]">
+        <div className="mx-auto max-w-[84.75rem] space-y-8 text-lg leading-[1.2] text-black md:text-[24px] 2xl:text-[28px]">
           <p>
             In 2002,{" "}
             <a
