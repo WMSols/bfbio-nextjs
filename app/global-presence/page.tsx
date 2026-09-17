@@ -24,11 +24,11 @@ export default function GlobalPresencePage() {
           variant="rounded"
           title="We deliver high-quality pharmaceutical products to partners worldwide through seamless international business operations, strategic partnerships, and an unwavering commitment to quality"
           image="/images/global-presence/africa.webp"
-          overlayClassName="bg-black/15"
+          overlayClassName="bg-black/25"
           ctaText="Explore Our Partnerships"
           ctaLink="/partnerships"
-          titleClassName="text-3xl sm:text-4xl md:text-[64px] font-normal leading-normal"
-          titleWidthClassName="max-w-6xl"
+          titleClassName="text-2xl sm:text-4xl md:text-5xl font-normal leading-[1.2]"
+          titleWidthClassName="max-w-6xl "
           ctaClassName="mt-16"
         />
       </div>
