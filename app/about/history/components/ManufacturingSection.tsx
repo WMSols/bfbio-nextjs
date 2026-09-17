@@ -2,9 +2,9 @@ import Image from "next/image";
 
 export default function ManufacturingSection() {
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-16 md:py-32">
       <div className="container">
-        <h2 className="mx-auto mb-12 max-w-[84.6rem] bg-brand-gradient bg-clip-text text-center text-3xl font-medium text-transparent md:mb-16 md:text-5xl lg:text-[64px] lg:leading-[1.2]">
+        <h2 className="mx-auto mb-12 max-w-[84.6rem] bg-brand-gradient bg-clip-text text-center text-3xl font-medium text-transparent md:mb-32 md:text-5xl lg:text-[56px] lg:leading-[1.2]">
           Advancing Biotech Manufacturing and Pharmaceutical Capabilities in
           Pakistan
         </h2>

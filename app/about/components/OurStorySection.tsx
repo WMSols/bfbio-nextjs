@@ -2,9 +2,9 @@ import { Button } from "@/components/ui/button";
 
 export default function OurStorySection() {
   return (
-    <section className="bg-[#F7F7F7] py-16 md:py-24">
+    <section className="bg-[#F7F7F7] py-16 md:py-24 ">
       <div className="container">
-        <div className="mx-auto max-w-4xl">
+        <div className="mx max-w-4xl">
           <h2 className="text-4xl text-black md:text-6xl">Our Story</h2>
 
           <div className="mt-8 space-y-8 text-base leading-relaxed text-black md:mt-12 md:text-[22px] md:leading-relaxed">
