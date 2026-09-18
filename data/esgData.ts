@@ -23,32 +23,32 @@ export const esgCategories: { key: ESGCategory; label: string; image: string }[]
   {
     key: "arts_culture",
     label: "Arts & Culture",
-    image: "/images/ESG/initiatives/Arts-and-Culture.webp",
+    image: "/images/esg/initiatives/Arts-and-Culture.webp",
   },
   {
     key: "education",
     label: "Quality Education",
-    image: "/images/ESG/initiatives/Quality-Impact.webp",
+    image: "/images/esg/initiatives/Quality-Impact.webp",
   },
   {
     key: "zero_hunger",
     label: "Zero Hunger",
-    image: "/images/ESG/initiatives/Zero-Hunger.webp",
+    image: "/images/esg/initiatives/Zero-Hunger.webp",
   },
   {
     key: "health",
     label: "Health & Well-being",
-    image: "/images/ESG/initiatives/Health.webp",
+    image: "/images/esg/initiatives/Health.webp",
   },
   {
     key: "climate_action",
     label: "Climate Action",
-    image: "/images/ESG/initiatives/Climate-Impact.webp",
+    image: "/images/esg/initiatives/Climate-Impact.webp",
   },
   {
     key: "community",
     label: "Community",
-    image: "/images/ESG/initiatives/Community.webp",
+    image: "/images/esg/initiatives/Community.webp",
   },
 ];
 export interface ESGInitiative {
