@@ -9,16 +9,16 @@ export default function OverviewSection() {
     manufacturingOverview;
 
   return (
-    <section className="bg-white py-16 md:py-24">
+    <section className="bg-white py-16 md:py-24 sm:px-12">
       <div className="container">
-        <div className="mx-auto max-w-4xl text-center">
-          <p className="text-xs font-medium tracking-[0.18em] text-black/45 uppercase">
+        <div className="mx-auto max-w-6xl">
+          <p className="text-xs font-medium text-center tracking-[0.18em] text-black/45 uppercase">
             {eyebrow}
           </p>
-          <h2 className="mt-6 bg-brand-gradient bg-clip-text text-4xl leading-[1.15] font-medium whitespace-pre-line text-transparent md:text-5xl lg:text-[56px]">
+          <h2 className="mt-12 bg-brand-gradient bg-clip-text text-4xl leading-[1.15] font-medium whitespace-pre-line text-transparent md:text-5xl lg:text-[56px]">
             {title}
           </h2>
-          <p className="mt-8 text-xl leading-snug text-black md:text-[28px] md:leading-[1.35]">
+          <p className="mt-8 text-xl leading-snug max-w-172 text-black md:text-[24px] md:leading-[1.35]">
             {description}
           </p>
         </div>
@@ -43,7 +43,7 @@ export default function OverviewSection() {
         <div className="mt-10 flex justify-center md:mt-14">
           <a
             href={ctaHref}
-            className={cn(buttonVariants({ variant: "gradient" }), "px-8 text-base")}
+            className={cn(buttonVariants({ variant: "gradient" }), "px-8 py-6 text-lg")}
           >
             {ctaText}
             <ArrowDown className="size-4" />

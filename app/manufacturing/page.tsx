@@ -20,8 +20,8 @@ export default function ManufacturingPage() {
       <HeroSection
         title={manufacturingHero.title}
         backgroundImage={manufacturingHero.backgroundImage}
-        titleSize="small"
-        overlayClassName="bg-black/25"
+        overlayClassName="bg-black/35"
+        titleClassName="text-4xl md:text-5xl "
       />
       <OverviewSection />
       <StorySection />

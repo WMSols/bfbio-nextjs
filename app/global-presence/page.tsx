@@ -35,11 +35,12 @@ export default function GlobalPresencePage() {
       <CTABanner
         title="Start a Conversation with International Business Team"
         description="Our international business team is available to support strategic collaborations and ensure seamless access to our products worldwide."
-        titleClassName="text-[32px] font-medium md:text-[64px] leading-snug"
+        descriptionClassName="sm:max-w-2xl font-light"
+        titleClassName="text-[32px] font-medium md:text-5xl max-w-3xl leading-[1.1]"
         cta={
           <a
             href="mailto:exports@bfbio.com"
-            className="inline-flex h-16 items-center justify-center rounded-full border border-[#934397] bg-white/50 px-10 text-lg text-black transition-colors hover:bg-white/70 md:px-16 md:text-[28px]"
+            className="inline-flex h-12 items-center justify-center rounded-full border border-[#934397] bg-white/50 px-10 text-lg text-black transition-colors hover:bg-white/70 md:px-16 md:text-lg"
           >
             exports@bfbio.com
           </a>

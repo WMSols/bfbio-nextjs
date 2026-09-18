@@ -13,10 +13,10 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Bf Bio Sciences",
-    template: "%s | Bf Bio Sciences",
+    default: "Bf Biosciences",
+    template: "%s | Bf Biosciences",
   },
-  description: "Bf Bio Sciences corporate website.",
+  description: "Bf Biosciences corporate website.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -36,36 +36,40 @@ export default function FacilitySlideshow() {
   useEffect(() => {
     if (outgoing === null) return;
 
-    const start = window.setTimeout(() => setShift(true), 20);
+    let innerFrame = 0;
+    const start = window.requestAnimationFrame(() => {
+      innerFrame = window.requestAnimationFrame(() => setShift(true));
+    });
     const end = window.setTimeout(() => {
       setOutgoing(null);
       setShift(false);
-    }, 520);
+    }, 1100);
 
     return () => {
-      window.clearTimeout(start);
+      window.cancelAnimationFrame(start);
+      window.cancelAnimationFrame(innerFrame);
       window.clearTimeout(end);
     };
   }, [outgoing]);
 
   return (
-    <section id="facility" className="scroll-mt-28 bg-white py-16 md:py-24">
+    <section id="facility" className="scroll-mt-28 bg-white py-16 md:py-24 sm:px-12">
       <div className="container">
-        <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl leading-[1.15] font-medium text-brand-blue md:text-5xl lg:text-[56px]">
+        <div className="mx-auto sm:max-w-6xl text-center">
+          <h2 className="text-4xl leading-[1.15] font-medium text-brand-blue md:text-5xl lg:text-[52px]">
             {titleBefore}
             <span className="text-brand">{titleHighlight}</span>
             {titleAfter}
           </h2>
-          <p className="mt-5 text-lg leading-snug text-black md:text-[22px] md:leading-relaxed">
+          <p className="mt-5 text-lg leading-[120%] max-w-3xl mx-auto font-light text-black md:text-[24px] 2xl:text-[28px] ">
             {description}
           </p>
         </div>
 
-        <div className="relative mx-auto mt-10 aspect-16/10 overflow-hidden rounded-[40px] md:mt-14">
+        <div className="relative mx-auto mt-10 aspect-16/10 overflow-hidden rounded-[20px] md:mt-14 md:rounded-[40px]">
           {outgoing !== null && (
             <div
-              className="absolute inset-0 transition-transform duration-500 ease-out"
+              className="absolute inset-0 transition-transform duration-1000 ease-in-out"
               style={{
                 transform: shift
                   ? `translateX(${direction * -100}%)`
@@ -85,7 +89,9 @@ export default function FacilitySlideshow() {
           <div
             className={cn(
               "absolute inset-0",
-              outgoing !== null && "transition-transform duration-500 ease-out",
+              outgoing !== null &&
+                shift &&
+                "transition-transform duration-1000 ease-in-out",
             )}
             style={{
               transform:
@@ -104,31 +110,31 @@ export default function FacilitySlideshow() {
             />
           </div>
 
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex items-end gap-4 px-5 py-5 md:px-8 md:py-7">
-            <div className="mb-3 h-[3px] min-w-0 flex-1 overflow-hidden rounded-full bg-white/55 md:mb-4">
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex items-end gap-2.5 px-3 py-3 md:gap-4 md:px-8 md:py-7">
+            <div className="mb-1.5 h-[3px] min-w-0 flex-1 overflow-hidden rounded-full bg-white/55 md:mb-4">
               <div
                 className="h-full bg-brand-gradient transition-all duration-500 ease-out"
                 style={{ width: `${progress}%` }}
               />
             </div>
-            <div className="pointer-events-auto flex shrink-0 gap-2">
+            <div className="pointer-events-auto flex shrink-0 gap-1.5 md:gap-2">
               <button
                 type="button"
                 onClick={() => go(-1)}
                 disabled={animating}
                 aria-label="Previous facility image"
-                className="flex size-10 items-center justify-center rounded-full bg-white/90 text-black shadow-sm transition-colors hover:bg-white disabled:opacity-70 md:size-11"
+                className="flex size-8 items-center justify-center rounded-full bg-white/90 text-black shadow-sm transition-colors hover:bg-white disabled:opacity-70 md:size-11"
               >
-                <ChevronLeft className="size-5" />
+                <ChevronLeft className="size-4 md:size-5" />
               </button>
               <button
                 type="button"
                 onClick={() => go(1)}
                 disabled={animating}
                 aria-label="Next facility image"
-                className="flex size-10 items-center justify-center rounded-full bg-white/90 text-black shadow-sm transition-colors hover:bg-white disabled:opacity-70 md:size-11"
+                className="flex size-8 items-center justify-center rounded-full bg-white/90 text-black shadow-sm transition-colors hover:bg-white disabled:opacity-70 md:size-11"
               >
-                <ChevronRight className="size-5" />
+                <ChevronRight className="size-4 md:size-5" />
               </button>
             </div>
           </div>

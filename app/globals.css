@@ -51,9 +51,10 @@
 }
 
 :root {
-  --brand: #934397;
+  --brand: #CE18CE;
   --brand-blue: #3b73ac;
   --brand-gradient: linear-gradient(to right, var(--brand-blue), var(--brand));
+  --brand-gradient-btn: linear-gradient(to right, var(--brand), var(--brand-blue));
   --brand-gradient-to-b: linear-gradient(to bottom, var(--brand), var(--brand-blue));
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -151,6 +152,10 @@
 
 @utility bg-brand-gradient {
   background-image: var(--brand-gradient);
+}
+
+@utility bg-brand-gradient-btn {
+  background-image: var(--brand-gradient-btn);
 }
 
 @utility bg-brand-gradient-to-b {

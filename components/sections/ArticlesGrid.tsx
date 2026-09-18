@@ -62,7 +62,7 @@ export default function ArticlesGrid({
   };
 
   return (
-    <section className="bg-background py-16 md:py-24">
+    <section className="bg-background py-16 md:py-24 -mt-10">
       <div className="container mx-auto px-4">
         
         {/* Updated Centered Header */}

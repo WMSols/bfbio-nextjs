@@ -65,7 +65,7 @@ const Footer = ({
   // }, []);
 
   return (
-    <footer className={cn("reveal-section text-white", resolvedBackground)}>
+    <footer className={cn("reveal-section text-white bg-[#460243]", )}>
       <div className="container pt-16 ">
         <div className="flex flex-col gap-10 lg:grid lg:grid-cols-6 lg:gap-x-12 lg:gap-y-10">
           {/* Logo column */}

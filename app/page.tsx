@@ -25,7 +25,7 @@ export default function HomePage() {
       <BannerCard title={<span>BF Biosciences advances patient<br className="hidden md:block"/> education and disease awareness<br className="hidden md:block"/> to help people make informed <br className="hidden md:block"/>healthcare decisions.</span>} titleWeight="medium"  image="/images/banner-bg-2.webp" ctaText="View Our Social Responsibility Initiatives" variant="rounded" ctaClassName="max-sm:text-sm max-sm:px-3 mt-16" ctaLink="/esg"/>
       </div>
       <ArticlesGridClient />
-      <CTABanner/>
+      <CTABanner ctaVariant="gradient"/>
     </>
   );
 }
