@@ -98,7 +98,7 @@ const HeroSection = ({
             "leading-snug sm:leading-none",
             titleSize === "small"
               ? "hero-title-small"
-              : "text-[24px] sm:text-[32px] lg:text-8xl",
+              : "text-[32px] lg:text-8xl",
             hasMedia ? "text-white" : "text-foreground ",
             titleClassName,
           )}

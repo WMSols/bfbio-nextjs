@@ -215,7 +215,7 @@ const Navbar = () => {
             <div className="flex items-center gap-4 shrink-0">
               <Search className="h-5 w-5 text-white" />
               <span className="text-white text-sm font-medium hidden lg:block">
-                Search products
+                Search BF Biosciences
               </span>
             </div>
 
@@ -229,7 +229,7 @@ const Navbar = () => {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search products"
+                  placeholder="Search bfbio.com"
                   className="w-full text-sm text-white placeholder:text-[#999999] outline-none bg-transparent"
                 />
               </div>

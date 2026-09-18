@@ -51,7 +51,7 @@
 }
 
 :root {
-  --brand: #CE18CE;
+  --brand: #934397;
   --brand-blue: #3b73ac;
   --brand-gradient: linear-gradient(to right, var(--brand-blue), var(--brand));
   --brand-gradient-btn: linear-gradient(to right, var(--brand), var(--brand-blue));

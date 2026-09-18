@@ -39,7 +39,7 @@ export default function ProductListClient() {
     <div className="sm:pt-10 pt-20">
       <HeroSection
         title="Medicines"
-        titleClassName="text-4xl lg:text-7xl"
+        titleClassName="text-5xl lg:text-7xl"
       />
 
       <section className="py-12">

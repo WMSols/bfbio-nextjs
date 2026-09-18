@@ -171,8 +171,6 @@ export const footerLinks = [
       { label: "Newsroom", href: "/investors/newsroom" },
       { label: "Careers", href: "/careers" },
       { label: "Contact Us", href: "/contact" },
-      { label: "Privacy Policy", href: "/privacy-policy" },
-      { label: "Site Map", href: "/sitemap" },
     ],
   },
 ];
@@ -185,7 +183,7 @@ export const legalLinks = [
 export const socialLinks = [
   {
     label: "Instagram",
-    href: "https://www.instagram.com/ferozsonslabs/",
+    href: "https://www.instagram.com/bfbiosciences",
     icon: "instagram",
   },
   {
@@ -195,7 +193,7 @@ export const socialLinks = [
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/company/ferozsonslabs",
+    href: "https://pk.linkedin.com/company/bf-biosciences-ltd?trk=public_post_embed_feed-actor-name",
     icon: "linkedin",
   },
 ] as const;

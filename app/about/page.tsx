@@ -45,7 +45,7 @@ export default function AboutPage() {
         description="Whether you have a question about our medicines, need more information, or are looking for the right resources, our team is here to help."
         ctaText="Contact Us"
         ctaLink="/contact"
-        titleClassName="text-[40px] font-bold md:text-[64px] leading-[1.15]"
+        titleClassName="text-[36px] font-bold md:text-[64px] leading-[1.15]"
       />
     </div>
   );

@@ -5,7 +5,6 @@ export const sitemapPage = {
     {
       title: "About Us",
       links: [
-        { label: "About Us", href: "/about" },
         { label: "Our History", href: "/about/history" },
         { label: "Company Overview", href: "/about/company-overview" },
         { label: "Purpose", href: "/about/purpose" },
@@ -16,15 +15,16 @@ export const sitemapPage = {
     {
       title: "Medicines",
       links: [
-        { label: "All medicines", href: "/medicines" },
+        { label: "Medicine Categories", href: "/medicines" },
+        { label: "All Medicines", href: "/medicines" },
         { label: "Report a product concern", href: "/medicines/product-concern" },
       ],
     },
     {
       title: "Shop",
       links: [
-        { label: "All products", href: "/shop" },
         { label: "Sibionics CGM", href: "/shop/sibionics-cgm" },
+        { label: "All Products", href: "/shop" },
       ],
     },
     {

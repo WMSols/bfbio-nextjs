@@ -13,7 +13,7 @@ export const privacyPolicy: {
 } = {
   title: "Privacy Policy",
   intro: [
-    "Ferozsons Laboratories Limited (“Ferozsons”, “we”, “us” or “our”) respects your privacy and is committed to protecting the personal information you choose to share with us through our website.",
+    "BF Biosciences Limited (“BF Biosciences”, “we”, “us” or “our”) respects your privacy and is committed to protecting the personal information you choose to share with us through our website.",
     "This Privacy Policy explains, in general terms, what information we may collect, how we may use it, and the steps we take to handle it responsibly.",
   ],
   sections: [
@@ -54,7 +54,7 @@ export const privacyPolicy: {
     {
       heading: "3. Job Applications",
       paragraphs: [
-        "If you apply for a position with Ferozsons through our website, we may collect information such as your name, contact details, CV, qualifications, employment history and any other information you submit as part of your application.",
+        "If you apply for a position with BF Biosciences through our website, we may collect information such as your name, contact details, CV, qualifications, employment history and any other information you submit as part of your application.",
         "This information may be used to assess your suitability for current or future employment opportunities and to communicate with you regarding your application.",
       ],
     },
@@ -72,7 +72,7 @@ export const privacyPolicy: {
         "We may share information where reasonably necessary with:",
       ],
       bullets: [
-        "relevant departments within Ferozsons;",
+        "relevant departments within BF Biosciences;",
         "service providers that support our website or business operations;",
         "professional advisers;",
         "business or product partners where relevant to your enquiry; or",
