@@ -1,4 +1,5 @@
 import Image from "next/image";
+import AnimateIn, { AnimateInItem } from "@/components/shared/AnimateIn";
 
 const impactAreas = [
   {
@@ -35,10 +36,10 @@ export default function ImpactGrid() {
           Our Impact
         </h2>
 
-        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+        <AnimateIn stagger className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {impactAreas.map((area) => (
+            <AnimateInItem key={area.title} className="h-full">
             <article
-              key={area.title}
               className="relative aspect-4/5 overflow-hidden rounded-[50px]"
             >
               <Image
@@ -53,8 +54,9 @@ export default function ImpactGrid() {
                 {area.title}
               </h3>
             </article>
+            </AnimateInItem>
           ))}
-        </div>
+        </AnimateIn>
       </div>
     </section>
   );

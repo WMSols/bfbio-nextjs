@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { sibionicsBuyNow, sibionicsInsights } from "@/data/sibionics";
 import MediaPlaceholder from "./MediaPlaceholder";
+import AnimateIn from "@/components/shared/AnimateIn";
 
 export default function InsightsCtaSection() {
   return (
-    <section className="py-8 md:py-12">
+    <AnimateIn as="section" className="py-8 md:py-12">
       <div className="container">
         <div className="flex flex-col items-center gap-8 rounded-[40px] bg-[#D4F3EF] p-6 sm:p-8 md:flex-row md:gap-10 md:rounded-[48px] md:p-10 lg:gap-14">
           <MediaPlaceholder
@@ -35,6 +36,6 @@ export default function InsightsCtaSection() {
           </div>
         </div>
       </div>
-    </section>
+    </AnimateIn>
   );
 }

@@ -4,6 +4,7 @@ import StatsSection from "./components/StatsSection";
 import CeoSection from "./components/CeoSection";
 import CovidAccessSection from "./components/CovidAccessSection";
 import BannerCard from "@/components/shared/BannerCard";
+import AnimateIn from "@/components/shared/AnimateIn";
 import TherapeuticsGrid from "@/components/sections/TherapeuticsGrid";
 import ArticlesGridClient from "@/components/sections/ArticlesGridClient";
 import CTABanner from "@/components/shared/CTABanner";
@@ -25,7 +26,9 @@ export default function CompanyOverviewPage() {
         titleClassName="leading-[120%]"
       />
       <div className="flex flex-col gap-16 py-16 md:gap-24 md:py-24">
-        <VisionSection />
+        <AnimateIn>
+          <VisionSection />
+        </AnimateIn>
         <BannerCard
           title={
             <span>
@@ -45,8 +48,12 @@ export default function CompanyOverviewPage() {
           ctaClassName="mt-20 sm:px-6 px-3 text-sm"
         />
         <StatsSection />
-        <CeoSection />
-        <CovidAccessSection />
+        <AnimateIn>
+          <CeoSection />
+        </AnimateIn>
+        <AnimateIn>
+          <CovidAccessSection />
+        </AnimateIn>
         <BannerCard
           title={
             <span>

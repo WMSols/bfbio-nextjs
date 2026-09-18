@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
+import MotionProvider from "@/components/providers/MotionProvider";
 import QueryProvider from "@/components/providers/QueryProvider";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
@@ -27,10 +28,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col font-sans">
         <QueryProvider>
-          <Navbar />
-          {children}
-          <Footer />
-          <Toaster />
+          <MotionProvider>
+            <Navbar />
+            {children}
+            <Footer />
+            <Toaster />
+          </MotionProvider>
         </QueryProvider>
       </body>
     </html>

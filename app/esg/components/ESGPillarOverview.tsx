@@ -1,5 +1,6 @@
   import { esgCategories, type ESGCategory } from "@/data/esgData";
 import { cn } from "@/lib/utils";
+import AnimateIn, { AnimateInItem } from "@/components/shared/AnimateIn";
 
 interface ESGPillarOverviewProps {
   activeCategory: ESGCategory | "all";
@@ -19,12 +20,13 @@ export default function ESGPillarOverview({
         </h2>
 
         {/* 3-Column Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+        <AnimateIn stagger className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
           {esgCategories.map(({ key, label, image }) => {
             const isActive = activeCategory === key;
 
             return (
-              <a  key={key} href="#initiative-grid">
+              <AnimateInItem key={key} className="h-full">
+              <a href="#initiative-grid">
               <button
                 onClick={() => onCategoryChange(isActive ? "all" : key)}
                 className={cn(
@@ -59,9 +61,10 @@ export default function ESGPillarOverview({
                 </div>
               </button>
               </a>
+              </AnimateInItem>
             );
           })}
-        </div>
+        </AnimateIn>
       </div>
     </section>
   );

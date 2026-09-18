@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { whyWorkWithUs } from "@/data/careers";
+import AnimateIn, { AnimateInItem } from "@/components/shared/AnimateIn";
 
 export default function WhyWorkSection() {
   return (
@@ -18,11 +19,11 @@ export default function WhyWorkSection() {
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <AnimateIn stagger className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {whyWorkWithUs.map((item) => (
+            <AnimateInItem key={item.id} className="h-full">
             <div 
-              key={item.id} 
-              className="border border-black/30 rounded-[2rem] p-4 md:p-5 flex flex-col bg-card shadow-sm hover:shadow-md transition-shadow"
+              className="border border-black/30 rounded-[2rem] p-4 md:p-5 flex flex-col bg-card shadow-sm hover:shadow-md transition-shadow h-full"
             >
               {/* Image with Dark Overlay & Label */}
               <div className="relative w-full aspect-[4/3] rounded-[1.5rem] overflow-hidden mb-6 group">
@@ -50,8 +51,9 @@ export default function WhyWorkSection() {
                 </p>
               </div>
             </div>
+            </AnimateInItem>
           ))}
-        </div>
+        </AnimateIn>
 
       </div>
     </section>

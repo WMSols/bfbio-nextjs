@@ -1,6 +1,7 @@
 import HeroSection from "@/components/layout/HeroSection";
 import BannerCard from "@/components/shared/BannerCard";
 import CTABanner from "@/components/shared/CTABanner";
+import AnimateIn from "@/components/shared/AnimateIn";
 import RegionsSection from "./components/RegionsSection";
 import TrustSection from "./components/TrustSection";
 
@@ -18,7 +19,9 @@ export default function GlobalPresencePage() {
         backgroundImage="/images/global-presence/hero.webp"
       />
       <RegionsSection />
-      <TrustSection />
+      <AnimateIn>
+        <TrustSection />
+      </AnimateIn>
       <div className="py-16 md:py-24">
         <BannerCard
           variant="rounded"

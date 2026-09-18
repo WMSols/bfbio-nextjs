@@ -1,6 +1,7 @@
 import WhyWorkSection from "./components/WhyWorkSection";
 import PositionCard from "./components/PositionCard";
 import HeroSection from "@/components/layout/HeroSection";
+import AnimateIn, { AnimateInItem } from "@/components/shared/AnimateIn";
 // Import your fetch utilities
 import { buildJobPostsUrl, strapiFetch } from "@/lib/strapi";
 import { StrapiJob } from "@/types/strapi";
@@ -47,8 +48,8 @@ export default async function CareersPage() {
       <div className="flex flex-col items-center justify-center pb-16 md:pb-20">
         <h2 className=" text-3xl sm:text-5xl   mb-12 md:mb-24 text-center">Open Positions</h2>
         
-        <div className="space-y-4 w-full  px-6">
-          {jobs.length === 0 ? (
+        <AnimateIn stagger className="space-y-4 w-full  px-6">
+        {jobs.length === 0 ? (
             <p className="text-muted-foreground text-center py-8">
               No open positions at the moment. Please check back later!
             </p>
@@ -57,8 +58,8 @@ export default async function CareersPage() {
               const { title, domain, location, type } = job;
 
               return (
+                <AnimateInItem key={idx}>
                 <PositionCard
-                  key={idx}
                   title={title}
                   domain={domain}
                   location={location}
@@ -70,10 +71,11 @@ export default async function CareersPage() {
                   benefits={job.benefits}
                   jobId={job.jobId}
                 />
+                </AnimateInItem>
               );
             })
           )}
-        </div>
+        </AnimateIn>
       </div>
       <CTABanner/>
     </div>

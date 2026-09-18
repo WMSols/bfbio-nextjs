@@ -15,6 +15,7 @@ import {
   type ShopSortId,
 } from "@/data/shop";
 import { cn } from "@/lib/utils";
+import AnimateIn, { AnimateInItem } from "@/components/shared/AnimateIn";
 
 function HighlightedTitle({
   title,
@@ -181,11 +182,13 @@ export default function FeaturedProductsSection() {
           </div>
         </Link>
 
-        <div className="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2 md:mt-16 lg:grid-cols-3 lg:gap-12">
+        <AnimateIn stagger className="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2 md:mt-16 lg:grid-cols-3 lg:gap-12">
           {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <AnimateInItem key={product.id} className="h-full">
+              <ProductCard product={product} />
+            </AnimateInItem>
           ))}
-        </div>
+        </AnimateIn>
       </div>
     </section>
   );

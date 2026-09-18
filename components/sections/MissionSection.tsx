@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ReactNode } from "react";
+import AnimateIn from "@/components/shared/AnimateIn";
 
 interface MissionSectionProps {
   label: string;
@@ -24,7 +25,7 @@ export default function MissionSection({
   backgroundImage,
 }: MissionSectionProps) {
   return (
-    <section className=" mt-8   overflow-hidden bg-brand-gradient">
+    <AnimateIn as="section" className=" mt-8   overflow-hidden bg-brand-gradient">
       <div className="relative flex flex-col items-center justify-center px-2 pt-16 pb-16 md:px-12 md:pt-24 md:pb-24 lg:px-16">
         <div className="container relative z-10 flex flex-col items-center text-white font-light text-center">
           <h2 className="mb-6 md:mb-8 text-xs  md:text-base uppercase  ">
@@ -50,6 +51,6 @@ export default function MissionSection({
           </div>
         </div>
       </div>
-    </section>
+    </AnimateIn>
   );
 }

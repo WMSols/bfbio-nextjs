@@ -7,6 +7,7 @@ import {
   INVESTORS_REPORTS_PAGE_SIZE,
 } from "./_lib/investors-api";
 import FinancialHighlight from "./components/FinancialHighlight";
+import AnimateIn, { AnimateInItem } from "@/components/shared/AnimateIn";
 import ReportFilterTabs from "./components/ReportFilterTabs";
 import ReportList from "./components/ReportList";
 import Pagination from "./components/Pagination";
@@ -134,17 +135,19 @@ export default async function InvestorsPage({
           Figures as of {formattedDate}
         </p>
         
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 mb-20">
+        <AnimateIn stagger className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 mb-20">
           {/* 4. Map over your newly transformed `displayHighlights` */}
           {displayHighlights.map((stat, index) => (
+            <AnimateInItem key={index}>
             <FinancialHighlight
-              key={index}
               label={stat.label}
               value={stat.value}
             />
+            </AnimateInItem>
           ))}
-        </div>
+        </AnimateIn>
 
+        <AnimateIn>
         <h2 className="text-3xl font-serif font-medium mb-6 text-foreground">
           Reports & Filings
         </h2>
@@ -158,6 +161,7 @@ export default async function InvestorsPage({
             activeType={activeType}
           />
         </div>
+        </AnimateIn>
 
         <h2 className="text-3xl font-serif font-medium mb-4 text-foreground">
           Corporate Governance

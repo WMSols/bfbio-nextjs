@@ -59,8 +59,8 @@ const HeroSection = ({
   return (
     <section
       className={cn(
-        "relative flex h-svh min-h-svh items-center overflow-hidden py-16 md:py-24",
-        hasMedia && "text-white",
+        "relative flex items-center overflow-hidden py-32",
+        hasMedia && "text-white justify-center h-svh min-h-svh  py-16 md:py-24",
         backgroundClassName,
       )}
     >
@@ -99,7 +99,7 @@ const HeroSection = ({
             titleSize === "small"
               ? "hero-title-small"
               : "text-[24px] sm:text-[32px] lg:text-8xl",
-            hasMedia ? "text-white" : "text-foreground",
+            hasMedia ? "text-white" : "text-foreground ",
             titleClassName,
           )}
         >

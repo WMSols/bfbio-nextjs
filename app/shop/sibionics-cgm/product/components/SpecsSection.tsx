@@ -1,5 +1,6 @@
 import { sibionicsPackingList, sibionicsSpecs } from "@/data/sibionics";
 import MediaPlaceholder from "../../components/MediaPlaceholder";
+import AnimateIn, { AnimateInItem } from "@/components/shared/AnimateIn";
 
 export default function SpecsSection() {
   return (
@@ -11,23 +12,26 @@ export default function SpecsSection() {
           </h2>
           <div className="mt-4 border-t border-black/15" />
 
-          <div className="mt-10 grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+          <AnimateIn stagger className="mt-10 grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
             {sibionicsSpecs.map((spec) => (
-              <div key={spec.label}>
+              <AnimateInItem key={spec.label}>
+              <div>
                 <p className="text-sm font-semibold text-black">{spec.label}</p>
                 <p className="mt-1 text-sm text-black/45">{spec.value}</p>
               </div>
+              </AnimateInItem>
             ))}
-          </div>
+          </AnimateIn>
 
           <h2 className="mt-20 text-xl font-semibold text-black md:text-2xl">
             Packing list
           </h2>
           <div className="mt-4 border-t border-black/15" />
 
-          <div className="mt-10 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
+          <AnimateIn stagger className="mt-10 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
             {sibionicsPackingList.map((item) => (
-              <div key={item.label} className="flex flex-col items-center text-center">
+              <AnimateInItem key={item.label}>
+              <div className="flex flex-col items-center text-center">
                 {item.caption && (
                   <p className="mb-2 text-xs text-black/50">{item.caption}</p>
                 )}
@@ -39,8 +43,9 @@ export default function SpecsSection() {
                 />
                 <p className="mt-3 text-xs text-black/70">{item.label}</p>
               </div>
+              </AnimateInItem>
             ))}
-          </div>
+          </AnimateIn>
         </div>
       </div>
     </section>

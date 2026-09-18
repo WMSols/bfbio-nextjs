@@ -1,5 +1,6 @@
 import HeroSection from "@/components/layout/HeroSection";
 import { manufacturingHero } from "@/data/manufacturing";
+import AnimateIn from "@/components/shared/AnimateIn";
 import OverviewSection from "./components/OverviewSection";
 import StorySection from "./components/StorySection";
 import ProductionLinesSection from "./components/ProductionLinesSection";
@@ -24,12 +25,18 @@ export default function ManufacturingPage() {
         titleClassName="text-4xl md:text-5xl "
       />
       <OverviewSection />
-      <StorySection />
+      <AnimateIn>
+        <StorySection />
+      </AnimateIn>
       <ProductionLinesSection />
       <FacilitySlideshow />
-      <QualitySection />
+      <AnimateIn>
+        <QualitySection />
+      </AnimateIn>
       <CertificationsSection />
-      <PartnerCtaSection />
+      <AnimateIn>
+        <PartnerCtaSection />
+      </AnimateIn>
     </div>
   );
 }

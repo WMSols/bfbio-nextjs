@@ -1,5 +1,6 @@
 import HeroSection from "@/components/layout/HeroSection";
 import CTABanner from "@/components/shared/CTABanner";
+import AnimateIn from "@/components/shared/AnimateIn";
 import OurStorySection from "./components/OurStorySection";
 import BetterMedicineSection from "./components/BetterMedicineSection";
 import WhatGuidesUsSection from "./components/WhatGuidesUsSection";
@@ -25,8 +26,12 @@ export default function AboutPage() {
         backgroundImage="/images/about/hero.webp"
         overlayClassName="bg-black/30"
       />
-      <OurStorySection />
-      <BetterMedicineSection />
+      <AnimateIn>
+        <OurStorySection />
+      </AnimateIn>
+      <AnimateIn>
+        <BetterMedicineSection />
+      </AnimateIn>
       <WhatGuidesUsSection />
       <CTABanner
         align="left"

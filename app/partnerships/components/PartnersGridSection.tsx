@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { partners } from "@/data/partnerships";
 import { cn } from "@/lib/utils";
+import AnimateIn, { AnimateInItem } from "@/components/shared/AnimateIn";
 
 export default function PartnersGridSection() {
   return (
@@ -11,7 +12,7 @@ export default function PartnersGridSection() {
           Our Trusted Partners
         </h2>
 
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+        <AnimateIn stagger className="mx-auto grid max-w-5xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {partners.map((partner) => {
             const isExternal = partner.href.startsWith("http");
             const className = cn(
@@ -34,31 +35,33 @@ export default function PartnersGridSection() {
 
             if (isExternal) {
               return (
-                <a
-                  key={partner.name}
-                  href={partner.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={partner.name}
-                  className={className}
-                >
-                  {logo}
-                </a>
+                <AnimateInItem key={partner.name} className="h-full">
+                  <a
+                    href={partner.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={partner.name}
+                    className={className}
+                  >
+                    {logo}
+                  </a>
+                </AnimateInItem>
               );
             }
 
             return (
-              <Link
-                key={partner.name}
-                href={partner.href}
-                aria-label={partner.name}
-                className={className}
-              >
-                {logo}
-              </Link>
+              <AnimateInItem key={partner.name} className="h-full">
+                <Link
+                  href={partner.href}
+                  aria-label={partner.name}
+                  className={className}
+                >
+                  {logo}
+                </Link>
+              </AnimateInItem>
             );
           })}
-        </div>
+        </AnimateIn>
       </div>
     </section>
   );

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { regions } from "@/data/global-presence";
@@ -53,7 +53,7 @@ export default function RegionsSection() {
     <section className="px-6 py-16 md:px-8 md:py-24">
       <div className="mx-auto flex max-w-6xl flex-col items-center">
         <div className="relative w-full">
-          <motion.div
+          <m.div
             className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-6 lg:gap-6"
             animate={{ opacity: isOpen ? 0 : 1 }}
             transition={fade}
@@ -86,11 +86,11 @@ export default function RegionsSection() {
                 </h2>
               </button>
             ))}
-          </motion.div>
+          </m.div>
 
           <AnimatePresence>
             {activeRegion && (
-              <motion.div
+              <m.div
                 role="dialog"
                 aria-modal="true"
                 aria-labelledby="region-dialog-title"
@@ -101,7 +101,7 @@ export default function RegionsSection() {
                 className="absolute inset-0 z-10 overflow-hidden rounded-[32px] bg-black max-sm:bottom-auto max-sm:h-[min(32rem,75svh)] md:rounded-[50px]"
               >
                 <AnimatePresence mode="wait" initial={false}>
-                  <motion.div
+                  <m.div
                     key={activeRegion.id}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -118,7 +118,7 @@ export default function RegionsSection() {
                       priority
                     />
                     <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/45 to-black/20" />
-                  </motion.div>
+                  </m.div>
                 </AnimatePresence>
 
                 <button
@@ -172,7 +172,7 @@ export default function RegionsSection() {
                     <ChevronRight className="size-5" />
                   </button>
                 </div>
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
         </div>

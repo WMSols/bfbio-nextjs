@@ -1,6 +1,7 @@
 import { ArrowDown } from "lucide-react";
 import { sibionicsWear } from "@/data/sibionics";
 import MediaPlaceholder from "./MediaPlaceholder";
+import AnimateIn from "@/components/shared/AnimateIn";
 
 function HighlightedTitle({
   title,
@@ -25,7 +26,7 @@ function HighlightedTitle({
 
 export default function WearSection() {
   return (
-    <section className="py-12 md:py-20">
+    <AnimateIn as="section" className="py-12 md:py-20">
       <div className="container">
         <div className="max-w-4xl">
           <h2 className="text-4xl leading-tight font-medium text-black md:text-5xl lg:text-[3.5rem]">
@@ -64,6 +65,6 @@ export default function WearSection() {
           </div>
         </div>
       </div>
-    </section>
+    </AnimateIn>
   );
 }

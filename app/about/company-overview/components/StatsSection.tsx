@@ -1,4 +1,5 @@
 import Image from "next/image";
+import AnimateIn from "@/components/shared/AnimateIn";
 
 const stats = [
   { value: "1000+", label: "Employees" },
@@ -9,7 +10,7 @@ const stats = [
 
 export default function StatsSection() {
   return (
-    <section className="relative flex  sm:h-301.5 min-h-128 items-center overflow-hidden px-6 py-16 text-white md:px-16 md:py-28">
+    <AnimateIn as="section" className="relative flex  sm:h-301.5 min-h-128 items-center overflow-hidden px-6 py-16 text-white md:px-16 md:py-28">
       <Image
         src="/images/about/company-overview/stats.webp"
         alt=""
@@ -42,6 +43,6 @@ export default function StatsSection() {
           critical unmet medical needs in Pakistan<br className="hidden md:block" /> and international markets
         </p>
       </div>
-    </section>
+    </AnimateIn>
   );
 }

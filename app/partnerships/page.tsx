@@ -1,4 +1,5 @@
 import HeroSection from "@/components/layout/HeroSection";
+import AnimateIn from "@/components/shared/AnimateIn";
 import IntroSection from "./components/IntroSection";
 import PartnersGridSection from "./components/PartnersGridSection";
 
@@ -17,7 +18,9 @@ export default function PartnershipsPage() {
         titleClassName="text-4xl md:text-6xl lg:text-8xl"
         overlayClassName="bg-linear-to-t from-black/50 via-black/25 to-black/15"
       />
-      <IntroSection />
+      <AnimateIn>
+        <IntroSection />
+      </AnimateIn>
       <PartnersGridSection />
     </div>
   );

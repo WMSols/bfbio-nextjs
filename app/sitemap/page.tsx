@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { sitemapPage } from "@/data/sitemap";
+import AnimateIn, { AnimateInItem } from "@/components/shared/AnimateIn";
 
 export const metadata = {
   title: "Site Map",
@@ -9,7 +10,7 @@ export const metadata = {
 
 export default function SitemapPage() {
   return (
-    <section className="bg-[#F7F7F7] pt-28 pb-16 md:pt-52 md:pb-24">
+    <AnimateIn as="section" className="bg-[#F7F7F7] pt-28 pb-16 md:pt-52 md:pb-24">
       <div className="container max-w-[75rem]">
         <h1 className="text-4xl md:text-6xl lg:text-[5.375rem] font-bold text-black leading-tight mb-10 sm:mb-24">
           {sitemapPage.title}
@@ -22,9 +23,9 @@ export default function SitemapPage() {
           {sitemapPage.home.label}
         </Link>
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-10">
+        <AnimateIn stagger className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-10">
           {sitemapPage.groups.map((group) => (
-            <div key={group.title}>
+            <AnimateInItem key={group.title}>
               <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
                 {group.title}
               </h2>
@@ -47,10 +48,10 @@ export default function SitemapPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </AnimateInItem>
           ))}
-        </div>
+        </AnimateIn>
       </div>
-    </section>
+    </AnimateIn>
   );
 }

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
+import AnimateIn from "@/components/shared/AnimateIn";
 
 interface CTABannerProps {
   title?: string | ReactNode;
@@ -39,7 +40,7 @@ const CTABanner = ({
   const isLeft = align === "left";
 
   return (
-    <section className={cn("bg-[#FFE4FF] py-16 md:py-24", paddingClassName, className)}>
+    <AnimateIn as="section" className={cn("bg-[#FFE4FF] py-16 md:py-24", paddingClassName, className)}>
       <div className="container mx-0">
         <div
           className={cn(
@@ -71,7 +72,7 @@ const CTABanner = ({
           </div>
         </div>
       </div>
-    </section>
+    </AnimateIn>
   );
 };
 

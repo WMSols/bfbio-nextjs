@@ -2,13 +2,14 @@ import { Droplet } from "lucide-react";
 import { sibionicsFeatures } from "@/data/sibionics";
 import { cn } from "@/lib/utils";
 import MediaPlaceholder from "./MediaPlaceholder";
+import AnimateIn from "@/components/shared/AnimateIn";
 
 export default function FeaturesSection() {
   return (
     <section className="bg-black py-16 text-white md:py-24">
       <div className="container space-y-16 md:space-y-24">
         {sibionicsFeatures.map((feature) => (
-          <div
+          <AnimateIn
             key={feature.title}
             className="grid items-center gap-8 md:grid-cols-2 md:gap-14 lg:gap-20"
           >
@@ -39,7 +40,7 @@ export default function FeaturesSection() {
                 </div>
               )}
             </div>
-          </div>
+          </AnimateIn>
         ))}
       </div>
     </section>

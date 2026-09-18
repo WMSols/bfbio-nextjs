@@ -1,3 +1,5 @@
+import AnimateIn, { AnimateInItem } from "@/components/shared/AnimateIn";
+
 export default function WhatGuidesUsSection() {
   return (
     <section className="bg-[#F7F7F7] py-16 md:py-32 sm:px-32">
@@ -6,7 +8,8 @@ export default function WhatGuidesUsSection() {
           What Guides Us
         </h2>
 
-        <div className=" mt-12 grid max-w-5xl grid-cols-1 gap-2 md:mt-20 md:grid-cols-2 ">
+        <AnimateIn stagger className=" mt-12 grid max-w-5xl grid-cols-1 gap-2 md:mt-20 md:grid-cols-2 ">
+          <AnimateInItem>
           <article>
             <h3 className="text-2xl text-brand md:text-[32px]">Mission</h3>
             <p className="mt-4 max-w-sm text-base leading-relaxed text-black md:mt-6 md:text-lg">
@@ -15,7 +18,9 @@ export default function WhatGuidesUsSection() {
               and cure.
             </p>
           </article>
+          </AnimateInItem>
 
+          <AnimateInItem>
           <article>
             <h3 className="text-2xl text-brand md:text-[32px]">Vision</h3>
             <p className="mt-4 max-w-sm text-base leading-relaxed text-black md:mt-6 md:text-lg">
@@ -24,7 +29,8 @@ export default function WhatGuidesUsSection() {
               credibility
             </p>
           </article>
-        </div>
+          </AnimateInItem>
+        </AnimateIn>
       </div>
     </section>
   );

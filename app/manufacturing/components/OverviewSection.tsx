@@ -3,6 +3,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { manufacturingOverview } from "@/data/manufacturing";
 import GradientCard from "./GradientCard";
+import AnimateIn, { AnimateInItem } from "@/components/shared/AnimateIn";
 
 export default function OverviewSection() {
   const { eyebrow, title, description, highlights, ctaText, ctaHref } =
@@ -23,22 +24,23 @@ export default function OverviewSection() {
           </p>
         </div>
 
-        <div className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-4 sm:grid-cols-2 md:mt-16 lg:grid-cols-4 lg:gap-5">
+        <AnimateIn stagger className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-4 sm:grid-cols-2 md:mt-16 lg:grid-cols-4 lg:gap-5">
           {highlights.map((item, index) => (
-            <GradientCard
-              key={item.title}
-              reverse={index % 2 === 1}
-              innerClassName="flex min-h-[11.5rem] flex-col items-center justify-center px-6 py-8 text-center md:min-h-[13.5rem] md:px-7"
-            >
-              <p className="text-lg font-medium text-brand md:text-xl">
-                {item.title}
-              </p>
-              <p className="mt-2 whitespace-pre-line text-sm leading-snug text-brand-blue md:text-[15px]">
-                {item.subtitle}
-              </p>
-            </GradientCard>
+            <AnimateInItem key={item.title} className="h-full">
+              <GradientCard
+                reverse={index % 2 === 1}
+                innerClassName="flex min-h-[11.5rem] flex-col items-center justify-center px-6 py-8 text-center md:min-h-[13.5rem] md:px-7"
+              >
+                <p className="text-lg font-medium text-brand md:text-xl">
+                  {item.title}
+                </p>
+                <p className="mt-2 whitespace-pre-line text-sm leading-snug text-brand-blue md:text-[15px]">
+                  {item.subtitle}
+                </p>
+              </GradientCard>
+            </AnimateInItem>
           ))}
-        </div>
+        </AnimateIn>
 
         <div className="mt-10 flex justify-center md:mt-14">
           <a

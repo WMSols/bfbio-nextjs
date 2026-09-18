@@ -1,4 +1,5 @@
 import HeroSection from "@/components/layout/HeroSection";
+import AnimateIn from "@/components/shared/AnimateIn";
 import PartnershipIntroSection from "./components/PartnershipIntroSection";
 import ManufacturingSection from "./components/ManufacturingSection";
 import StrategicGrowthSection from "./components/StrategicGrowthSection";
@@ -18,10 +19,18 @@ export default function AboutHistoryPage() {
         backgroundImage="/images/about/history/hero.webp"
         overlayClassName="bg-black/30"
       />
-      <PartnershipIntroSection />
-      <ManufacturingSection />
-      <StrategicGrowthSection />
-      <CommitmentSection />
+      <AnimateIn>
+        <PartnershipIntroSection />
+      </AnimateIn>
+      <AnimateIn>
+        <ManufacturingSection />
+      </AnimateIn>
+      <AnimateIn>
+        <StrategicGrowthSection />
+      </AnimateIn>
+      <AnimateIn>
+        <CommitmentSection />
+      </AnimateIn>
     </>
   );
 }

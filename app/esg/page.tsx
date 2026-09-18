@@ -2,6 +2,7 @@
 import HeroSection from "@/components/layout/HeroSection";
 import BannerCard from "@/components/shared/BannerCard";
 import CTABanner from "@/components/shared/CTABanner";
+import AnimateIn from "@/components/shared/AnimateIn";
 import IntroSection from "./components/IntroSection";
 import SolarParkSection from "./components/SolarParkSection";
 import GovernanceSection from "./components/GovernanceSection";
@@ -39,7 +40,9 @@ export default function EsgPage() {
         overlayClassName="bg-black/20"
       />
       <div className="flex flex-col gap-16 py-16 md:gap-24 md:py-24">
-        <IntroSection />
+        <AnimateIn>
+          <IntroSection />
+        </AnimateIn>
         <BannerCard
           title="Creating Stronger Communities Through Lasting Impact"
           description="BF Biosciences corporate vision has always centred on creating a better world for the people around us. Our Impact focus spans four pillars: education, healthcare, arts & culture, and community — because we believe that health, knowledge, and creative expression are equally essential to a flourishing society. Many of these initiatives are supported year on year as part of our enduring commitment to Pakistan and beyond."
@@ -52,7 +55,9 @@ export default function EsgPage() {
           titleClassName="text-3xl sm:text-4xl md:text-5xl mb-10 leading-[1.2]"
           titleWidthClassName="max-w-5xl"
         />
-        <SolarParkSection />
+        <AnimateIn>
+          <SolarParkSection />
+        </AnimateIn>
         <BannerCard
           title="Khalid Waheed Campus"
           description="In memory of Ferozsons' founding Chief Executive, Mr. Khalid Waheed, the company and family co-funded the TCF Khalid Waheed Campus at Kot Addu, Muzaffargarh. With 10% of the world's out-of-school children living in Pakistan, primary education is among our most urgent national challenges. This campus stands as a lasting tribute — bringing quality schooling to one of the country's most underserved regions."
@@ -76,7 +81,9 @@ export default function EsgPage() {
 
           <ESGInitiativeGrid filtered={filtered} />
         </div>
-        <GovernanceSection />
+        <AnimateIn>
+          <GovernanceSection />
+        </AnimateIn>
       </div>
       <CTABanner
         title="Join us in building a better world"

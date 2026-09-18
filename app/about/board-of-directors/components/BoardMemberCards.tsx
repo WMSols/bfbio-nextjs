@@ -3,7 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import { X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
+import AnimateIn, { AnimateInItem } from "@/components/shared/AnimateIn";
 import { BoardDirector } from "@/types/strapi";
 import { getStrapiImageUrl } from "@/lib/strapi";
 
@@ -43,14 +44,15 @@ export default function BoardMemberCards({ members }: BoardMemberProps) {
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-14 px-6 md:px-8">
+        <AnimateIn stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-14 px-6 md:px-8">
           {members.map((member) => {
             // Keep fetching logic intact
             // const fetchedImageUrl = getStrapiImageUrl(member.image?.url) || PLACEHOLDER_IMAGE;
             const fetchedImageUrl = PLACEHOLDER_IMAGE;
 
             return (
-              <div key={member.name} className="flex flex-col group">
+              <AnimateInItem key={member.name} className="h-full">
+              <div className="flex flex-col group h-full">
                 {/* Image Container */}
                 <div className="relative w-full aspect-square rounded-[2rem] md:rounded-[2.5rem] overflow-hidden mb-6 bg-gradient-to-br from-[#4A88C9] to-[#2B5B8E]">
                   {/* Conditional Rendering for Image */}
@@ -87,9 +89,10 @@ export default function BoardMemberCards({ members }: BoardMemberProps) {
                   Read More
                 </button>
               </div>
+              </AnimateInItem>
             );
           })}
-        </div>
+        </AnimateIn>
       </div>
 
       {/* Detail View Modal */}
@@ -97,7 +100,7 @@ export default function BoardMemberCards({ members }: BoardMemberProps) {
         {selectedMember && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-12">
             {/* Backdrop */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -106,7 +109,7 @@ export default function BoardMemberCards({ members }: BoardMemberProps) {
             />
 
             {/* Modal Container */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.95 }}
@@ -166,7 +169,7 @@ export default function BoardMemberCards({ members }: BoardMemberProps) {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         )}
       </AnimatePresence>

@@ -38,9 +38,8 @@ export default function ProductListClient() {
   return (
     <div className="sm:pt-10 pt-20">
       <HeroSection
-        title="Our Medicines"
-        subtitle="Explore our comprehensive range of pharmaceutical products."
-        backgroundImage={"/images/hero/medicines.jpg"}
+        title="Medicines"
+        titleClassName="text-4xl lg:text-7xl"
       />
 
       <section className="py-12">

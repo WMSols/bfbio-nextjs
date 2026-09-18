@@ -6,6 +6,7 @@ import { TherapeuticArea } from "@/types/strapi";
 import { useCategories } from "@/app/medicines/hooks/useCategories";
 import { cn } from "@/lib/utils";
 import TherapeuticCardBig from "../shared/TherapeuticCardBig";
+import AnimateIn from "@/components/shared/AnimateIn";
 
 interface TherapeuticsGridProps {
   items: TherapeuticArea[];
@@ -93,7 +94,7 @@ export default function TherapeuticsGridClient({
         </div>
       ) : (
         <div className="flex w-full flex-col lg:grid lg:grid-cols-2 lg:items-stretch">
-          <div className="order-1 flex flex-col justify-between gap-10 px-6 py-4 sm:px-10 lg:order-2 lg:gap-0 lg:px-12 lg:py-2 xl:px-16">
+          <AnimateIn className="order-1 flex flex-col justify-between gap-10 px-6 py-4 sm:px-10 lg:order-2 lg:gap-0 lg:px-12 lg:py-2 xl:px-16">
             <div className="flex flex-col gap-8 2xl:gap-12">
               <p className="text-sm sm:text-xl font-extralight tracking-[0.16em] uppercase">
                 Therapeutic Areas
@@ -112,7 +113,7 @@ export default function TherapeuticsGridClient({
             <div className="hidden lg:flex">
               <SlideNav active={activeNav} onPrev={prevSlide} onNext={nextSlide} />
             </div>
-          </div>
+          </AnimateIn>
 
           <div
             className={cn(

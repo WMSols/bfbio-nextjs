@@ -6,6 +6,7 @@ import Link from "next/link";
 import { getStrapiImageUrl } from "@/lib/strapi";
 import { useNewsrooms } from "./hooks/useNewsrooms";
 import HeroSection from "@/components/layout/HeroSection";
+import AnimateIn, { AnimateInItem } from "@/components/shared/AnimateIn";
 
 // Helper to safely extract the first paragraph from Strapi Rich Text blocks
 const getExcerpt = (content: any): string => {
@@ -92,7 +93,7 @@ export default function NewsroomListClient() {
 
           {!isError && !isLoading && items.length > 0 && (
             <>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12 px-6 md:px-8 ">
+              <AnimateIn stagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12 px-6 md:px-8 ">
                 {items.map((article) => {
                   const imageUrl = getStrapiImageUrl(
                     article.featured_image?.url,
@@ -101,8 +102,11 @@ export default function NewsroomListClient() {
                   const excerpt = getExcerpt(article.content);
 
                   return (
-                    <div
+                    <AnimateInItem
                       key={article.documentId ?? article.id}
+                      className="h-full"
+                    >
+                    <div
                       className="group flex flex-col h-full"
                     >
                       {/* Image Container */}
@@ -157,9 +161,10 @@ export default function NewsroomListClient() {
                         </div>
                       </div>
                     </div>
+                    </AnimateInItem>
                   );
                 })}
-              </div>
+              </AnimateIn>
 
               <div ref={sentinelRef} className="h-12" />
 

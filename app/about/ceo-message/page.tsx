@@ -1,5 +1,6 @@
 import { ArrowRight} from "lucide-react";
 import { ceoBio, ceoMessageParagraphs } from "@/data/ceo-message";
+import AnimateIn from "@/components/shared/AnimateIn";
 
 export const metadata = {
   title: "Message from the CEO",
@@ -11,6 +12,7 @@ export default function CEOMessagePage() {
   return (
     <>
       <div className="mt-16 md:mt-24">
+        <AnimateIn>
         {/* 2-Column Layout */}
         <div
           className="py-16 md:py-24 max-w-5xl mx-auto px-10"
@@ -72,7 +74,9 @@ export default function CEOMessagePage() {
 
           </div>
         </div>
+        </AnimateIn>
 
+        <AnimateIn>
         {/* CEO Message Paragraphs */}
         <div 
           id="ceo-message" 
@@ -87,6 +91,7 @@ export default function CEOMessagePage() {
             </p>
           ))}
         </div>
+        </AnimateIn>
 
     
       </div>

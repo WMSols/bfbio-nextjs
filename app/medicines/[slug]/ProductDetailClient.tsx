@@ -12,6 +12,7 @@ import ProductInfo from "../components/ProductInfo";
 import ProductActions from "../components/ProductActions";
 import VolumeSelector from "../components/VolumeSelector";
 import ProductDescription from "../components/ProductDescription";
+import AnimateIn from "@/components/shared/AnimateIn";
 
 export default function ProductDetailClient({
   product,
@@ -32,7 +33,7 @@ export default function ProductDetailClient({
 
   return (
     <>
-      <section className="py-8 md:py-12 bg-secondary mt-14 ">
+      <AnimateIn as="section" className="py-8 md:py-12 bg-secondary mt-14 ">
         <div className="container max-w-6xl mx-auto px-4">
           <div className="bg-background rounded-3xl overflow-hidden shadow-sm">
             <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-10 lg:gap-12 p-6 md:p-8 lg:p-10">
@@ -85,7 +86,7 @@ export default function ProductDetailClient({
             </Button>
           </div>
         </div>
-      </section>
+      </AnimateIn>
     </>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import ArticleCard from "@/components/shared/ArticleCard";
+import AnimateIn, { AnimateInItem } from "@/components/shared/AnimateIn";
 import type { Article } from "@/data/articles";
 import { ReactNode, TouchEvent, useRef } from "react";
 
@@ -92,9 +93,13 @@ export default function ArticlesGrid({
         ) : (
           <div className="hidden md:block">
             {animated ? (
-              <div className={`grid ${gridCols} gap-8 md:gap-10`}>
-                {cards}
-              </div>
+              <AnimateIn stagger className={`grid ${gridCols} gap-8 md:gap-10`}>
+                {articles.map((article) => (
+                  <AnimateInItem key={article.id} className="h-full">
+                    <ArticleCard article={article} />
+                  </AnimateInItem>
+                ))}
+              </AnimateIn>
             ) : (
               <div className={`grid ${gridCols} gap-8 md:gap-10`}>{cards}</div>
             )}

@@ -1,4 +1,5 @@
 import CheckoutForm from "./components/CheckoutForm";
+import AnimateIn from "@/components/shared/AnimateIn";
 
 export const metadata = {
   title: "Checkout",
@@ -25,13 +26,13 @@ export default async function SibionicsCheckoutPage({
   const qty = parseQty(params.qty);
 
   return (
-    <div className="bg-[#F7F7F7] pt-28 pb-16 md:pt-32 md:pb-24">
+    <AnimateIn className="bg-[#F7F7F7] pt-28 pb-16 md:pt-32 md:pb-24">
       <div className="container">
         <h1 className="text-4xl font-medium text-black md:text-5xl">Checkout</h1>
         <div className="mt-10">
           <CheckoutForm qty={qty} />
         </div>
       </div>
-    </div>
+    </AnimateIn>
   );
 }

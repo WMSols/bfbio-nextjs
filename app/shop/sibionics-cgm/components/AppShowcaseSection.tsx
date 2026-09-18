@@ -1,9 +1,10 @@
 import { sibionicsApp } from "@/data/sibionics";
 import MediaPlaceholder from "./MediaPlaceholder";
+import AnimateIn from "@/components/shared/AnimateIn";
 
 export default function AppShowcaseSection() {
   return (
-    <section className="pt-8 pb-16 md:pt-12 md:pb-24">
+    <AnimateIn as="section" className="pt-8 pb-16 md:pt-12 md:pb-24">
       <div className="container">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl leading-tight font-medium text-[#1DB8B0] md:text-5xl lg:text-[3.25rem]">
@@ -23,6 +24,6 @@ export default function AppShowcaseSection() {
           />
         </div>
       </div>
-    </section>
+    </AnimateIn>
   );
 }

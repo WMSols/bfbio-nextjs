@@ -3,6 +3,7 @@ import Image from "next/image";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import AnimateIn from "@/components/shared/AnimateIn";
 
 const bannerCardVariants = cva(
   "relative flex flex-col justify-center overflow-hidden text-white",
@@ -140,7 +141,7 @@ const BannerCard = ({
   const isCentered = align === "center";
 
   return (
-    <section className={bannerCardVariants({ variant, align })}>
+    <AnimateIn as="section" className={bannerCardVariants({ variant, align })}>
       <Image
         src={image}
         alt={imageAlt}
@@ -209,7 +210,7 @@ const BannerCard = ({
           </Button>
         )}
       </div>
-    </section>
+    </AnimateIn>
   );
 };
 

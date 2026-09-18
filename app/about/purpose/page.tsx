@@ -1,5 +1,6 @@
 import HeroSection from "@/components/layout/HeroSection";
 import CTABanner from "@/components/shared/CTABanner";
+import AnimateIn from "@/components/shared/AnimateIn";
 import IntroSection from "./components/IntroSection";
 import MissionVisionSection from "./components/MissionVisionSection";
 import CoreValuesSection from "./components/CoreValuesSection";
@@ -25,7 +26,9 @@ export default function PurposePage() {
         titleSize="small"
         overlayClassName="bg-black/20"
       />
-      <IntroSection />
+      <AnimateIn>
+        <IntroSection />
+      </AnimateIn>
       <CTABanner
         title="Committed to Better Health"
         description="For over 20 years, BF Biosciences has been advancing healthcare through scientific excellence, innovation, and an unwavering commitment to quality— helping expand access to high-quality biopharmaceutical therapies and improve patient outcomes across Pakistan."
@@ -35,8 +38,12 @@ export default function PurposePage() {
         className="bg-transparent"
         titleClassName="font-medium md:text-[82px] "
       />
-      <MissionVisionSection />
-      <CoreValuesSection />
+      <AnimateIn>
+        <MissionVisionSection />
+      </AnimateIn>
+      <AnimateIn>
+        <CoreValuesSection />
+      </AnimateIn>
       <CTABanner
         title="Join us in building a better world"
         description="We believe that health, knowledge, conservation and creative expression are equally essential to a sustainable society. Many of these initiatives are supported year on year as part of our enduring commitment to our Planet."

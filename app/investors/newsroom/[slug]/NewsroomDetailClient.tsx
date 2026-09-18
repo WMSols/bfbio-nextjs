@@ -8,6 +8,7 @@ import { getStrapiImageUrl } from "@/lib/strapi";
 import type { StrapiNewsroom } from "@/types/strapi";
 // 1. Import the BlocksRenderer
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
+import AnimateIn from "@/components/shared/AnimateIn";
 
 export default function NewsroomDetailClient({
   article,
@@ -17,7 +18,7 @@ export default function NewsroomDetailClient({
   const imageUrl = getStrapiImageUrl(article.featured_image?.url);
 
   return (
-    <section className="py-8 md:py-12 mt-16 bg-secondary">
+    <AnimateIn as="section" className="py-8 md:py-12 mt-16 bg-secondary">
       <div className="container max-w-4xl mx-auto px-4">
         <div className="bg-background rounded-3xl overflow-hidden shadow-sm">
           {imageUrl && (
@@ -70,6 +71,6 @@ export default function NewsroomDetailClient({
           </Button>
         </div>
       </div>
-    </section>
+    </AnimateIn>
   );
 }

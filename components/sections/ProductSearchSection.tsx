@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ReactNode, useState } from "react";
+import AnimateIn from "@/components/shared/AnimateIn";
 interface ProductSearchSectionProps {
   label?: string;
   description: string | ReactNode;
@@ -22,7 +23,7 @@ export default function ProductSearchSection({
 
   const [searchQuery, setSearchQuery] = useState("")
   return (
-    <div className="w-full py-16 md:py-24 bg-product-bg">
+    <AnimateIn className="w-full py-16 md:py-24 bg-product-bg">
       <div className="container mx-auto px-4 md:px-8 flex text-black flex-col text-left">
         <h2 className="font-sans uppercase text-center text-xs sm:text-base  mb-4 md:mb-16">
           {label}
@@ -58,6 +59,6 @@ export default function ProductSearchSection({
             </Button> 
         </div>
       </div>
-    </div>
+    </AnimateIn>
   );
 }

@@ -1,6 +1,7 @@
 // import PageHero from '@/components/layout/PageHero'
 import React from 'react'
 import HeroSection from '@/components/layout/HeroSection'
+import AnimateIn from '@/components/shared/AnimateIn'
 import SafetySupportSection from './components/SafetySupportSection'
 import SafetyReportingForm from './components/SafetyReportingForm'
 
@@ -11,8 +12,12 @@ const page = () => {
     title='Report a BF Biosciences product concern'
     backgroundImage='/images/medicines/product-concern/Hero.webp'
     titleSize='small'/>
-    <SafetySupportSection/>
-    <SafetyReportingForm/>
+    <AnimateIn>
+      <SafetySupportSection/>
+    </AnimateIn>
+    <AnimateIn>
+      <SafetyReportingForm/>
+    </AnimateIn>
     </div>
   )
 }

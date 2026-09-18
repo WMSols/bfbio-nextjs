@@ -1,5 +1,6 @@
 import { manufacturingProductionLines } from "@/data/manufacturing";
 import GradientCard from "./GradientCard";
+import AnimateIn, { AnimateInItem } from "@/components/shared/AnimateIn";
 
 export default function ProductionLinesSection() {
   const { titleLead, titleAccent, description, lines } =
@@ -18,10 +19,10 @@ export default function ProductionLinesSection() {
           </p>
         </div>
 
-        <div className="mx-auto mt-12 grid max-w-6xl grid-cols-1 items-stretch gap-6 md:mt-16 lg:grid-cols-2 lg:gap-8">
+        <AnimateIn stagger className="mx-auto mt-12 grid max-w-6xl grid-cols-1 items-stretch gap-6 md:mt-16 lg:grid-cols-2 lg:gap-8">
           {lines.map((line, index) => (
+            <AnimateInItem key={line.title} className="h-full">
             <GradientCard
-              key={line.title}
               reverse={index % 2 === 1}
               innerClassName="px-8 py-10 md:px-10 md:py-12"
             >
@@ -63,8 +64,9 @@ export default function ProductionLinesSection() {
                 </ul>
               </div>
             </GradientCard>
+            </AnimateInItem>
           ))}
-        </div>
+        </AnimateIn>
       </div>
     </section>
   );
