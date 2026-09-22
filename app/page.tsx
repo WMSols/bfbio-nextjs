@@ -11,13 +11,14 @@ export default function HomePage() {
   return (
     <>
       <HeroSection title={<span>We Build <strong>Biopharmaceutical</strong> Solutions</span>}
-      backgroundVideo="/hero-video.mov" overlayClassName="bg-black/50" titleSize="small" />
+      backgroundVideo="/hero-video.mov" overlayClassName="bg-black/50" titleSize="small" backgroundClassName="h-svh min-h-svh md:h-svh md:min-h-svh" />
 
       <TherapeuticsGrid />
 
       <MissionSection {...missionData} />
 
-      <ProductSearchSection description={<span>Our portfolio of more than 140 products reflects<br className="hidden md:block"/> our unwavering commitment to putting patients<br className="hidden md:block"/> first through quality and innovation.</span>} />
+      <ProductSearchSection description={<span>Our portfolio is built to address evolving healthcare needs by delivering high-quality
+        therapies and<br className="hidden md:block"/> helping expand access to better care</span>} />
       <div className="flex flex-col gap-16 py-16">
 
       <BannerCard title={<span>We improve lives<br className="hidden md:block"/> through innovation<br className="hidden md:block"/> and access.</span>} description={<span>BF Biosciences develops and manufactures<br className="hidden md:block"/> advanced biopharmaceuticals, expanding access to<br className="hidden md:block"/> innovative therapies while strengthening Pakistan's<br className="hidden md:block"/> biotechnology capabilities.</span>} image="/images/banner-bg.webp" ctaText="View our Manufacturing" ctaLink="/manufacturing" overlayClassName="bg-black/40"/>

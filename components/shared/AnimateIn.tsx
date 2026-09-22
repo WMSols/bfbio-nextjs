@@ -2,6 +2,7 @@
 
 import { m } from "framer-motion";
 import { createContext, useContext, type ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
 const EASE_OUT = [0.22, 1, 0.36, 1] as const;
 const DEFAULT_Y = 16;
@@ -95,7 +96,7 @@ export function AnimateInItem({ children, className }: AnimateInItemProps) {
 
   return (
     <m.div
-      className={className}
+      className={cn("h-full *:h-full", className)}
       variants={itemVariants}
       {...(!inStagger
         ? {

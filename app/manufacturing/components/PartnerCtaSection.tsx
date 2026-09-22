@@ -5,7 +5,7 @@ export default function PartnerCtaSection() {
   const { title, description, ctaText, ctaLink } = manufacturingCta;
 
   return (
-    <section className="bg-brand py-16 text-white md:py-16 border-b">
+    <section className="bg-brand py-16 text-white md:py-16 ">
       <div className="container flex flex-col items-center text-center">
         <h2 className="text-[32px] leading-snug font-medium md:text-[40px]">
           {title}

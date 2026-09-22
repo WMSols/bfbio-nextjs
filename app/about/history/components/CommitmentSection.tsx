@@ -8,7 +8,7 @@ const links = [
 
 export default function CommitmentSection() {
   return (
-    <section className="bg-brand py-16 text-white md:py-20 border-b">
+    <section className="bg-brand py-16 text-white md:py-20">
       <div className="container flex flex-col items-center text-center">
         <h2 className="max-w-4xl text-3xl font-medium leading-normal md:text-5xl lg:text-[56px]">
           Our Commitment

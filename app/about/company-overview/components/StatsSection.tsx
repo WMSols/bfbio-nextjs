@@ -10,7 +10,7 @@ const stats = [
 
 export default function StatsSection() {
   return (
-    <AnimateIn as="section" className="relative flex  sm:h-301.5 min-h-128 items-center overflow-hidden px-6 py-16 text-white md:px-16 md:py-28">
+    <AnimateIn as="section" className="relative flex  sm:h-screen min-h-screen items-center overflow-hidden px-6 py-4 text-white md:px-16 ">
       <Image
         src="/images/about/company-overview/stats.webp"
         alt=""

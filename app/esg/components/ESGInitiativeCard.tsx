@@ -17,7 +17,7 @@ export default function ESGInitiativeCard({
   const accent = categoryAccent[initiative.category];
 
   return (
-    <div className="group bg-card border border-border rounded-2xl overflow-hidden transition-shadow duration-200 hover:shadow-md">
+    <div className="group flex h-full flex-col bg-card border border-border rounded-2xl overflow-hidden transition-shadow duration-200 hover:shadow-md">
       <div className={`h-1 w-full ${accent.dot}`} />
 
       <div className="p-7">

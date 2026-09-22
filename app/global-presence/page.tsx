@@ -16,7 +16,7 @@ export default function GlobalPresencePage() {
     <div className="bg-[#F7F7F7]">
       <HeroSection
         title="Global Presence"
-        backgroundImage="/images/global-presence/hero.webp"
+        backgroundImage="/images/global-presence/hero.png"
       />
       <RegionsSection />
       <AnimateIn>

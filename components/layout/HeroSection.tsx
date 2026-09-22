@@ -60,7 +60,8 @@ const HeroSection = ({
     <section
       className={cn(
         "relative flex items-center overflow-hidden py-32",
-        hasMedia && "text-white justify-center h-svh min-h-svh  py-16 md:py-24",
+        hasMedia &&
+          "text-white justify-center h-svh min-h-[32rem] md:min-h-0 md:h-[min(100svh,56.25vw)] py-16 md:py-24",
         backgroundClassName,
       )}
     >
@@ -76,14 +77,14 @@ const HeroSection = ({
               loop
               playsInline
               aria-hidden
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover object-center"
             />
           ) : (
             backgroundImage && (
               <img
                 src={backgroundImage}
                 alt=""
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover object-center"
               />
             )
           )}

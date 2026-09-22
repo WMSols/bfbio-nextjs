@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function TrustSection() {
   return (
-    <section className="relative flex h-[600px]  sm:h-[1206px] items-end justify-center overflow-hidden px-6 py-16 md:px-16 md:py-24">
+    <section className="relative flex h-[600px]  sm:h-screen items-end justify-center overflow-hidden px-6 py-16 md:px-16 md:py-24">
       <Image
         src="/images/global-presence/trust.webp"
         alt=""

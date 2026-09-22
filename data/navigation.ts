@@ -20,7 +20,7 @@ export const mainNavItems: NavItem[] = [
     label: "About Us",
     href: "/about",
     description:
-      "For over 70 years, Bf Bio Sciences has been putting patients first",
+      "Over 20 years of biotechnology, driven by a vision for better health",
     megaImage: "/images/navbar/nav-about.jpg",
     megaImageTitle: "",
     megaImageSubtitle: "Discover our Company",
