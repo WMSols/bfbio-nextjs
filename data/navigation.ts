@@ -46,15 +46,15 @@ export const mainNavItems: NavItem[] = [
   },
   {
     label: "Shop",
-    href: "/shop",
+    href: "https://btr1hg-7g.myshopify.com/",
     description:
       "Discover a growing selection of products, available directly from BF Biosciences",
     megaImage: "/images/navbar/nav-shop.png",
     megaImageTitle: "",
     megaImageSubtitle: "View our products",
-    megaImageLink: "/shop",
+    megaImageLink: "https://btr1hg-7g.myshopify.com/",
     children: [
-      { label: "All products", href: "/shop" },
+      { label: "All products", href: "https://btr1hg-7g.myshopify.com/collections/all" },
       { label: "Sibionics CGM", href: "/shop/sibionics-cgm" },
     ],
   },
@@ -151,7 +151,7 @@ export const footerLinks = [
   {
     title: "Shop",
     links: [
-      { label: "All products", href: "/shop" },
+      { label: "All products", href: "https://btr1hg-7g.myshopify.com/collections/all" },
       { label: "Sibionics CGM", href: "/shop/sibionics-cgm" },
     ],
   },
