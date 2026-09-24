@@ -6,7 +6,7 @@ export default function SibionicsHero() {
   return (
     <section className="relative flex h-svh min-h-svh items-center overflow-hidden pt-28 pb-28 md:pt-32 md:pb-36">
       <MediaPlaceholder
-        src={sibionicsHero.backgroundImage}
+        src='/images/shop/sibionics/hero.webp'
         alt=""
         placeholderClassName={sibionicsHero.placeholderClassName}
         className="absolute inset-0"
@@ -26,7 +26,7 @@ export default function SibionicsHero() {
         <Button
           href={sibionicsBuyNow.href}
           size="pill"
-          className="mt-10 rounded-full border-transparent bg-black px-10 text-sm font-medium tracking-[0.12em] text-white hover:bg-black/85"
+          className="mt-24 rounded-[12px] border-transparent bg-black px-10 text-sm font-medium tracking-[0.12em] text-white hover:bg-black/85"
         >
           {sibionicsBuyNow.label}
         </Button>

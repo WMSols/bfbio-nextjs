@@ -73,14 +73,14 @@ export const sibionicsFeatures: SibionicsFeature[] = [
   {
     title: "Easy and Painless Application",
     body: "Applying the sensor is quick and simple. Just follow the step-by-step instructions included in the package, and you'll be ready to start tracking your glucose in minutes.",
-    image: "/images/shop/sibionics/application.webp",
+    image: "/images/shop/sibionics/grid-1.png",
     imageAlt: "Applying a SIBIONICS GS1 sensor to the back of the arm",
     placeholderClassName: "bg-[#d9cfc3]",
   },
   {
     title: "Designed to Stay Out of the Way",
     body: "The GS1 CGM features a discreet, low-profile design made to fit seamlessly into your day—so you can keep tracking your glucose without unnecessary distractions or getting in the way of how you live.",
-    image: "/images/shop/sibionics/discreet.webp",
+    image: "/images/shop/sibionics/wear.jpg",
     imageAlt: "SIBIONICS GS1 worn discreetly on the upper arm",
     placeholderClassName: "bg-[#4a6b7c]",
     imageOnLeft: true,
@@ -88,7 +88,7 @@ export const sibionicsFeatures: SibionicsFeature[] = [
   {
     title: "Waterproof for Everyday Wear",
     body: "With an IP28 waterproof rating*, the GS1 is built to stay on through workouts, showers, swims, and everything in between.",
-    image: "/images/shop/sibionics/waterproof.webp",
+    image: "/images/shop/sibionics/grid-3.jpg",
     imageAlt: "SIBIONICS GS1 worn in water",
     placeholderClassName: "bg-[#7a9aaa]",
     showWaterproofIcon: true,

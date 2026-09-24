@@ -15,7 +15,7 @@ export default function SibionicsCgmPage() {
   return (
     <div className="bg-black">
       <SibionicsHero />
-      <div className="relative z-10 -mt-16 rounded-t-[2.5rem] bg-white md:-mt-24 md:rounded-t-[3.5rem]">
+      <div className="relative z-10 -mt-16 rounded-t-[2.5rem] bg-white md:-mt-12 md:rounded-t-[3.5rem]">
         <IntroSection />
         <InsightsCtaSection />
         <WearSection />

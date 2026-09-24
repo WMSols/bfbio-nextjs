@@ -17,7 +17,7 @@ export default function AppShowcaseSection() {
 
         <div className="mt-10 overflow-hidden rounded-[32px] bg-black md:mt-14 md:rounded-[40px]">
           <MediaPlaceholder
-            src={sibionicsApp.image}
+            src='/images/shop/sibionics/frame.png'
             alt={sibionicsApp.imageAlt}
             placeholderClassName={sibionicsApp.placeholderClassName}
             className="aspect-21/9 min-h-64 w-full md:min-h-88"

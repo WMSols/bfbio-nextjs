@@ -27,7 +27,7 @@ function HighlightedTitle({
 export default function WearSection() {
   return (
     <AnimateIn as="section" className="py-12 md:py-20">
-      <div className="container">
+      <div className="container ">
         <div className="max-w-4xl">
           <h2 className="text-4xl leading-tight font-medium text-black md:text-5xl lg:text-[3.5rem]">
             <HighlightedTitle
@@ -42,10 +42,10 @@ export default function WearSection() {
 
         <div className="relative mt-10 overflow-hidden rounded-[32px] md:mt-14 md:rounded-[40px]">
           <MediaPlaceholder
-            src={sibionicsWear.image}
+            src='/images/shop/sibionics/wear.jpg'
             alt={sibionicsWear.imageAlt}
             placeholderClassName={sibionicsWear.placeholderClassName}
-            className="aspect-16/10 min-h-80 w-full md:min-h-128"
+            className="aspect-16/10 min-h-80 w-full md:min-h-100"
           />
 
           <div className="absolute bottom-[16%] left-[6%] md:left-[8%]">

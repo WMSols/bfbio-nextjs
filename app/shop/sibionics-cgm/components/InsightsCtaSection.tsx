@@ -9,7 +9,7 @@ export default function InsightsCtaSection() {
       <div className="container">
         <div className="flex flex-col items-center gap-8 rounded-[40px] bg-[#D4F3EF] p-6 sm:p-8 md:flex-row md:gap-10 md:rounded-[48px] md:p-10 lg:gap-14">
           <MediaPlaceholder
-            src={sibionicsInsights.image}
+            src='/images/shop/sibionics/insight.gif'
             alt={sibionicsInsights.imageAlt}
             placeholderClassName={sibionicsInsights.placeholderClassName}
             className="aspect-5/4 w-full shrink-0 rounded-[28px] md:w-[38%] md:max-w-md"
@@ -29,7 +29,7 @@ export default function InsightsCtaSection() {
               href={sibionicsBuyNow.href}
               variant="outline"
               size="pill"
-              className="shrink-0 rounded-full border-black bg-white px-8 text-sm font-medium tracking-[0.12em] text-black hover:bg-black/5 hover:text-black"
+              className="shrink-0 rounded-[12px] bg-transparent  border-black  px-8 text-sm font-medium tracking-[0.12em] text-black hover:bg-black/5 hover:text-black"
             >
               {sibionicsBuyNow.label}
             </Button>
