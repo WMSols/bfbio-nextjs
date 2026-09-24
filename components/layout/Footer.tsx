@@ -1,6 +1,6 @@
 "use client";
 
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -8,10 +8,9 @@ import { usePathname } from "next/navigation";
 // import { Facebook, Instagram, Linkedin } from "lucide-react";
 import { footerLinks, legalLinks, socialLinks } from "@/data/navigation";
 import { cn } from "@/lib/utils";
-// import {
-//   fetchWebsiteUpdateDate,
-//   WEBSITE_UPDATE_DATE_FALLBACK,
-// } from "@/lib/website-update-date";
+import {
+  fetchWebsiteUpdateDate,
+} from "@/lib/website-update-date";
 
 const WEBSITE_UPDATE_DATE_FALLBACK = "September 2026";
 
@@ -82,14 +81,13 @@ const Footer = ({
   backgroundClassName?: string;
 }) => {
   const pathname = usePathname();
-  const displayDate = WEBSITE_UPDATE_DATE_FALLBACK;
   const resolvedBackground =
     backgroundClassName ??
     (dark ? "bg-black" : footerBackgroundForPath(pathname));
-  // const [displayDate, setDisplayDate] = useState(WEBSITE_UPDATE_DATE_FALLBACK);
-  // useEffect(() => {
-  //   fetchWebsiteUpdateDate().then(setDisplayDate);
-  // }, []);
+  const [displayDate, setDisplayDate] = useState(WEBSITE_UPDATE_DATE_FALLBACK);
+  useEffect(() => {
+    fetchWebsiteUpdateDate().then(setDisplayDate);
+  }, []);
 
   return (
     <footer className={cn("reveal-section text-white bg-[#1f011d]", )}>

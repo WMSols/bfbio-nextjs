@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { privacyPolicy } from "@/data/privacy-policy";
 import AnimateIn from "@/components/shared/AnimateIn";
-// import { fetchWebsiteUpdateDate } from "@/lib/website-update-date";
+import { fetchWebsiteUpdateDate } from "@/lib/website-update-date";
 
 export const metadata = {
   title: "Privacy Policy",
@@ -10,7 +10,7 @@ export const metadata = {
 };
 
 export default async function PrivacyPolicyPage() {
-  const lastUpdated = "September 2026"; // await fetchWebsiteUpdateDate() || "N/A";
+  const lastUpdated = await fetchWebsiteUpdateDate() || "N/A";
 
   return (
     <AnimateIn as="section" className="bg-white pt-28 pb-16 md:pt-52 md:pb-24">
