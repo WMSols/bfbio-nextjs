@@ -167,7 +167,7 @@ export default async function InvestorsPage({
           Corporate Governance
         </h2>
         <p className="text-muted-foreground leading-relaxed text-lg font-light max-w-4xl pb-12">
-          Ferozsons Laboratories is committed to the highest standards of
+          Bf Biosciences Ltd. is committed to the highest standards of
           corporate governance. Our Board of Directors provides strategic
           oversight and ensures accountability to shareholders and stakeholders.
           For more details, visit our{" "}
