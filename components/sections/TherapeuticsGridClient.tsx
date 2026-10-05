@@ -30,25 +30,25 @@ function SlideNav({
       <button
         onClick={onPrev}
         className={cn(
-          "flex size-12 items-center justify-center rounded-full p-[2px] text-white transition-opacity hover:opacity-80",
+          "flex size-14 items-center justify-center rounded-full p-[2px] text-white transition-opacity hover:opacity-80",
           active === "prev" ? "bg-brand-gradient" : "bg-transparent",
         )}
         aria-label="Previous slide"
       >
         <span className="flex size-full items-center justify-center rounded-full bg-[#A8A4AC]">
-          <ChevronLeft className="size-5" />
+          <ChevronLeft className="size-8" />
         </span>
       </button>
       <button
         onClick={onNext}
         className={cn(
-          "flex size-12 items-center justify-center rounded-full p-[2px] text-white transition-opacity hover:opacity-80",
+          "flex size-14 items-center justify-center rounded-full p-[2px] text-white transition-opacity hover:opacity-80",
           active === "next" ? "bg-brand-gradient" : "bg-transparent",
         )}
         aria-label="Next slide"
       >
         <span className="flex size-full items-center justify-center rounded-full bg-[#A8A4AC]">
-          <ChevronRight className="size-5" />
+          <ChevronRight className="size-8" />
         </span>
       </button>
     </div>
@@ -59,7 +59,6 @@ function getSlideRole(
   index: number,
   activeIndex: number,
   length: number,
-  direction: NavDirection,
   prepIndex: number | null,
   prepRole: SlideRole | null,
 ): SlideRole {
@@ -70,10 +69,11 @@ function getSlideRole(
   const prevIndex = (activeIndex - 1 + length) % length;
   const nextIndex = (activeIndex + 1) % length;
 
-  // Two slides share one inactive card — park it on the exit side of the last move
-  // so a reversed click can enter from the correct side immediately.
+  // Two slides share one inactive card — always keep it as the left peek so the
+  // strip never empties. Reversed "next" clicks teleport via prep to enter from
+  // the right (see isEnterSide + goTo).
   if (length === 2) {
-    return direction === "next" ? "prev" : "next";
+    return "prev";
   }
 
   if (index === prevIndex) return "prev";
@@ -98,6 +98,7 @@ export default function TherapeuticsGridClient({
   const [skipTransition, setSkipTransition] = useState(false);
   const [prepIndex, setPrepIndex] = useState<number | null>(null);
   const [prepRole, setPrepRole] = useState<SlideRole | null>(null);
+  const [silentIndexes, setSilentIndexes] = useState<number[]>([]);
 
   const touchStartX = useRef(0);
   const isDragging = useRef(false);
@@ -110,6 +111,18 @@ export default function TherapeuticsGridClient({
     const categorySlug =
       !categoriesLoading && categories.find((c) => c.name === title)?.slug;
     return categorySlug || title.toLowerCase().replace(/\s+/g, "-");
+  };
+
+  const clearSilentSoon = () => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => setSilentIndexes([]));
+    });
+  };
+
+  const finishAnimation = () => {
+    window.setTimeout(() => {
+      isAnimating.current = false;
+    }, 700);
   };
 
   const goTo = useCallback(
@@ -129,20 +142,59 @@ export default function TherapeuticsGridClient({
         nextIndex,
         activeIndex,
         length,
-        activeNav,
         null,
         null,
       );
 
+      const outgoingIndex = activeIndex;
+      const newPrevIndex = (nextIndex - 1 + length) % length;
+
       const commit = () => {
+        setActiveNav(direction);
+        setActiveIndex(nextIndex);
+
+        // Prev: never let a card animate across the active slide to reach the
+        // left peek. Exit right (2-slide) or teleport onto the left quietly.
+        if (direction === "prev") {
+          if (length === 2) {
+            setPrepIndex(outgoingIndex);
+            setPrepRole("next");
+            setSkipTransition(false);
+            window.setTimeout(() => {
+              setSilentIndexes([outgoingIndex]);
+              setPrepIndex(null);
+              setPrepRole(null);
+              clearSilentSoon();
+              isAnimating.current = false;
+            }, 700);
+            return;
+          }
+
+          const newPrevRole = getSlideRole(
+            newPrevIndex,
+            outgoingIndex,
+            length,
+            null,
+            null,
+          );
+          if (
+            newPrevIndex !== nextIndex &&
+            (newPrevRole === "next" || newPrevRole === "hidden-right")
+          ) {
+            setSilentIndexes([newPrevIndex]);
+            setPrepIndex(null);
+            setPrepRole(null);
+            setSkipTransition(false);
+            clearSilentSoon();
+            finishAnimation();
+            return;
+          }
+        }
+
         setPrepIndex(null);
         setPrepRole(null);
         setSkipTransition(false);
-        setActiveNav(direction);
-        setActiveIndex(nextIndex);
-        window.setTimeout(() => {
-          isAnimating.current = false;
-        }, 700);
+        finishAnimation();
       };
 
       isAnimating.current = true;
@@ -163,7 +215,7 @@ export default function TherapeuticsGridClient({
 
       commit();
     },
-    [activeIndex, activeNav, items],
+    [activeIndex, items],
   );
 
   const nextSlide = () => goTo("next");
@@ -182,17 +234,17 @@ export default function TherapeuticsGridClient({
       ) : (
         <div className="flex w-full flex-col lg:grid lg:grid-cols-2 lg:items-stretch">
           <AnimateIn className="order-1 flex flex-col justify-between gap-10 px-6 py-4 sm:px-10 lg:order-2 lg:gap-0 lg:px-12 lg:py-2 xl:px-16">
-            <div className="flex flex-col gap-8 2xl:gap-12">
+            <div className="flex flex-col gap-4  2xl:gap-6">
               <p className="text-sm sm:text-xl font-extralight tracking-[0.16em] uppercase">
                 Therapeutic Areas
               </p>
-              <div className="bg-brand-gradient mt-8 h-5 w-50 " />
+              <div className="bg-brand-gradient 2xl:mt-8 mt-4 h-5 w-50 " />
               <h2 className=" text-3xl leading-[1.15] font-medium tracking-tight  md:text-5xl 2xl:text-[63px]">
                 A broad portfolio of
                 <br />
                 innovative therapies
               </h2>
-              <p className="mt-8  text-base font-normal leading-relaxed text-black/80  md:text-xl">
+              <p className="2xl:mt-2    text-base font-normal  text-black/80  md:text-xl">
                 Through continuous development and strategic
                 <br className="hidden sm:block" /> partnerships, we offer
                 medicines across several
@@ -213,9 +265,10 @@ export default function TherapeuticsGridClient({
           <div
             className={cn(
               "relative order-2 w-full overflow-hidden touch-pan-y select-none lg:order-1",
-              "[--gap:0.75rem] [--gutter:10%] [--card:86%]",
+              "[--gap:1.75rem] [--gutter:10%] [--card:86%]",
+              "[--active-w:calc(var(--card)-100px)] [--prev-w:calc(var(--card)-250px)]",
               "sm:[--gutter:12%] sm:[--card:82%]",
-              "lg:[--gutter:8%] lg:[--card:90%]",
+              "lg:[--gutter:18%] lg:[--card:90%]",
             )}
             onPointerDown={(e) => {
               touchStartX.current = e.clientX;
@@ -246,7 +299,7 @@ export default function TherapeuticsGridClient({
               isDragging.current = false;
             }}
           >
-            <div className="invisible ml-[var(--gutter)] aspect-square w-[var(--card)]" />
+            <div className="invisible ml-[var(--gutter)] aspect-square w-[var(--active-w)]" />
 
             {items.map((item, index) => {
               const length = items.length;
@@ -254,13 +307,14 @@ export default function TherapeuticsGridClient({
                 index,
                 activeIndex,
                 length,
-                activeNav,
                 prepIndex,
                 prepRole,
               );
               const isActive = role === "active";
+              const isSilent =
+                skipTransition || silentIndexes.includes(index);
               const shouldAnimate =
-                !skipTransition &&
+                !isSilent &&
                 (role === "active" || role === "prev" || role === "next");
 
               const linkHref = `/medicines?category=${getCategorySlug(item.name)}`;
@@ -274,13 +328,13 @@ export default function TherapeuticsGridClient({
                       "duration-700 ease-out [transition-property:left,top,width]",
                     !shouldAnimate && "transition-none",
                     role === "active" &&
-                      "top-0 left-[var(--gutter)] z-10 w-[var(--card)] pointer-events-auto",
+                      "top-0 left-[var(--gutter)] z-10 w-[var(--active-w)] pointer-events-auto",
                     role === "prev" &&
-                      "top-[75px] z-5 w-[calc(var(--card)-150px)] left-[calc(var(--gutter)-var(--gap)-(var(--card)-150px))] pointer-events-auto",
+                      "top-[75px] z-5 w-[var(--prev-w)] left-[calc(var(--gutter)-var(--gap)-var(--prev-w))] pointer-events-auto",
                     role === "hidden-left" &&
-                      "top-[75px] z-0 w-[calc(var(--card)-150px)] left-[calc(var(--gutter)-var(--gap)-(var(--card)-150px)-var(--card))] pointer-events-none",
+                      "top-[75px] z-0 w-[var(--prev-w)] left-[calc(var(--gutter)-var(--gap)-var(--prev-w)-var(--active-w))] pointer-events-none",
                     (role === "next" || role === "hidden-right") &&
-                      "top-0 left-full z-0 w-[var(--card)] pointer-events-none",
+                      "top-0 left-full z-0 w-[var(--active-w)] pointer-events-none",
                   )}
                 >
                   <TherapeuticCardBig
