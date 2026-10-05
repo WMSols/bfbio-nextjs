@@ -172,7 +172,7 @@ export default async function InvestorsPage({
           oversight and ensures accountability to shareholders and stakeholders.
           For more details, visit our{" "}
           <Link
-            href="/board-of-directors"
+            href="/about/board-of-directors"
             className="text-[#3B73AC] hover:text-[#294e74] underline underline-offset-4 transition-colors font-normal"
           >
             Board of Directors
