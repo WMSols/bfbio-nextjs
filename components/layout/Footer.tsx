@@ -91,7 +91,7 @@ const Footer = ({
 
   return (
     <footer className={cn("reveal-section text-white bg-[#1f011d]", )}>
-      <div className="container pt-16 ">
+      <div className="container pt-16 px-16  ">
         <div className="flex flex-col gap-10 lg:grid lg:grid-cols-6 lg:gap-x-12 lg:gap-y-10">
           {/* Logo column */}
           <div>
@@ -101,10 +101,10 @@ const Footer = ({
                 alt="BF Biosciences"
                 width={200}
                 height={50}
-                className="h-10 w-auto"
+                className="h-14 w-auto"
               />
             </Link>
-            <p className="text-sm opacity-70 leading-relaxed">
+            <p className="text-sm opacity-40 leading-relaxed">
             BF Biosciences develops and manufactures advanced biopharmaceuticals, expanding access to innovative therapies while strengthening Pakistan's biotechnology capabilities.
             </p>
             <div className="mt-6">
@@ -167,7 +167,7 @@ const Footer = ({
               rights reserved.
             </p>
            
-            <p className="text-xs  mt-2">“In case your complaint has not been properly redressed by us, you may lodge your 
+            <p className="text-xs opacity-40  mt-2">“In case your complaint has not been properly redressed by us, you may lodge your 
 complaint with Securities and Exchange Commission of Pakistan (the “SECP”). 
 However, please note that SECP will entertain only those complaints which were at first 
 directly requested to be redressed by the company and the company has failed to 
@@ -249,8 +249,8 @@ domain/competence shall not be entertained by the SECP.</p>
             </a>
           </p>
           {/* Dynamic Date Rendered Here */}
-          <p className="text-center text-xs mt-2 ">
-            Last date website was updated: {displayDate}
+          <p className="text-center text-xs mt-2 text-white/40">
+            Last date website was updated: <span className="text-white">{displayDate}</span>
           </p>
         </div>
       </div>

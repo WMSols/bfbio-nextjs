@@ -4,7 +4,7 @@ import MediaPlaceholder from "./MediaPlaceholder";
 
 export default function SibionicsHero() {
   return (
-    <section className="relative flex h-svh min-h-svh items-center overflow-hidden pt-28 pb-28 md:pt-32 md:pb-36">
+    <section className="relative flex h-svh min-h-svh items-center overflow-hidden pt-28 pb-28 md:pt-40 md:pb-36">
       <MediaPlaceholder
         src='/images/shop/sibionics/hero.webp'
         alt=""
@@ -14,7 +14,7 @@ export default function SibionicsHero() {
       <div className="absolute inset-0 bg-black/45" />
 
       <div className="container relative z-10 flex flex-col items-center text-center">
-        <h1 className="text-5xl leading-none font-bold tracking-tight text-white sm:text-6xl md:text-7xl lg:text-[5.5rem]">
+        <h1 className="text-5xl leading-none font-bold tracking-tight text-white sm:text-6xl md:text-7xl 2xl:text-[5.5rem]">
           {sibionicsHero.title}
         </h1>
         <p className="mt-4 text-2xl font-medium text-[#1DB8B0] sm:text-3xl md:text-5xl md:leading-tight">

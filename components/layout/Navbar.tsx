@@ -22,6 +22,15 @@ const Navbar = () => {
 
   const pathname = usePathname();
   const router = useRouter();
+  const isSibionicsPage = pathname.startsWith("/shop/sibionics-cgm");
+  const navLogoSrc = isSibionicsPage
+    ? "/images/sibionics-logo-nav.png"
+    : "/images/nav-logo.webp";
+  const navLogoAlt = isSibionicsPage
+    ? "SIBIONICS"
+    : "Ferozsons Laboratories Limited";
+  const desktopNavLogoClass = isSibionicsPage ? "h-6 w-auto" : "h-10 w-auto";
+  const mobileNavLogoClass = isSibionicsPage ? "h-5 w-auto" : "h-8 w-auto";
   const desktopSearchRef = useRef<HTMLInputElement>(null);
   const navContainerRef = useRef<HTMLDivElement>(null);
   const closeMenuTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -263,11 +272,11 @@ const Navbar = () => {
                 }}
               >
                 <Image
-                  src="/images/nav-logo.webp"
-                  alt="Ferozsons Laboratories Limited"
+                  src={navLogoSrc}
+                  alt={navLogoAlt}
                   width={200}
                   height={50}
-                  className="h-10 w-auto"
+                  className={desktopNavLogoClass}
                   priority
                 />
               </Link>
@@ -400,11 +409,11 @@ const Navbar = () => {
           <>
             <Link href="/" className="flex items-center shrink-0">
               <Image
-                src="/images/nav-logo.webp"
-                alt="Ferozsons Laboratories Limited"
+                src={navLogoSrc}
+                alt={navLogoAlt}
                 width={160}
                 height={40}
-                className="h-8 w-auto"
+                className={mobileNavLogoClass}
                 priority
               />
             </Link>
@@ -446,11 +455,11 @@ const Navbar = () => {
               }}
             >
               <Image
-                src="/images/nav-logo.webp"
-                alt="Ferozsons Laboratories Limited"
+                src={navLogoSrc}
+                alt={navLogoAlt}
                 width={160}
                 height={40}
-                className="h-8 w-auto"
+                className={mobileNavLogoClass}
                 priority
               />
             </Link>
