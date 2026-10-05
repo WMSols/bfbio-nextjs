@@ -130,7 +130,7 @@ export default async function InvestorsPage({
         </div>
       </div>
 
-      <div className="max-w-7xl pt-4 md:pt-18 mx-auto">
+      <div className="2xl:max-w-7xl max-w-5xl pt-4 md:pt-18 mx-auto">
         <p className="mb-6 md:mb-8 text-muted-foreground text-sm font-light">
           Figures as of {formattedDate}
         </p>
@@ -166,7 +166,7 @@ export default async function InvestorsPage({
         <h2 className="text-3xl font-serif font-medium mb-4 text-foreground">
           Corporate Governance
         </h2>
-        <p className="text-muted-foreground leading-relaxed text-lg font-light max-w-4xl">
+        <p className="text-muted-foreground leading-relaxed text-lg font-light max-w-4xl pb-12">
           Ferozsons Laboratories is committed to the highest standards of
           corporate governance. Our Board of Directors provides strategic
           oversight and ensures accountability to shareholders and stakeholders.

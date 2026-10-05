@@ -51,7 +51,7 @@ export const regions = [
   {
     id: "europe",
     name: "Europe",
-    image: "/images/global-presence/hero.webp",
+    image: "/images/global-presence/hero.png",
     countries: ["Belarus", "Ireland", "Switzerland", "Ukraine"],
   },
   {

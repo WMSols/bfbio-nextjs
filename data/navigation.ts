@@ -122,7 +122,7 @@ export const secondaryNavItems: NavItem[] = [
     href: "/careers",
     description:
       "We are committed to employee development through continuous learning and leadership opportunities",
-    megaImage: "/images/careers/hero.webp",
+    megaImage: "/images/careers/careers-hero.webp",
     megaImageTitle: "",
     megaImageSubtitle: "Find your role at BF Biosciences",
     megaImageLink: "/careers",
