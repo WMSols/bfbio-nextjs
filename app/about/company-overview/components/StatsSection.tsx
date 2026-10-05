@@ -1,5 +1,6 @@
 import Image from "next/image";
 import AnimateIn from "@/components/shared/AnimateIn";
+import StatCounter from "./StatCounter";
 
 const stats = [
   { value: "1000+", label: "Employees" },
@@ -31,7 +32,7 @@ export default function StatsSection() {
           {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col items-center gap-4">
               <p className="text-4xl font-bold md:text-5xl lg:text-6xl">
-                {stat.value}
+                <StatCounter value={stat.value} />
               </p>
               <p className=" font-light text-base sm:text-lg">{stat.label}</p>
             </div>

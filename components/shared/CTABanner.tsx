@@ -41,13 +41,13 @@ const CTABanner = ({
 
   return (
     <AnimateIn as="section" className={cn("bg-[#FFE4FF] py-16 md:py-24", paddingClassName, className)}>
-      <div className="container mx-0">
+      <div className={cn("container", isLeft ? "mx-0" : "mx-auto")}>
         <div
           className={cn(
             "flex flex-col",
             isLeft
               ? "items-start max-w-5xl sm:px-32"
-              : "items-center justify-center max-w-[20rem] mx-auto sm:max-w-7xl",
+              : "w-full items-center justify-center mx-auto max-w-7xl",
           )}
         >
           <div
