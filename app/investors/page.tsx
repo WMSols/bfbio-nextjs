@@ -163,7 +163,7 @@ export default async function InvestorsPage({
         </div>
         </AnimateIn>
 
-        <h2 className="text-3xl font-serif font-medium mb-4 text-foreground">
+        <h2 className="text-3xl  font-medium mb-4 text-foreground">
           Corporate Governance
         </h2>
         <p className="text-muted-foreground leading-relaxed text-lg font-light max-w-4xl pb-12">
