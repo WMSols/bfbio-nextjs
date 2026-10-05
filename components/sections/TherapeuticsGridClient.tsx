@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { TherapeuticArea } from "@/types/strapi";
 import { useCategories } from "@/app/medicines/hooks/useCategories";
@@ -13,6 +13,9 @@ interface TherapeuticsGridProps {
   loading: boolean;
 }
 
+type SlideRole = "active" | "prev" | "next" | "hidden-left" | "hidden-right";
+type NavDirection = "prev" | "next";
+
 function SlideNav({
   onPrev,
   onNext,
@@ -20,7 +23,7 @@ function SlideNav({
 }: {
   onPrev: () => void;
   onNext: () => void;
-  active: "prev" | "next";
+  active: NavDirection;
 }) {
   return (
     <div className="flex items-center gap-3">
@@ -52,35 +55,119 @@ function SlideNav({
   );
 }
 
+function getSlideRole(
+  index: number,
+  activeIndex: number,
+  length: number,
+  direction: NavDirection,
+  prepIndex: number | null,
+  prepRole: SlideRole | null,
+): SlideRole {
+  if (prepIndex === index && prepRole) return prepRole;
+  if (index === activeIndex) return "active";
+  if (length <= 1) return "hidden-right";
+
+  const prevIndex = (activeIndex - 1 + length) % length;
+  const nextIndex = (activeIndex + 1) % length;
+
+  // Two slides share one inactive card — park it on the exit side of the last move
+  // so a reversed click can enter from the correct side immediately.
+  if (length === 2) {
+    return direction === "next" ? "prev" : "next";
+  }
+
+  if (index === prevIndex) return "prev";
+  if (index === nextIndex) return "next";
+
+  // Stage the rest in loop order so wrapping never pulls a card from the wrong side.
+  const forwardDistance = (index - activeIndex + length) % length;
+  return forwardDistance <= Math.floor(length / 2) ? "hidden-right" : "hidden-left";
+}
+
+function isEnterSide(role: SlideRole, direction: NavDirection) {
+  if (direction === "next") return role === "next" || role === "hidden-right";
+  return role === "prev" || role === "hidden-left";
+}
+
 export default function TherapeuticsGridClient({
   items,
-  loading
+  loading,
 }: TherapeuticsGridProps) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [activeNav, setActiveNav] = useState<"prev" | "next">("next");
+  const [activeNav, setActiveNav] = useState<NavDirection>("next");
+  const [skipTransition, setSkipTransition] = useState(false);
+  const [prepIndex, setPrepIndex] = useState<number | null>(null);
+  const [prepRole, setPrepRole] = useState<SlideRole | null>(null);
 
-  const touchStartX = useRef<number>(0);
+  const touchStartX = useRef(0);
   const isDragging = useRef(false);
   const hasMoved = useRef(false);
+  const isAnimating = useRef(false);
 
   const { categories, isLoading: categoriesLoading } = useCategories();
 
   const getCategorySlug = (title: string) => {
-    const categorySlug = !categoriesLoading && categories.find((c) => c.name === title)?.slug;
-    return categorySlug || title.toLowerCase().replace(/\s+/g, '-');
+    const categorySlug =
+      !categoriesLoading && categories.find((c) => c.name === title)?.slug;
+    return categorySlug || title.toLowerCase().replace(/\s+/g, "-");
   };
 
-  const nextSlide = () => {
-    if (!items || items.length === 0) return;
-    setActiveNav("next");
-    setActiveIndex((prev) => (prev === items.length - 1 ? 0 : prev + 1));
-  };
+  const goTo = useCallback(
+    (direction: NavDirection, targetIndex?: number) => {
+      if (!items || items.length === 0 || isAnimating.current) return;
 
-  const prevSlide = () => {
-    if (!items || items.length === 0) return;
-    setActiveNav("prev");
-    setActiveIndex((prev) => (prev === 0 ? items.length - 1 : prev - 1));
-  };
+      const length = items.length;
+      const nextIndex =
+        targetIndex ??
+        (direction === "next"
+          ? (activeIndex + 1) % length
+          : (activeIndex - 1 + length) % length);
+
+      if (nextIndex === activeIndex) return;
+
+      const currentRole = getSlideRole(
+        nextIndex,
+        activeIndex,
+        length,
+        activeNav,
+        null,
+        null,
+      );
+
+      const commit = () => {
+        setPrepIndex(null);
+        setPrepRole(null);
+        setSkipTransition(false);
+        setActiveNav(direction);
+        setActiveIndex(nextIndex);
+        window.setTimeout(() => {
+          isAnimating.current = false;
+        }, 700);
+      };
+
+      isAnimating.current = true;
+      setActiveNav(direction);
+
+      // Incoming card is on the exit side (common when looping with 2 slides, or
+      // after traveling one way). Teleport it to the enter side, then animate.
+      if (!isEnterSide(currentRole, direction)) {
+        setSkipTransition(true);
+        setPrepIndex(nextIndex);
+        setPrepRole(direction === "next" ? "next" : "prev");
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(commit);
+        });
+        return;
+      }
+
+      commit();
+    },
+    [activeIndex, activeNav, items],
+  );
+
+  const nextSlide = () => goTo("next");
+  const prevSlide = () => goTo("prev");
 
   return (
     <section className="bg-background w-full overflow-hidden py-16 text-black md:py-24">
@@ -106,12 +193,20 @@ export default function TherapeuticsGridClient({
                 innovative therapies
               </h2>
               <p className="mt-8  text-base font-normal leading-relaxed text-black/80  md:text-xl">
-                Through continuous development and strategic<br className="hidden sm:block" /> partnerships, we offer medicines across several<br className="hidden sm:block" /> therapeutic areas to support modern healthcare.
+                Through continuous development and strategic
+                <br className="hidden sm:block" /> partnerships, we offer
+                medicines across several
+                <br className="hidden sm:block" /> therapeutic areas to support
+                modern healthcare.
               </p>
             </div>
 
             <div className="hidden lg:flex">
-              <SlideNav active={activeNav} onPrev={prevSlide} onNext={nextSlide} />
+              <SlideNav
+                active={activeNav}
+                onPrev={prevSlide}
+                onNext={nextSlide}
+              />
             </div>
           </AnimateIn>
 
@@ -155,14 +250,18 @@ export default function TherapeuticsGridClient({
 
             {items.map((item, index) => {
               const length = items.length;
-
-              let offset = index - activeIndex;
-              if (offset > Math.floor(length / 2)) offset -= length;
-              else if (offset < -Math.floor(length / 2)) offset += length;
-
-              const isActive = offset === 0;
-              const isPrev = offset === -1 || (offset < 0 && length === 2);
-              const shouldAnimate = Math.abs(offset) <= 1;
+              const role = getSlideRole(
+                index,
+                activeIndex,
+                length,
+                activeNav,
+                prepIndex,
+                prepRole,
+              );
+              const isActive = role === "active";
+              const shouldAnimate =
+                !skipTransition &&
+                (role === "active" || role === "prev" || role === "next");
 
               const linkHref = `/medicines?category=${getCategorySlug(item.name)}`;
 
@@ -171,12 +270,17 @@ export default function TherapeuticsGridClient({
                   key={item.name}
                   className={cn(
                     "absolute aspect-square",
-                    shouldAnimate && "duration-700 ease-out [transition-property:left,top,width]",
+                    shouldAnimate &&
+                      "duration-700 ease-out [transition-property:left,top,width]",
                     !shouldAnimate && "transition-none",
-                    isActive && "top-0 left-[var(--gutter)] z-10 w-[var(--card)] pointer-events-auto",
-                    isPrev && "top-[75px] z-5 w-[calc(var(--card)-150px)] left-[calc(var(--gutter)-var(--gap)-(var(--card)-150px))] pointer-events-auto",
-                    offset < -1 && "top-[75px] z-0 w-[calc(var(--card)-150px)] left-[calc(var(--gutter)-var(--gap)-(var(--card)-150px)-var(--card))] pointer-events-none",
-                    offset >= 1 && "top-0 left-full z-0 w-[var(--card)] pointer-events-none",
+                    role === "active" &&
+                      "top-0 left-[var(--gutter)] z-10 w-[var(--card)] pointer-events-auto",
+                    role === "prev" &&
+                      "top-[75px] z-5 w-[calc(var(--card)-150px)] left-[calc(var(--gutter)-var(--gap)-(var(--card)-150px))] pointer-events-auto",
+                    role === "hidden-left" &&
+                      "top-[75px] z-0 w-[calc(var(--card)-150px)] left-[calc(var(--gutter)-var(--gap)-(var(--card)-150px)-var(--card))] pointer-events-none",
+                    (role === "next" || role === "hidden-right") &&
+                      "top-0 left-full z-0 w-[var(--card)] pointer-events-none",
                   )}
                 >
                   <TherapeuticCardBig
@@ -184,8 +288,9 @@ export default function TherapeuticsGridClient({
                     isActive={isActive}
                     linkHref={linkHref}
                     onClick={() => {
-                      if (hasMoved.current) return;
-                      if (!isActive) setActiveIndex(index);
+                      if (hasMoved.current || isActive) return;
+                      const prevIndex = (activeIndex - 1 + length) % length;
+                      goTo(index === prevIndex ? "prev" : "next", index);
                     }}
                   />
                 </div>
