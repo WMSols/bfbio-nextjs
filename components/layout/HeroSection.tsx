@@ -124,7 +124,7 @@ const HeroSection = ({
           size="icon"
           onClick={togglePlayback}
           aria-label={isPlaying ? "Pause background video" : "Play background video"}
-          className="absolute right-5 bottom-5 z-20 size-10 rounded-full md:right-8 md:bottom-8"
+          className="absolute right-5  text-black bottom-5 z-20 size-10 rounded-full md:right-8 md:bottom-8"
         >
           {isPlaying ? (
             <Pause className="size-4 fill-current" />

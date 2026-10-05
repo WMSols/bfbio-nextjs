@@ -188,7 +188,7 @@ export const socialLinks = [
   },
   {
     label: "Facebook",
-    href: "https://www.facebook.com/ferozsonslabs/",
+    href: "https://www.facebook.com/BFBiosciencesltd/",
     icon: "facebook",
   },
   {

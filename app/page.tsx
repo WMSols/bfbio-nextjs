@@ -10,7 +10,7 @@ import { missionData } from "@/data/homepage";
 export default function HomePage() {
   return (
     <>
-      <HeroSection title={<span>We Build <strong>Biopharmaceutical</strong> Solutions</span>}
+      <HeroSection title={<span>We Improve Lives Through<br className="hidden md:block"/> Innovation and Access</span>}
       backgroundVideo="/hero-video.mov" overlayClassName="bg-black/50" titleSize="small" backgroundClassName="h-svh min-h-svh md:h-svh md:min-h-svh" />
 
       <TherapeuticsGrid />
@@ -21,7 +21,7 @@ export default function HomePage() {
         therapies and<br className="hidden md:block"/> helping expand access to better care</span>} />
       <div className="flex flex-col gap-16 py-16">
 
-      <BannerCard title={<span>We improve lives<br className="hidden md:block"/> through innovation<br className="hidden md:block"/> and access.</span>} description={<span>BF Biosciences develops and manufactures<br className="hidden md:block"/> advanced biopharmaceuticals, expanding access to<br className="hidden md:block"/> innovative therapies while strengthening Pakistan's<br className="hidden md:block"/> biotechnology capabilities.</span>} image="/images/banner-bg.webp" ctaText="View our Manufacturing" ctaLink="/manufacturing" overlayClassName="bg-black/40"/>
+      <BannerCard title={<span>Better Health<br className="hidden md:block"/> Through Innovation</span>} description={<span>BF Biosciences develops and manufactures<br className="hidden md:block"/> advanced biopharmaceuticals, expanding access to<br className="hidden md:block"/> innovative therapies while strengthening Pakistan's<br className="hidden md:block"/> biotechnology capabilities.</span>} image="/images/banner-bg.webp" ctaText="View our Manufacturing" ctaLink="/manufacturing" overlayClassName="bg-black/40"/>
 
       <BannerCard title={<span>BF Biosciences advances patient<br className="hidden md:block"/> education and disease awareness<br className="hidden md:block"/> to help people make informed <br className="hidden md:block"/>healthcare decisions.</span>} titleWeight="medium"  image="/images/banner-bg-2.webp" ctaText="View Our Social Responsibility Initiatives" variant="rounded" ctaClassName="max-sm:text-sm max-sm:px-3 mt-16" ctaLink="/esg"/>
       </div>

@@ -221,24 +221,27 @@ domain/competence shall not be entertained by the SECP.</p>
 
           {/* Right Column: Contact info and Links */}
           <div className="flex flex-col gap-3 justify-self-end text-left md:text-right w-full md:w-auto">
-            <p className="text-sm opacity-70 leading-relaxed">
+            <p className="text-xs text-white/40 leading-relaxed">
               For any inquiries, concerns, or complaints, please contact:
               <br />
-              5 KM Sundar Raiwind Road,
-              Raiwind, Lahore, Pakistan
+              <span className="text-white/70">Abdur Rehman, Company Secretary</span>
               <br />
-              Email:{" "}
+              5 KM Sundar Raiwind Road,
+              
+              Raiwind,<br /> Lahore-55150, Pakistan
+              <br />
+              <span className="text-white/40">Email:</span>{" "}
               <a
-                href="mailto:info@bfbio.com"
+                href="mailto:cs@bfbio.com"
                 className="hover:text-white transition-opacity"
               >
-                info@bfbio.com
+                <span className="text-white/70">cs@bfbio.com</span>
               </a>
             </p>
           </div>
         </div>
         <div className="py-6 text-sm font-light border-t border-white/10 mt-4">
-          <p className="text-center">
+          <p className="text-center text-white/70">
             Designed & Developed by{" "}
             <a
               className="text-[#38ceec] font-semibold"
