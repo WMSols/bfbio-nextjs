@@ -116,11 +116,11 @@ export const manufacturingSlideshow = [
     alt: "Close-up of a Telstar water-for-injection process skid",
   },
   {
-    src: manufacturingImage("BF 1.webp"),
+    src: manufacturingImage("slide-3.webp"),
     alt: "Stainless-steel mixing tanks and control cabinets in a clean production area",
   },
   {
-    src: manufacturingImage("BF 2gfnfg.webp"),
+    src: manufacturingImage("slide-4.webp"),
     alt: "High-speed filling and packaging line with blue cleanroom flooring",
   },
   {
@@ -128,7 +128,7 @@ export const manufacturingSlideshow = [
     alt: "Conveyor and stainless filling enclosure inside the production line",
   },
   {
-    src: manufacturingImage("BF 5.webp"),
+    src: manufacturingImage("slide-6.webp"),
     alt: "Rotary vial processing machine in a classified manufacturing room",
   },
   {

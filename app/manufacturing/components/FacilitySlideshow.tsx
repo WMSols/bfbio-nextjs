@@ -78,9 +78,9 @@ export default function FacilitySlideshow() {
   };
 
   return (
-    <section id="facility" className="scroll-mt-28 bg-white py-16 md:py-24 sm:px-12">
+    <section id="facility" className="scroll-mt-28 bg-white py-16 md:py-24 sm:px-24">
       <div className="container">
-        <div className="mx-auto sm:max-w-6xl text-center">
+        <div className="mx-auto sm:max-w-5xl text-center">
           <h2 className="text-4xl leading-[1.15] font-medium text-brand-blue md:text-5xl lg:text-[52px]">
             {titleBefore}
             <span className="text-brand">{titleHighlight}</span>
@@ -91,7 +91,7 @@ export default function FacilitySlideshow() {
           </p>
         </div>
 
-        <div className="relative mx-auto mt-10 aspect-16/10 overflow-hidden rounded-[20px] md:mt-14 md:rounded-[40px]">
+        <div className="relative mx-auto mt-10 h-[600px] sm:h-[620px] 2xl:h-[750px] overflow-hidden rounded-[20px] md:mt-14 md:rounded-[40px]">
           <div
             className={cn(
               "flex h-full",
@@ -109,7 +109,7 @@ export default function FacilitySlideshow() {
                   src={slide.src}
                   alt={slide.alt}
                   fill
-                  sizes="(max-width: 1024px) 100vw, 90vw"
+                  sizes="(max-width: 1024px) 80vw, 70vw"
                   className="object-cover"
                   // Eager-load every slide so deployed navigation never waits on decode.
                   priority={slideIndex <= 2}

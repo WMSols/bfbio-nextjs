@@ -20,7 +20,7 @@ export default function CompanyOverviewPage() {
             health
           </span>
         }
-        backgroundImage="/images/about/company-overview/hero.webp"
+        backgroundImage="/images/about/company-overview/hero-new.webp"
         titleSize="small"
         overlayClassName="bg-black/40"
         titleClassName="leading-[120%]"
