@@ -1,6 +1,6 @@
 export const sibionicsRoutes = {
   landing: "/shop/sibionics-cgm",
-  product: "/shop/sibionics-cgm/product",
+  product: "https://btr1hg-7g.myshopify.com/products/sibionics-gs1-cgm",
   checkout: "/shop/sibionics-cgm/checkout",
 };
 
