@@ -12,7 +12,7 @@ const bannerCardVariants = cva(
       variant: {
         fullScreen: "sm:min-h-screen min-h-[32rem] w-full px-6 py-16 md:px-16 md:py-24",
         rounded:
-          "mx-4 min-h-[32rem] rounded-[50px] px-6 py-12 sm:min-h-screen sm:px-10 md:mx-8 md:min-h-screen md:px-16 md:py-16 lg:mx-12 lg:min-h-screen",
+          "group mx-4 min-h-[32rem] rounded-[50px] px-6 py-12 sm:min-h-screen sm:px-10 md:mx-8 md:min-h-[800px] md:px-16 md:py-16 lg:mx-22 ",
       },
       align: {
         left: "items-start text-left",
@@ -150,7 +150,11 @@ const BannerCard = ({
         sizes={
           variant === "rounded" ? "(max-width: 1024px) 100vw, 90vw" : "100vw"
         }
-        className="z-0 object-cover"
+        className={cn(
+          "z-0 object-cover",
+          variant === "rounded" &&
+            "transition-transform duration-700 ease-out group-hover:scale-105",
+        )}
       />
       {(overlay || overlayClassName) && (
         <div
