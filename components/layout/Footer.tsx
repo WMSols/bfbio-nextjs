@@ -91,7 +91,7 @@ const Footer = ({
 
   return (
     <footer className={cn("reveal-section text-white bg-[#1f011d]", )}>
-      <div className="container pt-16 px-16  ">
+      <div className="container pt-16 px-8 sm:px-16  ">
         <div className="flex flex-col gap-10 lg:grid lg:grid-cols-6 lg:gap-x-12 lg:gap-y-10">
           {/* Logo column */}
           <div>

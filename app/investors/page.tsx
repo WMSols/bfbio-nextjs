@@ -130,7 +130,7 @@ export default async function InvestorsPage({
         </div>
       </div>
 
-      <div className="2xl:max-w-7xl max-w-5xl pt-4 md:pt-18 mx-auto">
+      <div className="2xl:max-w-7xl max-w-5xl pt-4 md:pt-18 mx-auto px-8">
         <p className="mb-6 md:mb-8 text-muted-foreground text-sm font-light">
           Figures as of {formattedDate}
         </p>
