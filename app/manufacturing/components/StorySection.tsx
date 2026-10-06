@@ -6,7 +6,7 @@ export default function StorySection() {
 
   return (
     <section className="bg-white pb-16 md:pb-24">
-      <div className="relative mx-4 flex min-h-[32rem] items-center  overflow-hidden rounded-[50px] px-6 py-16 text-center sm:min-h-[800px] sm:px-10 md:mx-8 md:px-24 lg:mx-22 ">
+      <div className="relative mx-4 flex min-h-[32rem] items-center  overflow-hidden rounded-[50px] px-6 py-16 text-center sm:min-h-[800px] sm:px-10 md:mx-8 md:px-24 lg:mx-24 ">
         <Image
           src={image}
           alt={imageAlt}

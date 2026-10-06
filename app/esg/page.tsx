@@ -79,7 +79,10 @@ export default function EsgPage() {
             countFor={countFor}
           />
 
-          <ESGInitiativeGrid filtered={filtered} />
+          <ESGInitiativeGrid
+            filtered={filtered}
+            activeCategory={activeCategory}
+          />
         </div>
         <AnimateIn>
           <GovernanceSection />

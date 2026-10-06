@@ -31,7 +31,9 @@ type AnimateInProps = {
   stagger?: boolean | number;
   as?: AnimateInTag;
   once?: boolean;
-  amount?: number;
+  amount?: number | "some" | "all";
+  /** IntersectionObserver root margin (e.g. "100px" to trigger earlier). */
+  margin?: string;
   id?: string;
 };
 
@@ -45,6 +47,7 @@ function AnimateIn({
   as = "div",
   once = true,
   amount = 0.15,
+  margin = "0px 0px -40px 0px",
   id,
 }: AnimateInProps) {
   const isStagger = stagger !== false;
@@ -78,7 +81,7 @@ function AnimateIn({
         }
         initial="hidden"
         whileInView="show"
-        viewport={{ once, amount, margin: "0px 0px -40px 0px" }}
+        viewport={{ once, amount, margin }}
       >
         {children}
       </MotionTag>
