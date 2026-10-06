@@ -15,14 +15,14 @@ const therapies = [
 
 export default function StrategicGrowthSection() {
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-16 md:py-24 sm:px-12">
       <div className="container">
-        <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-[minmax(0,1fr)_minmax(12rem,24.3rem)] md:gap-16">
+        <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-[minmax(0,1fr)_minmax(12rem,24.3rem)] ">
           <div>
             <h2 className="max-w-150 text-3xl font-medium leading-[1.2] text-brand md:text-5xl lg:text-[56px]">
               A New Chapter of Strategic Growth
             </h2>
-            <p className="mt-8 max-w-5xl text-lg md:text-[22px] leading-[1.2] text-black md:mt-10 2xl:text-[28px]">
+            <p className="mt-8 max-w-5xl text-lg md:text-[22px] leading-[1.2] text-black md:mt-10 2xl:text-[24px]">
               In 2024, BF Biosciences Limited was successfully listed on the
               Pakistan<br className="hidden sm:block" /> Stock Exchange following a highly successful IPO. As the
               first and only<br className="hidden sm:block" /> company in Pakistan to operate a biotech

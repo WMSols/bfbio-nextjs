@@ -10,7 +10,7 @@ export default function ManufacturingSection() {
         </h2>
       </div>
 
-      <div className="relative mx-4 flex min-h-[32rem] items-center overflow-hidden rounded-[50px] px-6 py-12 sm:min-h-screen sm:px-10 md:mx-8  md:px-16 md:py-16 lg:mx-12 ">
+      <div className="relative mx-4 flex min-h-[32rem] items-center overflow-hidden rounded-[50px] px-6 py-12 md:min-h-[800px] sm:px-10 md:mx-8  md:px-16 md:py-16 lg:mx-22 ">
         <Image
           src="/images/banner-bg.webp"
           alt="BF Biosciences manufacturing facility in Lahore"

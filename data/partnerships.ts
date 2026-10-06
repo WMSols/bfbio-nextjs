@@ -13,14 +13,6 @@ export const partners: {
     imageClassName: "h-24 w-auto max-w-[90%] object-contain md:h-32",
   },
   {
-    name: "Gilead",
-    href: "https://www.gilead.com",
-    image: "/images/partnerships/gliead-logo.png",
-    background: "bg-[#C8102E]",
-    imageClassName:
-      "absolute inset-0 h-full w-full max-w-none object-cover object-center md:h-full",
-  },
-  {
     name: "Ferozsons Laboratories Limited",
     href: "https://ferozsons-labs.com",
     image: "/images/partnerships/fll-logo.png",

@@ -17,7 +17,7 @@ export default function CommitmentSection() {
           Learn more about our commitment to advancing patient care and
           supporting the communities we serve.
         </p>
-        <div className="mt-10 flex flex-col items-center gap-4 sm:mt-14 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-6">
+        <div className=" flex flex-col items-center gap-4 sm:mt-14 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-6">
           {links.map((link) => (
             <Button
               key={link.href}
