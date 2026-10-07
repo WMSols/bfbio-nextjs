@@ -1,6 +1,6 @@
 import Image from "next/image";
 import AnimateIn from "@/components/shared/AnimateIn";
-import StatCounter from "./StatCounter";
+import StatCounter from "@/components/shared/StatCounter";
 
 const stats = [
   { value: "1000+", label: "Employees" },

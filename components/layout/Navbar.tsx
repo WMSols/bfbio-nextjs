@@ -29,8 +29,8 @@ const Navbar = () => {
   const navLogoAlt = isSibionicsPage
     ? "SIBIONICS"
     : "Ferozsons Laboratories Limited";
-  const desktopNavLogoClass = isSibionicsPage ? "h-6 w-auto" : "h-10 w-auto";
-  const mobileNavLogoClass = isSibionicsPage ? "h-5 w-auto" : "h-8 w-auto";
+  const desktopNavLogoClass = isSibionicsPage ? "h-10 w-auto py-2" : "h-10 w-auto";
+  const mobileNavLogoClass = isSibionicsPage ? "h-8 w-auto py-1.5" : "h-8 w-auto";
   const desktopSearchRef = useRef<HTMLInputElement>(null);
   const navContainerRef = useRef<HTMLDivElement>(null);
   const closeMenuTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -126,7 +126,7 @@ const Navbar = () => {
 
             {/* Middle Column: Links (Only renders if there are children) */}
             {hasSubLinks && (
-              <div className="flex flex-col justify-start border-l border-white/10 pl-8 col-span-3">
+              <div className="flex flex-col justify-start border-l border-white/10 pl-8 pt-8 col-span-3">
                 <div className="grid gap-4">
                   {item.children?.map((child) => (
                     <Link
@@ -148,39 +148,41 @@ const Navbar = () => {
             {/* Right Column: Image Card OR Dynamic Product Categories Grid */}
             {item.megaImage ? (
               <div className={cn(
-                "relative -mb-4 aspect-16/10 overflow-hidden rounded-xl group",
-                hasSubLinks ? "col-span-5" : "col-span-5 col-start-9 mt-6"
+                "mt-8",
+                hasSubLinks ? "col-span-5" : "col-span-5 col-start-9"
               )}>
-                <Image
-                  src={item.megaImage}
-                  alt={item.megaImageTitle || item.label}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6">
-                  {item.megaImageTitle && (
-                    <h3 className="text-white font-semibold text-xl mb-1">
-                      {item.megaImageTitle}
-                    </h3>
-                  )}
-                  <Link
-                    href={item.megaImageLink || item.href}
-                    className="flex items-center justify-end gap-3 text-sm text-white hover:text-white/90 transition-colors"
-                    onClick={() => {
-                      setActivePrimaryDropdown(null);
-                      setDesktopMenuOpen(false);
-                    }}
-                  >
-                    {item.megaImageSubtitle}
-                    <ArrowRight className="h-5 w-5 shrink-0" />
-                  </Link>
+                <div className="relative -mb-4 aspect-16/10 overflow-hidden rounded-xl group">
+                  <Image
+                    src={item.megaImage}
+                    alt={item.megaImageTitle || item.label}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6">
+                    {item.megaImageTitle && (
+                      <h3 className="text-white font-semibold text-xl mb-1">
+                        {item.megaImageTitle}
+                      </h3>
+                    )}
+                    <Link
+                      href={item.megaImageLink || item.href}
+                      className="flex items-center justify-end gap-3 text-sm text-white hover:text-white/90 transition-colors"
+                      onClick={() => {
+                        setActivePrimaryDropdown(null);
+                        setDesktopMenuOpen(false);
+                      }}
+                    >
+                      {item.megaImageSubtitle}
+                      <ArrowRight className="h-5 w-5 shrink-0" />
+                    </Link>
+                  </div>
                 </div>
               </div>
             ) : (
               item.label === "Medicines" && (
                 <div className={cn(
-                  "grid grid-cols-2 gap-x-8 gap-y-4 content-start border-l border-white/10 pl-8",
-                  hasSubLinks ? "col-span-5" : "col-span-5 col-start-9 mt-6"
+                  "grid grid-cols-2 gap-x-8 gap-y-4 content-start border-l border-white/10 pl-8 pt-8",
+                  hasSubLinks ? "col-span-5" : "col-span-5 col-start-9"
                 )}>
                   {productCategories.map((cat) => (
                     <Link

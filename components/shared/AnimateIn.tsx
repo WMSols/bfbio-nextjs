@@ -9,15 +9,6 @@ const DEFAULT_Y = 16;
 const DEFAULT_DURATION = 0.5;
 const DEFAULT_STAGGER = 0.08;
 
-const itemVariants = {
-  hidden: { opacity: 0, y: DEFAULT_Y },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: DEFAULT_DURATION, ease: EASE_OUT },
-  },
-};
-
 const StaggerContext = createContext(false);
 
 type AnimateInTag = "div" | "section";
@@ -92,15 +83,32 @@ function AnimateIn({
 type AnimateInItemProps = {
   children: ReactNode;
   className?: string;
+  /** Horizontal offset for side fade-in. When set, vertical offset defaults to 0. */
+  x?: number;
+  y?: number;
 };
 
-export function AnimateInItem({ children, className }: AnimateInItemProps) {
+export function AnimateInItem({
+  children,
+  className,
+  x = 0,
+  y,
+}: AnimateInItemProps) {
   const inStagger = useContext(StaggerContext);
+  const offsetY = y ?? (x !== 0 ? 0 : DEFAULT_Y);
 
   return (
     <m.div
       className={cn("h-full *:h-full", className)}
-      variants={itemVariants}
+      variants={{
+        hidden: { opacity: 0, x, y: offsetY },
+        show: {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          transition: { duration: DEFAULT_DURATION, ease: EASE_OUT },
+        },
+      }}
       {...(!inStagger
         ? {
             initial: "hidden" as const,

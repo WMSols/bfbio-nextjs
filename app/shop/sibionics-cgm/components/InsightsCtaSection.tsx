@@ -28,8 +28,7 @@ export default function InsightsCtaSection() {
 
             <Link
               href={"https://btr1hg-7g.myshopify.com/products/sibionics-gs1-cgm"}
-                target="_blank"
-              className="shrink-0 rounded-[12px] bg-transparent border-2 py-4 sm:py-6 border-black sm:self-center  px-8 text-sm font-medium tracking-[0.12em] text-black hover:bg-black/5 hover:text-black"
+              className="shrink-0 rounded-[12px] bg-transparent border-2 py-4 sm:py-6 border-black sm:self-center  px-8 text-sm font-bold tracking-[0.12em] text-black  hover:bg-black hover:text-white transition-all duration-300"
               >
                 {sibionicsBuyNow.label}
               </Link>

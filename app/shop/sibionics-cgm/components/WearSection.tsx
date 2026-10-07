@@ -45,11 +45,11 @@ export default function WearSection() {
             src='/images/shop/sibionics/wear.jpg'
             alt={sibionicsWear.imageAlt}
             placeholderClassName={sibionicsWear.placeholderClassName}
-            className="aspect-16/10 min-h-80 w-full md:min-h-100"
+            className=" min-h-76 w-full md:min-h-170"
           />
 
           <div className="absolute bottom-[16%] left-[6%] md:left-[8%]">
-            <div className="flex items-end rounded-2xl bg-[#C41E3A] px-5 py-3 text-white md:rounded-[1.25rem] md:px-7 md:py-4">
+            <div className="flex items-end rounded-2xl bg-[#B70025] px-5 py-3 text-white md:rounded-[1.25rem] md:px-7 md:py-4">
               <span className="text-5xl leading-none font-medium md:text-7xl">
                 {sibionicsWear.reading.value}
               </span>

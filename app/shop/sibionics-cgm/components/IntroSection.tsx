@@ -1,5 +1,6 @@
 import { sibionicsIntro } from "@/data/sibionics";
 import AnimateIn, { AnimateInItem } from "@/components/shared/AnimateIn";
+import StatCounter from "@/components/shared/StatCounter";
 
 export default function IntroSection() {
   return (
@@ -14,17 +15,17 @@ export default function IntroSection() {
           </p>
         </div>
 
-        <AnimateIn stagger className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-3 md:mt-20 md:gap-8">
+        <AnimateIn stagger className="mt-14 grid  gap-6  sm:max-w-2xl grid-cols-3 md:mt-20 ">
           {sibionicsIntro.stats.map((stat) => (
             <AnimateInItem key={stat.value}>
-            <div className="flex flex-col gap-2">
-              <p className="text-4xl font-medium text-[#1DB8B0] md:text-5xl lg:text-6xl">
-                {stat.value}
-              </p>
-              <p className="whitespace-pre-line text-sm text-black/55">
-                {stat.label}
-              </p>
-            </div>
+              <div className="flex flex-col gap-2">
+                <p className="text-2xl font-medium text-[#1DB8B0] md:text-5xl lg:text-6xl">
+                  <StatCounter value={stat.value} />
+                </p>
+                <p className="whitespace-pre-line text-xs sm:text-sm text-black/55">
+                  {stat.label}
+                </p>
+              </div>
             </AnimateInItem>
           ))}
         </AnimateIn>
