@@ -54,7 +54,7 @@ export default function TherapeuticCardBig({
             isActive ? "opacity-100" : "opacity-0"
           )}
         >
-          <h3 className="font-sans text-3xl font-normal leading-tight text-white line-clamp-2 md:text-4xl lg:text-5xl">
+          <h3 className="font-sans text-2xl xs:text-3xl font-normal leading-tight text-white line-clamp-2 md:text-4xl lg:text-5xl">
             {item.name}
           </h3>
           

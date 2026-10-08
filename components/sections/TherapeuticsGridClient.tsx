@@ -265,8 +265,8 @@ export default function TherapeuticsGridClient({
           <div
             className={cn(
               "relative order-2 w-full overflow-hidden touch-pan-y select-none lg:order-1",
-              "[--gap:1.75rem] [--gutter:10%] [--card:86%]",
-              "[--active-w:calc(var(--card)-100px)] [--prev-w:calc(var(--card)-250px)]",
+              "sm:[--gap:1.85rem] [--gap:1.25rem] [--gutter:12%] [--card:92%]",
+              "[--active-w:calc(var(--card)-80px)] [--prev-w:calc(var(--card)-180px)] sm:[--prev-w:calc(var(--card)-250px)]",
               "sm:[--gutter:12%] sm:[--card:82%]",
               "lg:[--gutter:18%] lg:[--card:90%]",
             )}
