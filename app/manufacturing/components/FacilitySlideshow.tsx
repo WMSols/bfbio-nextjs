@@ -91,7 +91,7 @@ export default function FacilitySlideshow() {
           </p>
         </div>
 
-        <div className="relative mx-auto mt-10 h-[350px] sm:h-[620px] 2xl:h-[750px] overflow-hidden rounded-[20px] md:mt-14 md:rounded-[40px]">
+        <div className="relative mx-auto mt-10 h-[350px] sm:h-[620px] 2xl:h-[700px] overflow-hidden rounded-[20px] md:mt-14 md:rounded-[40px]">
           <div
             className={cn(
               "flex h-full",

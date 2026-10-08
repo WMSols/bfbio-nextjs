@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function SafetySupportSection() {
   return (
     <section className="py-16 md:py-24 bg-[#F8F9FA] mt-8 sm:mt-20">
-      <div className="container text-black mx-auto px-4 max-w-9xl flex flex-col gap-16 md:gap-24">
+      <div className="container text-black mx-auto sm:px-24 px-2 max-w-9xl flex flex-col gap-16 md:gap-24">
         
         {/* Top Part: Intro & Text (from first screenshot) */}
         <div className="text-center max-w-6xl mx-auto flex flex-col items-center">
@@ -30,8 +30,7 @@ export default function SafetySupportSection() {
           </div>
         </div>
 
-        {/* Bottom Part: Channels Image Card (from second screenshot) */}
-        <div className="relative w-full rounded-[2rem] md:rounded-[3rem] overflow-hidden min-h-[500px] md:min-h-[850px] flex items-center shadow-xl group">
+        <div className="relative w-full rounded-[2rem] md:rounded-[3rem] overflow-hidden min-h-[500px] md:min-h-[750px] flex items-center shadow-xl group">
           
           {/* Background Image - Placeholder for low-light phone user */}
           <Image
@@ -47,7 +46,7 @@ export default function SafetySupportSection() {
           <div className="absolute inset-0 bg-black/45 transition-opacity duration-500"></div>
 
           {/* Card Content */}
-          <div className="relative z-10 px-4 py-12 md:px-16 lg:px-24 max-w-9xl">
+          <div className="relative z-10 px-3 py-12 md:px-16 lg:px-24 max-w-9xl">
             <h3 className="text-white text-xl xs:text-3xl md:text-4xl lg:text-[3rem]  leading-tight mb-10 md:mb-12">
               Bf Bio Sciences provides<br className="xs:hidden block"/> the following <br className="hidden md:block"/> four channels<br className="xs:hidden block"/> for reporting<br className="hidden md:block"/> adverse events related to our products:
             </h3>

@@ -12,7 +12,7 @@ const bannerCardVariants = cva(
       variant: {
         fullScreen: "sm:min-h-screen min-h-[32rem] w-full px-6 py-16 md:px-16 md:py-24",
         rounded:
-          "group mx-4 min-h-[32rem] rounded-[50px] px-6 py-12 sm:min-h-screen sm:px-10 md:mx-8 md:min-h-[800px] md:px-16 md:py-16 lg:mx-22 ",
+          "group mx-4 min-h-[32rem] rounded-[50px] px-6 py-12 sm:min-h-screen sm:px-10 md:mx-8 md:min-h-[730px] md:px-16 md:py-16 lg:mx-24 ",
       },
       align: {
         left: "items-start text-left",

@@ -30,7 +30,7 @@ export default function GlobalPresencePage() {
           overlayClassName="bg-black/25"
           ctaText="Explore Our Partnerships"
           ctaLink="/partnerships"
-          titleClassName="text-2xl sm:text-4xl md:text-5xl font-normal leading-[1.2]"
+          titleClassName="text-2xl sm:text-4xl md:text-5xl font-normal leading-[1.1]"
           titleWidthClassName="max-w-6xl "
           ctaClassName="mt-16"
         />
