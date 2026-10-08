@@ -13,7 +13,7 @@ export default function InsightsCtaSection() {
             src='/images/shop/sibionics/insight.gif'
             alt={sibionicsInsights.imageAlt}
             placeholderClassName={sibionicsInsights.placeholderClassName}
-            className=" h-[300px] w-full shrink-0 rounded-[28px] md:w-[38%] md:max-w-md lg:w-[48%]"
+            className=" sm:h-[300px] h-[200px] w-full shrink-0 rounded-[28px] md:w-[38%] md:max-w-md lg:w-[48%]"
           />
 
           <div className="flex w-full flex-1 flex-col items-start gap-5 md:flex-row  md:justify-between md:gap-8">

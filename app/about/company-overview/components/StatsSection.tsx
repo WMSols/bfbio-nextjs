@@ -22,7 +22,7 @@ export default function StatsSection() {
       <div className="absolute inset-0 z-1 bg-linear-to-r from-[#3b73ac]/55 to-[#934397]/50" />
 
       <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center gap-8  justify-between min-h-full  text-center ">
-        <h2 className="text-5xl font-bold leading-tight md:text-6xl lg:text-7xl sm:mt-20 mt-10">
+        <h2 className=" text-4xl sm:text-5xl font-bold leading-tight md:text-6xl lg:text-7xl sm:mt-20 mt-10">
           Advancing Healthcare
           <br />
           Through Science
@@ -30,11 +30,11 @@ export default function StatsSection() {
 
         <div className="grid w-full grid-cols-2 gap-8 md:grid-cols-4 md:gap-6">
           {stats.map((stat) => (
-            <div key={stat.label} className="flex flex-col items-center gap-4">
-              <p className="text-4xl font-bold md:text-5xl lg:text-6xl">
+            <div key={stat.label} className="flex flex-col items-center gap-2 sm:gap-4">
+              <p className="text-3xl sm:text-4xl font-bold md:text-5xl lg:text-6xl">
                 <StatCounter value={stat.value} />
               </p>
-              <p className=" font-light text-base sm:text-lg">{stat.label}</p>
+              <p className=" font-light text-sm sm:text-base">{stat.label}</p>
             </div>
           ))}
         </div>

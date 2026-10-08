@@ -7,7 +7,7 @@ const SIDE_OFFSET = 48;
 
 export default function FeaturesSection() {
   return (
-    <section className="bg-black py-16 text-white md:py-24">
+    <section className="overflow-x-hidden bg-black py-16 text-white md:py-24">
       <div className="container space-y-16 md:space-y-24 sm:px-24">
         {sibionicsFeatures.map((feature) => {
           const textFromLeft = !feature.imageOnLeft;
@@ -16,7 +16,7 @@ export default function FeaturesSection() {
             <AnimateIn
               key={feature.title}
               stagger
-              className="grid items-center gap-8 md:grid-cols-2 md:gap-14 lg:gap-20"
+              className="grid items-center gap-8 overflow-x-hidden md:grid-cols-2 md:gap-14 lg:gap-20"
             >
               <AnimateInItem
                 x={textFromLeft ? -SIDE_OFFSET : SIDE_OFFSET}

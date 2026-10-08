@@ -36,7 +36,7 @@ export default function SibionicsHero() {
         <div className="absolute inset-0 bg-black/40" />
 
         <div className="container relative z-10 flex flex-col items-center text-center">
-          <h1 className="text-5xl leading-none font-bold tracking-tight text-white sm:text-6xl md:text-7xl 2xl:text-[5.5rem]">
+          <h1 className="text-4xl leading-none font-bold tracking-tight text-white sm:text-6xl md:text-7xl 2xl:text-[5.5rem]">
             {sibionicsHero.title}
           </h1>
           <p className="2xl:mt-4 text-2xl font-medium text-[#1DB8B0] sm:text-3xl md:text-5xl md:leading-tight">
@@ -45,7 +45,7 @@ export default function SibionicsHero() {
           <p className="2xl:mt-6 mt-4 max-w-2xl text-base leading-tight text-white md:text-lg">
             {sibionicsHero.body}
           </p>
-          <div ref={heroCtaRef} className="mt-24">
+          <div ref={heroCtaRef} className="sm:mt-24 mt-8">
             <Button
               href={sibionicsBuyNow.href}
               size="pill"
