@@ -10,6 +10,8 @@ interface HeroSectionProps {
   subtitle?: string | ReactNode;
   titleSize?: "large" | "small";
   backgroundImage?: string;
+  /** Shown below the `sm` breakpoint; falls back to `backgroundImage` when omitted. */
+  backgroundImageMobile?: string;
   backgroundVideo?: string;
   backgroundClassName?: string;
   overlayClassName?: string;
@@ -21,6 +23,7 @@ const HeroSection = ({
   subtitle,
   titleSize = "large",
   backgroundImage,
+  backgroundImageMobile,
   backgroundVideo,
   backgroundClassName,
   overlayClassName,
@@ -28,7 +31,9 @@ const HeroSection = ({
 }: HeroSectionProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
-  const hasMedia = Boolean(backgroundImage || backgroundVideo);
+  const hasMedia = Boolean(
+    backgroundImage || backgroundImageMobile || backgroundVideo,
+  );
 
   useEffect(() => {
     const video = videoRef.current;
@@ -79,10 +84,23 @@ const HeroSection = ({
               aria-hidden
               className="h-full w-full object-cover object-center"
             />
-          ) : (
-            backgroundImage && (
+          ) : backgroundImageMobile && backgroundImage ? (
+            <>
+              <img
+                src={backgroundImageMobile}
+                alt=""
+                className="h-full w-full object-cover object-center sm:hidden"
+              />
               <img
                 src={backgroundImage}
+                alt=""
+                className="hidden h-full w-full object-cover object-center sm:block"
+              />
+            </>
+          ) : (
+            (backgroundImage || backgroundImageMobile) && (
+              <img
+                src={backgroundImage || backgroundImageMobile}
                 alt=""
                 className="h-full w-full object-cover object-center"
               />

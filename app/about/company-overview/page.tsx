@@ -21,6 +21,7 @@ export default function CompanyOverviewPage() {
           </span>
         }
         backgroundImage="/images/about/company-overview/hero-new.webp"
+        backgroundImageMobile="/images/about/company-overview/hero-new-mobile.png"
         titleSize="small"
         overlayClassName="bg-black/40"
         titleClassName="leading-[120%]"

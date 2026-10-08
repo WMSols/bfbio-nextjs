@@ -22,9 +22,9 @@ export default function StatsSection() {
       <div className="absolute inset-0 z-1 bg-linear-to-r from-[#3b73ac]/55 to-[#934397]/50" />
 
       <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center gap-8  justify-between min-h-full  text-center ">
-        <h2 className=" text-4xl sm:text-5xl font-bold leading-tight md:text-6xl lg:text-7xl sm:mt-20 mt-10">
+        <h2 className=" text-[32px] sm:text-5xl font-bold leading-tight md:text-6xl lg:text-7xl sm:mt-20 mt-10">
           Advancing Healthcare
-          <br />
+          <br  />
           Through Science
         </h2>
 
