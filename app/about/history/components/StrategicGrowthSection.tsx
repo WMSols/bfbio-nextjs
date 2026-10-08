@@ -46,8 +46,8 @@ export default function StrategicGrowthSection() {
         <div className="mt-16 max-w-5xl md:mt-24">
           <h2 className="text-3xl font-medium leading-[1.2] text-brand-blue md:text-5xl lg:text-[56px]">
             Expanding Access to
-            <br />
-            Advanced Therapies
+            <br className="hidden sm:block" />
+             {" "}Advanced Therapies
           </h2>
 
           <div className="mt-10 space-y-10 md:mt-20">

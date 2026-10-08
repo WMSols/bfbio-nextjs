@@ -16,7 +16,7 @@ export default function SafetySupportSection() {
             Advancing Patient Safety<br className="hidden md:block"/> Through Your Feedback
           </h2>
           
-          <div className="space-y-6  text-base md:text-lg leading-relaxed px-2 md:px-0">
+          <div className="space-y-6  text-sm xs:text-base md:text-lg leading-relaxed px-2 md:px-0">
             <p>
               Guided by our Patients First commitment, Bf Bio Sciences encourages healthcare professionals, and<br className="hidden md:block"/>
               patients to report any side effects, adverse events, or product quality concerns associated with our medicines. If you<br className="hidden md:block"/>
@@ -47,31 +47,31 @@ export default function SafetySupportSection() {
           <div className="absolute inset-0 bg-black/45 transition-opacity duration-500"></div>
 
           {/* Card Content */}
-          <div className="relative z-10 px-6 py-12 md:px-16 lg:px-24 max-w-9xl">
-            <h3 className="text-white text-3xl md:text-4xl lg:text-[3rem]  leading-tight mb-10 md:mb-12">
-              Bf Bio Sciences provides the following<br className="hidden md:block"/> four channels for reporting<br className="hidden md:block"/> adverse events related to our products:
+          <div className="relative z-10 px-4 py-12 md:px-16 lg:px-24 max-w-9xl">
+            <h3 className="text-white text-xl xs:text-3xl md:text-4xl lg:text-[3rem]  leading-tight mb-10 md:mb-12">
+              Bf Bio Sciences provides<br className="xs:hidden block"/> the following <br className="hidden md:block"/> four channels<br className="xs:hidden block"/> for reporting<br className="hidden md:block"/> adverse events related to our products:
             </h3>
 
             {/* List of Channels */}
-            <div className="text-white/90 text-base md:text-[1.5rem] space-y-5 md:space-y-6">
-              <div className="flex gap-3 items-start">
+            <div className="text-white/90 text-sm xs:text-base md:text-[1.5rem] space-y-5 md:space-y-6">
+              <div className="flex gap-2 xs:gap-3 items-start">
                 <span className="shrink-0">1.</span>
                 <p>
-                  You may contact us during office hours or outside office hours at (+92 42) 36026700
+                  You may contact us during office<br className="xs:hidden block"/> hours or outside office hours at<br className="xs:hidden block"/> (+92 42) 36026700
                 </p>
               </div>
               
-              <div className="flex gap-3 items-start">
+              <div className="flex gap-2 xs:gap-3 items-start">
                 <span className="shrink-0">2.</span>
                 <p>
-                  You can fax any documentation to (+92 42) 36026701-2
+                  You can fax any documentation to<br className="xs:hidden block"/> (+92 42) 36026701-2
                 </p>
               </div>
               
-              <div className="flex gap-3 items-start">
+              <div className="flex gap-2 xs:gap-3 items-start">
                 <span className="shrink-0">3.</span>
                 <p>
-                  Reports can be submitted by email to{" "}
+                  Reports can be submitted by email<br className="xs:hidden block"/> to{" "}
                   <a
                     href="mailto:pharmacovigilance@bfbiosciences.com"
                     className="underline underline-offset-4 hover:text-white transition-colors"
@@ -81,7 +81,7 @@ export default function SafetySupportSection() {
                 </p>
               </div>
               
-              <div className="flex gap-3 items-start">
+              <div className="flex gap-2 xs:gap-3 items-start">
                 <span className="shrink-0">4.</span>
                 <p>
                   You can also complete the form below to report a product concern, adverse event, or<br className="hidden md:block"/>

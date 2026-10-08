@@ -45,7 +45,7 @@ export default function CompanyOverviewPage() {
           ctaVariant="solid"
           titleWidthClassName="max-w-7xl"
           titleClassName="  text-3xl sm:text-[42px] 2xl:text-5xl leading-[120%]"
-          ctaClassName="mt-20 sm:px-6 px-3 text-sm"
+          ctaClassName="mt-20 sm:px-6 px-3 -ml-3.5 xs:-ml-0 text-sm"
         />
         <StatsSection />
         <AnimateIn>

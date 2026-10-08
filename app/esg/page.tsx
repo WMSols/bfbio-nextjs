@@ -46,7 +46,7 @@ export default function EsgPage() {
         <BannerCard
           title="Creating Stronger Communities Through Lasting Impact"
           description="BF Biosciences corporate vision has always centred on creating a better world for the people around us. Our Impact focus spans four pillars: education, healthcare, arts & culture, and community — because we believe that health, knowledge, and creative expression are equally essential to a flourishing society. Many of these initiatives are supported year on year as part of our enduring commitment to Pakistan and beyond."
-          descriptionClassName="text-2xl max-w-4xl"
+          descriptionClassName="xs:text-2xl text-lg max-w-4xl"
           image="/images/esg/banner.webp"
           variant="rounded"
           overlay
@@ -91,11 +91,16 @@ export default function EsgPage() {
       <CTABanner
         title="Join us in building a better world"
         description="We believe that health, knowledge, conservation and creative expression are equally essential to a sustainable society. Many of these initiatives are supported year on year as part of our enduring commitment to our Planet."
-        ctaText="Get in touch"
-        ctaLink="/contact"
         titleClassName="text-[32px] font-medium md:text-[40px] leading-snug"
-        ctaClassName="bg-black hover:bg-black/90"
         paddingClassName="py-12 md:py-16"
+        cta={
+          <a
+            href="mailto:customers@bfbio.com"
+            className="inline-flex h-12 items-center justify-center rounded-full bg-black px-8 text-base text-white transition-colors hover:bg-black/90"
+          >
+            Get in touch
+          </a>
+        }
       />
     </>
   );

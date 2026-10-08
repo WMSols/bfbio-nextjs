@@ -17,13 +17,13 @@ export default function CommitmentSection() {
           Learn more about our commitment to advancing patient care and
           supporting the communities we serve.
         </p>
-        <div className=" flex flex-col items-center gap-4 sm:mt-14 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-6">
+        <div className=" flex flex-col items-center gap-2 mt-3 sm:mt-14 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-6">
           {links.map((link) => (
             <Button
               key={link.href}
               href={link.href}
               variant="transparent"
-              className="h-14 min-w-60 rounded-full border border-white bg-transparent px-8 text-lg text-white hover:bg-white/10 md:text-[20px]"
+              className="sm:h-14 sm:min-w-60 min-w-50 rounded-full border border-white bg-transparent sm:px-8 sm:text-lg text-white hover:bg-white/10 md:text-[20px]"
             >
               {link.label}
             </Button>

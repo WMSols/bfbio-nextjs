@@ -196,7 +196,7 @@ export default function SafetyReportingForm() {
                   placeholder="Initials"
                   className={`${inputBase} mb-6`}
                 />
-                <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
+                <div className="flex flex-wrap xs:flex items-center gap-x-8 gap-y-4">
                   <span className="font-bold text-foreground">Gender:</span>
                   <div className="flex flex-col gap-3">
                     <label className="flex items-center gap-2 cursor-pointer">
@@ -222,7 +222,7 @@ export default function SafetyReportingForm() {
                       <span className="text-sm">Female</span>
                     </label>
                   </div>
-                  <div className="flex items-center gap-4 ml-auto sm:ml-4">
+                  <div className="flex items-center gap-4 sm:ml-4">
                     <input
                       type="text"
                       name="age"
@@ -284,8 +284,7 @@ export default function SafetyReportingForm() {
                   />
 
                   <p className="text-sm text-foreground/80 mt-2">
-                    Manufacturer/Marketer (In case of imported products): Ferozsons
-                    Laboratories Limited
+                    Manufacturer/Marketer (In case of imported products): Bf Biosciences
                   </p>
 
                   <div className="flex flex-wrap items-center gap-4 mt-2">

@@ -36,7 +36,7 @@ export default function OurStorySection() {
               href="/about/history"
               variant="outline"
               size="pill"
-              className="rounded-full border-brand bg-transparent text-brand hover:bg-brand/5 hover:text-brand"
+              className="rounded-full px-16 border-brand bg-transparent text-brand hover:bg-brand/5 hover:text-brand"
             >
               Our History
             </Button>

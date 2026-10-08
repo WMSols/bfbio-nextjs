@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { AnimatePresence, m } from "framer-motion";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
@@ -12,6 +13,11 @@ const fade = { duration: 0.2 };
 
 export default function RegionsSection() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (activeIndex === null) return;
@@ -30,8 +36,14 @@ export default function RegionsSection() {
       }
     };
 
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
   }, [activeIndex]);
 
   const goPrev = () =>
@@ -47,18 +59,121 @@ export default function RegionsSection() {
   const countryColumns = activeRegion
     ? splitCountries(activeRegion.countries)
     : [[], []];
-  const isOpen = activeIndex !== null;
+
+  const dialog =
+    mounted &&
+    createPortal(
+      <AnimatePresence>
+        {activeRegion && (
+          <m.div
+            key="region-dialog-root"
+            className="fixed inset-0 z-100 flex items-center justify-center p-4 sm:p-6 md:p-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={fade}
+          >
+            <button
+              type="button"
+              aria-label="Close dialog backdrop"
+              className="absolute inset-0 bg-black/55"
+              onClick={() => setActiveIndex(null)}
+            />
+
+            <m.div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="region-dialog-title"
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              transition={fade}
+              className="relative z-10 flex h-[min(32rem,80svh)] w-full max-w-5xl flex-col overflow-hidden rounded-[32px] bg-black shadow-2xl md:h-[min(36rem,80svh)] md:rounded-[50px]"
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                <m.div
+                  key={activeRegion.id}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={fade}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={activeRegion.image}
+                    alt=""
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 1024px"
+                    className="object-cover"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/45 to-black/20" />
+                </m.div>
+              </AnimatePresence>
+
+              <button
+                type="button"
+                onClick={() => setActiveIndex(null)}
+                className="absolute top-5 right-5 z-20 text-white/90 transition-colors hover:text-white md:top-8 md:right-8"
+                aria-label="Close"
+              >
+                <X className="size-7" />
+              </button>
+
+              <div className="relative z-10 flex h-full min-h-0 flex-col overflow-y-auto px-8 py-10 pb-24 md:px-14 md:py-14 md:pb-24">
+                <h2
+                  id="region-dialog-title"
+                  className="mb-8 text-4xl font-medium text-white md:mb-10 md:text-6xl"
+                >
+                  {activeRegion.name}
+                </h2>
+
+                <div className="grid max-w-xl grid-cols-1 gap-x-16 gap-y-3 sm:grid-cols-2">
+                  {countryColumns.map((column, columnIndex) => (
+                    <ul key={columnIndex} className="space-y-3">
+                      {column.map((country) => (
+                        <li
+                          key={country}
+                          className="text-base text-white md:text-xl"
+                        >
+                          {country}
+                        </li>
+                      ))}
+                    </ul>
+                  ))}
+                </div>
+              </div>
+
+              <div className="absolute right-5 bottom-5 z-20 flex items-center gap-3 md:right-8 md:bottom-8">
+                <button
+                  type="button"
+                  onClick={goPrev}
+                  className="flex size-11 items-center justify-center rounded-full bg-white text-black transition-opacity hover:opacity-80 md:size-12"
+                  aria-label="Previous region"
+                >
+                  <ChevronLeft className="size-5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={goNext}
+                  className="flex size-11 items-center justify-center rounded-full bg-white text-black transition-opacity hover:opacity-80 md:size-12"
+                  aria-label="Next region"
+                >
+                  <ChevronRight className="size-5" />
+                </button>
+              </div>
+            </m.div>
+          </m.div>
+        )}
+      </AnimatePresence>,
+      document.body,
+    );
 
   return (
     <section className="px-6 py-16 md:px-8 md:py-24">
       <div className="mx-auto flex max-w-6xl flex-col items-center">
         <div className="relative w-full">
-          <m.div
-            className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-6 lg:gap-6"
-            animate={{ opacity: isOpen ? 0 : 1 }}
-            transition={fade}
-            style={{ pointerEvents: isOpen ? "none" : "auto" }}
-          >
+          <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-6 lg:gap-6">
             {regions.map((region, index) => (
               <button
                 key={region.id}
@@ -86,101 +201,15 @@ export default function RegionsSection() {
                 </h2>
               </button>
             ))}
-          </m.div>
-
-          <AnimatePresence>
-            {activeRegion && (
-              <m.div
-                role="dialog"
-                aria-modal="true"
-                aria-labelledby="region-dialog-title"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={fade}
-                className="absolute inset-0 z-10 overflow-hidden rounded-[32px] bg-black max-sm:bottom-auto max-sm:h-[min(32rem,75svh)] md:rounded-[50px]"
-              >
-                <AnimatePresence mode="wait" initial={false}>
-                  <m.div
-                    key={activeRegion.id}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={fade}
-                    className="absolute inset-0"
-                  >
-                    <Image
-                      src={activeRegion.image}
-                      alt=""
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 1024px"
-                      className="object-cover"
-                      priority
-                    />
-                    <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/45 to-black/20" />
-                  </m.div>
-                </AnimatePresence>
-
-                <button
-                  type="button"
-                  onClick={() => setActiveIndex(null)}
-                  className="absolute top-5 right-5 z-20 text-white/90 transition-colors hover:text-white md:top-8 md:right-8"
-                  aria-label="Close"
-                >
-                  <X className="size-7" />
-                </button>
-
-                <div className="relative z-10 flex h-full min-h-0 flex-col overflow-y-auto px-8 py-10 pb-24 md:px-14 md:py-14 md:pb-24">
-                  <h2
-                    id="region-dialog-title"
-                    className="mb-8 text-4xl font-medium text-white md:mb-10 md:text-6xl"
-                  >
-                    {activeRegion.name}
-                  </h2>
-
-                  <div className="grid max-w-xl grid-cols-1 gap-x-16 gap-y-3 sm:grid-cols-2">
-                    {countryColumns.map((column, columnIndex) => (
-                      <ul key={columnIndex} className="space-y-3">
-                        {column.map((country) => (
-                          <li
-                            key={country}
-                            className="text-base text-white md:text-xl"
-                          >
-                            {country}
-                          </li>
-                        ))}
-                      </ul>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="absolute right-5 bottom-5 z-20 flex items-center gap-3 md:right-8 md:bottom-8">
-                  <button
-                    type="button"
-                    onClick={goPrev}
-                    className="flex size-11 items-center justify-center rounded-full bg-white text-black transition-opacity hover:opacity-80 md:size-12"
-                    aria-label="Previous region"
-                  >
-                    <ChevronLeft className="size-5" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={goNext}
-                    className="flex size-11 items-center justify-center rounded-full bg-white text-black transition-opacity hover:opacity-80 md:size-12"
-                    aria-label="Next region"
-                  >
-                    <ChevronRight className="size-5" />
-                  </button>
-                </div>
-              </m.div>
-            )}
-          </AnimatePresence>
+          </div>
         </div>
 
         <Button href="/contact" variant="gradient" className="mt-10 md:mt-16">
           Contact Us
         </Button>
       </div>
+
+      {dialog}
     </section>
   );
 }

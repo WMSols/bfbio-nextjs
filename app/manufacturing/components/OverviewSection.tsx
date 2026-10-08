@@ -16,10 +16,10 @@ export default function OverviewSection() {
           <p className="text-xs font-medium text-center tracking-[0.18em] text-black/45 uppercase">
             {eyebrow}
           </p>
-          <h2 className="mt-12 bg-brand-gradient bg-clip-text text-4xl leading-[1.15] font-medium whitespace-pre-line text-transparent md:text-5xl lg:text-[56px]">
+          <h2 className="mt-12 bg-brand-gradient bg-clip-text text-3xl xs:text-4xl leading-[1.15] font-medium whitespace-pre-line text-transparent md:text-5xl lg:text-[56px]">
             {title}
           </h2>
-          <p className="mt-8 text-xl leading-snug max-w-172 text-black md:text-[24px] md:leading-[1.35]">
+          <p className="mt-8 xs:text-xl leading-snug max-w-172 text-black md:text-[24px] md:leading-[1.35]">
             {description}
           </p>
         </div>

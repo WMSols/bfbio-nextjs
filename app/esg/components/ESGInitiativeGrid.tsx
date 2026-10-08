@@ -22,7 +22,7 @@ export default function ESGInitiativeGrid({
         amount="some"
         margin="0px"
         id="initiative-grid"
-        className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3 scroll-mt-72 sm:scroll-mt-48 sm:px-10"
+        className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3 scroll-mt-80 sm:scroll-mt-48 sm:px-10"
       >
         {filtered.map((initiative) => (
           <AnimateInItem key={initiative.id} className="h-full">
