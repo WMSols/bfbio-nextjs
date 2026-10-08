@@ -28,14 +28,13 @@ export default function ManufacturingSection() {
               both domestic and international markets.
             </p>
             <p>
-              As Pakistan&apos;s first USFDA-compliant pharmaceutical
-              manufacturing facility, BF Biosciences has played a pioneering
+              BF Biosciences has played a pioneering
               role in establishing the country&apos;s biotechnology
               manufacturing capabilities and expanding access to high-quality
               biologic medicines.
             </p>
             <p>
-              Today, our products are exported across Asian markets, reflecting
+              Today, our products are exported across global markets, reflecting
               our commitment to quality, innovation, and global healthcare
               standards.
             </p>
