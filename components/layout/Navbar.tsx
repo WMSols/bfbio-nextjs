@@ -23,14 +23,6 @@ const Navbar = () => {
   const pathname = usePathname();
   const router = useRouter();
   const isSibionicsPage = pathname.startsWith("/shop/sibionics-cgm");
-  const navLogoSrc = isSibionicsPage
-    ? "/images/sibionics-logo-nav.png"
-    : "/images/nav-logo.webp";
-  const navLogoAlt = isSibionicsPage
-    ? "SIBIONICS"
-    : "Ferozsons Laboratories Limited";
-  const desktopNavLogoClass = isSibionicsPage ? "h-10 w-auto py-2" : "h-10 w-auto";
-  const mobileNavLogoClass = isSibionicsPage ? "h-8 w-auto py-1.5" : "h-8 w-auto";
   const desktopSearchRef = useRef<HTMLInputElement>(null);
   const navContainerRef = useRef<HTMLDivElement>(null);
   const closeMenuTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -97,6 +89,55 @@ const Navbar = () => {
   // Helper to check if an item should trigger a dropdown
   const hasDropdown = (item: NavItem) => {
     return !!(item.children && item.children.length > 0) || item.label === "Medicines" || !!item.megaImage;
+  };
+
+  const renderNavLogos = (size: "desktop" | "mobile") => {
+    const isDesktop = size === "desktop";
+    const mainLogoClass = isDesktop
+      ? "h-10 w-auto"
+      : isSibionicsPage
+        ? "h-6 w-auto max-xs:h-5"
+        : "h-8 w-auto";
+    const sibionicsLogoClass = isDesktop
+      ? "h-10 w-auto py-2"
+      : "h-6 w-auto py-1 max-xs:h-5";
+
+    return (
+      <span
+        className={cn(
+          "flex items-center",
+          isDesktop ? "gap-3" : "gap-2 max-xs:gap-1.5",
+        )}
+      >
+        <Image
+          src="/images/nav-logo.webp"
+          alt="Ferozsons Laboratories Limited"
+          width={isDesktop ? 200 : 160}
+          height={isDesktop ? 50 : 40}
+          className={mainLogoClass}
+          priority
+        />
+        {isSibionicsPage && (
+          <>
+            <span
+              className={cn(
+                "shrink-0 ",
+                isDesktop ? "h-6 w-px" : "h-4 w-px max-xs:h-3.5",
+              )}
+              aria-hidden
+            />
+            <Image
+              src="/images/sibionics-logo-nav.png"
+              alt="SIBIONICS"
+              width={isDesktop ? 160 : 120}
+              height={isDesktop ? 50 : 40}
+              className={sibionicsLogoClass}
+              priority
+            />
+          </>
+        )}
+      </span>
+    );
   };
 
   // Reusable component block for the Mega Menu (Desktop)
@@ -273,14 +314,7 @@ const Navbar = () => {
                   setActivePrimaryDropdown(null);
                 }}
               >
-                <Image
-                  src={navLogoSrc}
-                  alt={navLogoAlt}
-                  width={200}
-                  height={50}
-                  className={desktopNavLogoClass}
-                  priority
-                />
+                {renderNavLogos("desktop")}
               </Link>
 
               <div className="flex items-center gap-6 shrink-0">
@@ -409,15 +443,8 @@ const Navbar = () => {
           </form>
         ) : (
           <>
-            <Link href="/" className="flex items-center shrink-0">
-              <Image
-                src={navLogoSrc}
-                alt={navLogoAlt}
-                width={160}
-                height={40}
-                className={mobileNavLogoClass}
-                priority
-              />
+            <Link href="/" className="flex items-center shrink-0 min-w-0">
+              {renderNavLogos("mobile")}
             </Link>
             <div className="flex items-center gap-1 shrink-0">
               <button
@@ -450,20 +477,13 @@ const Navbar = () => {
           <div className="flex items-center justify-between px-6 py-6">
             <Link
               href="/"
-              className="flex items-center shrink-0"
+              className="flex items-center shrink-0 min-w-0"
               onClick={() => {
                 setMobileOpen(false);
                 setMobileDropdown(null);
               }}
             >
-              <Image
-                src={navLogoSrc}
-                alt={navLogoAlt}
-                width={160}
-                height={40}
-                className={mobileNavLogoClass}
-                priority
-              />
+              {renderNavLogos("mobile")}
             </Link>
             <button
               className="p-2 text-[#FFFFFF]"
