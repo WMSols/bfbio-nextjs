@@ -5,6 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /* 350px — small phones (use rem so cascade order matches default breakpoints) */
+  --breakpoint-xs: 21.875rem;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);

@@ -23,7 +23,7 @@ export default function HomePage() {
 
       <BannerCard title={<span>Better Health<br className="hidden md:block"/> Through Innovation</span>} description={<span>BF Biosciences develops and manufactures<br className="hidden md:block"/> advanced biopharmaceuticals, expanding access to<br className="hidden md:block"/> innovative therapies while strengthening Pakistan's<br className="hidden md:block"/> biotechnology capabilities.</span>} image="/images/banner-bg.webp" ctaText="View our Manufacturing" ctaLink="/manufacturing" overlayClassName="bg-black/40"/>
 
-      <BannerCard title={<span>BF Biosciences advances patient<br className="hidden md:block"/> education and disease awareness<br className="hidden md:block"/> to help people make informed <br className="hidden md:block"/>healthcare decisions.</span>} titleWeight="medium"  image="/images/banner-bg-2.webp" ctaText="View Our Social Responsibility Initiatives" variant="rounded" ctaClassName="max-sm:text-sm max-sm:px-3 mt-16" ctaLink="/esg"/>
+      <BannerCard title={<span>BF Biosciences advances patient<br className="hidden md:block"/> education and disease awareness<br className="hidden md:block"/> to help people make informed <br className="hidden md:block"/>healthcare decisions.</span>} titleWeight="medium"  image="/images/banner-bg-2.webp" ctaText="View Our Social Responsibility Initiatives" variant="rounded" ctaClassName="max-sm:text-sm max-sm:px-2 mt-16 -ml-3 xs:-ml-0" ctaLink="/esg"/>
       </div>
       <ArticlesGridClient />
       <CTABanner ctaVariant="gradient"/>
