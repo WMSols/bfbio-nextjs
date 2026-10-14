@@ -63,7 +63,7 @@ const HeroSection = ({
         {showInvestorInfo && (
           <div className="absolute inset-x-6 top-1/2 -translate-y-1/2 flex flex-col gap-6 max-w-4xl md:static md:inset-auto md:top-auto md:-translate-y-32 md:gap-8 md:pb-24">
             <a
-              href="https://dps.psx.com.pk/company/FEROZ"
+              href="https://dps.psx.com.pk/company/BFBIO"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-4 md:gap-5 w-fit"
