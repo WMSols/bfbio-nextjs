@@ -6,10 +6,7 @@ export default function GovernanceSection() {
           Corporate Governance
         </h2>
         <p className="mt-12 text-base  text-black md:text-xl">
-          Our{" "}
-          <span className="text-brand underline decoration-[7%] underline-offset-4">
-            corporate governance
-          </span>{" "}
+          Our corporate governance
           framework underpins sustainable growth, long-term value creation, and
           ethical business<br className="hidden md:block" /> practices. Guided by strong oversight, transparency,
           accountability, and effective risk management, we integrate ESG<br className="hidden md:block" />

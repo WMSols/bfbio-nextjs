@@ -19,7 +19,7 @@ export default function GradientCard({
   return (
     <div
       className={cn(
-        "h-full rounded-[50px] p-px",
+        "h-full rounded-[35px] p-px",
         reverse
           ? toBottom
             ? "bg-[linear-gradient(to_bottom,var(--brand),var(--brand-blue))]"
@@ -32,7 +32,7 @@ export default function GradientCard({
     >
       <div
         className={cn(
-          "h-full rounded-[50px] bg-white",
+          "h-full rounded-[35px] bg-white",
           innerClassName,
         )}
       >

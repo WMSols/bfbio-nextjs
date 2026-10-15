@@ -19,7 +19,7 @@ export default function VisionSection() {
             >
               Ferozsons<br className="hidden md:block" /> Laboratories Limited
             </a>{" "}
-            and Bagó has grown into Pakistan&apos;s first biotech formulation
+            and Bagó Group has grown into Pakistan&apos;s first biotech formulation
             company,<br className="hidden md:block" /> setting new standards in manufacturing, quality, and
             innovation.
           </p>

@@ -9,8 +9,8 @@ export default function OurStorySection() {
 
           <div className="mt-8 space-y-8 text-base leading-relaxed text-black md:mt-12 md:text-[22px] md:leading-relaxed">
             <p>
-              In 2002, Ferozsons Laboratories Limited and Bagó formed a
-              commercial partnership to introduce the Bagó portfolio of branded
+              In 2002, Ferozsons Laboratories Limited and Bagó Group formed a
+              commercial partnership to introduce the Bagó Group portfolio of branded
               generics in oncology and hepatology to Pakistan. Within just two
               years, the partnership achieved a leadership position, ranking
               among the top three companies in both therapeutic areas.

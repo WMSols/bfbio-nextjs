@@ -17,12 +17,12 @@ export const manufacturingOverview = {
       subtitle: "Operational manufacturing facility",
     },
     {
-      title: "2 Production Lines",
-      subtitle: "Biological & non-biological capabilities",
+      title: "3 Production Lines",
+      subtitle: "Biopharmaceuticals & conventional pharmaceuticals capabilities",
     },
     {
-      title: "3 Delivery Formats",
-      subtitle: "Vials · Ampoules\nPrefilled Syringes",
+      title: "4 Delivery Formats",
+      subtitle: "Vials · Ampoules\nPrefilled Syringes · Pens & Cartridges",
     },
     {
       title: "EU & US FDA-aligned Design",
@@ -37,73 +37,37 @@ export const manufacturingStory = {
   image: manufacturingImage("_MG_2633.webp"),
   imageAlt: "Electrical infrastructure corridor at the BF Biosciences manufacturing facility",
   paragraphs: [
-    "BF Biosciences established its manufacturing facility in 2009 to bring specialized biological medicines closer to patients in Pakistan. Initially focused on low-volume treatments for Hepatitis C, Cancer and Chronic Kidney Disease, the facility also supported the production of selected non-biological medicines.",
+    "BF Biosciences established its manufacturing facility in 2009 to bring specialized biopharmaceutical medicines closer to patients in Pakistan. Initially focused on small volume parenterals (SVPs)for Hepatitis C, Cancer and Chronic Kidney Disease, the facility also supported the production of selected non-biopharmaceutical medicines.",
     "By manufacturing locally, BF Biosciences has helped improve access to critical therapies, reduce reliance on imports and strengthen Pakistan’s biopharmaceutical manufacturing capabilities.",
   ],
 };
 
-export type ProductionLineEquipment = {
-  name: string;
-  detail: string;
+export type DailyProductionForm = "Liquid" | "Lyophilized";
+
+export type DailyProductionRow = {
+  form: DailyProductionForm;
+  packingType: string;
+  filling: string;
+  dailyCapacity: string;
 };
 
-export type ProductionLine = {
-  title: string;
-  subtitle: string;
-  equipment?: ProductionLineEquipment[];
-  formats: string[];
-  applications: string[];
-};
-
-export const manufacturingProductionLines = {
-  titleLead: "Two Production Lines",
-  titleAccent: "One Integrated Manufacturing Platform",
-  description:
-    "Our manufacturing infrastructure combines the flexibility required for specialized low-volume products with expanded high-speed capabilities for a broader biological and non-biological portfolio",
-  lines: [
-    {
-      title: "Specialized & Flexible Manufacturing",
-      subtitle: "Operational since 2009",
-      formats: [
-        "Vials — Liquid",
-        "Vials — Lyophilized",
-        "Prefilled Syringes",
-      ],
-      applications: [
-        "Biological medicines",
-        "Small-batch nonbiological medicines",
-      ],
-    },
-    {
-      title: "Expanded High-Speed Manufacturing",
-      subtitle: "Completed in 2024",
-      equipment: [
-        {
-          name: "High-speed Combi Line",
-          detail: "Syntegon Technology, Germany",
-        },
-        {
-          name: "Large-volume Lyophilizer",
-          detail: "Telstar",
-        },
-        {
-          name: "High-speed Prefilled Syringe Line",
-          detail: "Syntegon Technology, Germany",
-        },
-      ],
-      formats: [
-        "Vials — Liquid",
-        "Vials — Lyophilized",
-        "Prefilled Syringes",
-        "Ampoules",
-      ],
-      applications: [
-        "Biological medicines",
-        "Non-biological medicines",
-        "Expanded production volumes and flexibility",
-      ],
-    },
-  ] satisfies ProductionLine[],
+export const manufacturingDailyProduction = {
+  title: "Daily Production Capacity",
+  columns: ["Form", "Packing Type", "Filling", "Daily Capacity"] as const,
+  rows: [
+    { form: "Liquid", packingType: "Vials", filling: "2 ML", dailyCapacity: "410,000" },
+    { form: "Liquid", packingType: "Vials", filling: "5 ML", dailyCapacity: "345,000" },
+    { form: "Liquid", packingType: "Vials", filling: "10 ML", dailyCapacity: "298,000" },
+    { form: "Liquid", packingType: "Vials", filling: "30 ML", dailyCapacity: "172,000" },
+    { form: "Liquid", packingType: "Ampules", filling: "2 ML", dailyCapacity: "315,000" },
+    { form: "Liquid", packingType: "Ampules", filling: "6 ML", dailyCapacity: "250,000" },
+    { form: "Liquid", packingType: "Ampules", filling: "10 ML", dailyCapacity: "175,000" },
+    { form: "Liquid", packingType: "Prefilled Syringes", filling: "1 ML", dailyCapacity: "135,000" },
+    { form: "Liquid", packingType: "Cartridges", filling: "3 ML", dailyCapacity: "90,000" },
+    { form: "Lyophilized", packingType: "Vials", filling: "2 ML", dailyCapacity: "220,000" },
+    { form: "Lyophilized", packingType: "Vials", filling: "10 ML", dailyCapacity: "105,000" },
+    { form: "Lyophilized", packingType: "Vials", filling: "30 ML", dailyCapacity: "54,000" },
+  ] satisfies DailyProductionRow[],
 };
 
 export const manufacturingSlideshow = [
@@ -195,7 +159,7 @@ export const manufacturingQuality = {
       items: [
         "Telstar-designed QC and Microbiology laboratories",
         "Validation in accordance with EMA standards",
-        "Agilent and Shimadzu HPLC systems",
+        "Agilent and Shimadzu HPLC, UPLC & LCMS systems",
         "Bio-Rad microplate readers",
         "Fully automated bio-analyzers",
       ],

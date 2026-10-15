@@ -3,7 +3,7 @@ import { manufacturingHero } from "@/data/manufacturing";
 import AnimateIn from "@/components/shared/AnimateIn";
 import OverviewSection from "./components/OverviewSection";
 import StorySection from "./components/StorySection";
-import ProductionLinesSection from "./components/ProductionLinesSection";
+import DailyProductionSection from "./components/DailyProductionSection";
 import FacilitySlideshow from "./components/FacilitySlideshow";
 import QualitySection from "./components/QualitySection";
 import CertificationsSection from "./components/CertificationsSection";
@@ -28,7 +28,7 @@ export default function ManufacturingPage() {
       <AnimateIn>
         <StorySection />
       </AnimateIn>
-      <ProductionLinesSection />
+      <DailyProductionSection />
       <FacilitySlideshow />
       <AnimateIn>
         <QualitySection />

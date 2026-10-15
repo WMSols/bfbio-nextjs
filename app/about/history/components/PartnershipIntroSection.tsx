@@ -13,7 +13,7 @@ export default function PartnershipIntroSection() {
             >
               Ferozsons Laboratories Limited
             </a>{" "}
-            and Bagó formed a commercial partnership to<br className="hidden sm:block" /> introduce the Bagó
+            and Bagó Group formed a commercial partnership to<br className="hidden sm:block" /> introduce the Bagó Group
             portfolio of branded generics in oncology and hepatology to
             Pakistan.<br className="hidden sm:block" /> Within just two years, the partnership achieved a
             leadership position, ranking among the<br className="hidden sm:block" /> top three companies in both

@@ -25,7 +25,7 @@ export default function MissionVisionSection() {
         <p className="mt-8 text-lg leading-relaxed text-black md:mt-12 md:text-[32px] md:leading-normal">
           We will strive to attain market leadership by putting patients first
           and seeing every day as a new opportunity to earn trust and
-          credibility
+          credibility.
         </p>
       </div>
     </section>

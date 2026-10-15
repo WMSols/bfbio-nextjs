@@ -38,7 +38,7 @@ export default function BoardMemberCards({ members }: BoardMemberProps) {
             The Leaders Behind BF Biosciences
           </h2>
           <p className=" text-base md:text-[22px] text-black font-light">
-            Guided by integrity and driven by purpose, we are committed to putting patients first<br className="hidden md:block"/>
+            Guided by integrity and driven by purpose, we are committed to putting patients first{" "}<br className="hidden md:block"/>
             through innovation, collaboration, excellence, and ethical leadership.
           </p>
         </div>

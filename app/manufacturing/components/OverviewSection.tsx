@@ -31,10 +31,10 @@ export default function OverviewSection() {
                 reverse={index % 2 === 1}
                 innerClassName="flex min-h-[11.5rem] flex-col items-center justify-center px-6 py-8 text-center md:min-h-[13.5rem] md:px-7"
               >
-                <p className="text-lg font-medium text-brand md:text-xl">
+                <p className="text-lg font-medium text-brand ">
                   {item.title}
                 </p>
-                <p className="mt-2 whitespace-pre-line text-sm leading-snug text-brand-blue md:text-[15px]">
+                <p className="mt-2 whitespace-pre-line text-xs leading-snug text-brand-blue ">
                   {item.subtitle}
                 </p>
               </GradientCard>

@@ -27,10 +27,10 @@ export default function QualitySection() {
               toBottom={true}
               innerClassName="px-8 py-10 md:px-16 md:py-10"
             >
-              <h3 className="text-2xl font-medium text-black md:text-[32px]">
+              <h3 className="text-2xl font-semibold text-black md:text-[32px]">
                 {card.title}
               </h3>
-              <ul className="mt-6 list-disc space-y-2 pl-5 text-black md:mt-8 md:text-lg">
+              <ul className="mt-6 list-disc space-y-1 pl-5 text-black md:mt-8 md:text-lg">
                 {card.items.map((item) => (
                   <li key={item}>{item}</li>
                 ))}

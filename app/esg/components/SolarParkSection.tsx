@@ -40,7 +40,7 @@ export default function SolarParkSection() {
             </div>
 
             <Link
-              href="#governance"
+              href="/investors"
               className="mt-8 text-base text-brand underline decoration-[7%] underline-offset-4 "
             >
               Learn about our Environmental, Social &amp; Governance Policy
