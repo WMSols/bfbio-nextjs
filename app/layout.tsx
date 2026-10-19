@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     default: "Bf Biosciences",
     template: "%s | Bf Biosciences",
   },
-  description: "Bf Biosciences corporate website.",
+  description: "Bf Biosciences.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
