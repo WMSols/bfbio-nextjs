@@ -44,7 +44,10 @@ export default function ProductListClient() {
 
       <section className="py-12">
         <div className="container mx-auto">
-          
+          <ProductSearch
+            value={filters.search}
+            onChange={filters.setSearch}
+          />
 
           <ProductFilterTabs
             activeMode={
